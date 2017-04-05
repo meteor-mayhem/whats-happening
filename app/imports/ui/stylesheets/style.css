@@ -3,11 +3,30 @@ body {
 }
 
 .ui.top.fixed.borderless.inverted.menu.navbar {
-  background-color: #494E6B;
+  background-color: #166545;
 }
 
 .page-footer {
-  background-color: #494E6B;
+  background-color: #166545;
   color: #FFFFFF;
   padding-bottom: 15px;
+}
+
+.ui.fluid.container.landing.page.background {
+  background-image: url("/images/uh_background.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 700px;
+}
+
+.ui.middle.aligned.centered.grid.text.container.landing.page {
+  padding-top: 125px;
+}
+
+.ui.text.container.segment.landing.page {
+  background-image: url("/images/uh_background_blur.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
 }
