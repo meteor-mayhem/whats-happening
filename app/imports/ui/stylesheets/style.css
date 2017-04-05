@@ -1,3 +1,13 @@
 body {
   padding-top: 61px;  /* Move body of page below navbar. */
 }
+
+.ui.top.fixed.borderless.inverted.menu.navbar {
+  background-color: #494E6B;
+}
+
+.page-footer {
+  background-color: #494E6B;
+  color: #FFFFFF;
+  padding-bottom: 15px;
+}
