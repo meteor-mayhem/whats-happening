@@ -13,7 +13,7 @@ body {
 }
 
 .ui.fluid.container.landing.page.background {
-  background-image: url("/images/uh_background.jpg");
+  background-image: url("/images/landing-background.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
