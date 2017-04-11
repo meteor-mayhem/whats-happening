@@ -11,3 +11,6 @@ import './list-stuff-page.js';
 
 import './landing-page.html';
 import './landing-page.js';
+
+import './add-event-page.html';
+import './add-event-page.js';

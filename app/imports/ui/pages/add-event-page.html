@@ -1,0 +1,47 @@
+<template name="Add_Event_Page">
+  <div style="padding-top: 20px" class="ui text container">
+    <form class="ui form">
+      <h4 class="ui dividing header">List an Event</h4>
+      <div class="required field">
+        <label>Event Name</label>
+        <div class="field">
+          <input type="text"
+                 name="event-name"
+                 placeholder="Event Name">
+        </div>
+      </div>
+      <div class="required field">
+        <label>Description</label>
+        <div class="field">
+          <input type="text"
+                 name="description"
+                 placeholder="Description">
+        </div>
+      </div>
+      <div class="two fields">
+        <div class="required field">
+          <label>Contact Email</label>
+          <div class="field">
+            <input type="text"
+                   name="contact-email"
+                   placeholder="Contact Email">
+          </div>
+        </div>
+        <div class="required field">
+          <label>Contact Phone</label>
+          <div class="field">
+            <input type="text"
+                   name="contact-phone"
+                   placeholder="Contact Phone">
+          </div>
+        </div>
+      </div>
+      <div class="required field">
+        <label>Location</label>
+        <img style="max-height: 400px" class="ui fluid image" src="/images/google-maps.PNG">
+      </div>
+
+      <button class="ui button" type="submit" tabindex="0">Add to Listing</button>
+    </form>
+  </div>
+</template>

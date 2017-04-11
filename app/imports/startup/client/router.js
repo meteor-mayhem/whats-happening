@@ -41,3 +41,10 @@ FlowRouter.route('/landing-page', {
     BlazeLayout.render('App_Body', { main: 'Landing_Page' });
   },
 });
+
+FlowRouter.route('/add-event-page', {
+  name: 'Add_Event_Page',
+  action() {
+    BlazeLayout.render('App_Body', { main: 'Add_Event_Page' });
+  },
+});
