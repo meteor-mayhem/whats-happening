@@ -1,13 +1,10 @@
-body {
-  padding-top: 61px;  /* Move body of page below navbar. */
-}
-
 .ui.top.fixed.borderless.inverted.menu.navbar {
-  background-color: #166545;
+  background-color: #395C78;
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 .page-footer {
-  background-color: #166545;
+  background-color: #395C78;
   color: #FFFFFF;
   padding-bottom: 15px;
 }
@@ -20,13 +17,6 @@ body {
   height: 700px;
 }
 
-.ui.middle.aligned.centered.grid.text.container.landing.page {
-  padding-top: 125px;
-}
-
-.ui.text.container.segment.landing.page {
-  background-image: url("/images/uh_background_blur.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
+.ui.center.aligned.container.landing.page {
+  padding-top: 225px;
 }
