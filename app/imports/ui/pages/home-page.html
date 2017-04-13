@@ -1,9 +1,64 @@
 <template name="Home_Page">
   <div class="ui container">
+    <div style="height: 20px;"></div>
+
+    <div class="ui huge header">
+      Events Happening at UH Manoa
+      <img src="/images/uhm-logo.png">
+    </div>
+
     <div style="height: 30px;"></div>
 
+    <!-- Event Menu -->
+    <div class="ui secondary pointing menu">
+      <a class="item">Browse Events</a>
+      <a class="right floated active item"><i class="ui search icon"></i>Search Events</a>
+    </div>
+    <div class="ui padded form segment">
+      <div class="two fields">
+        <div class="field">
+          <label>By Name</label>
+          <input type="text" placeholder="Event name">
+        </div>
+        <div class="field">
+          <label>By Owner</label>
+          <input type="text" placeholder="Owner name">
+        </div>
+      </div>
+      <div class="fields">
+        <div class="thirteen wide field">
+          <label>Category Search</label>
+          <input type="text" placeholder="Categories">
+        </div>
+        <div class="three wide field">
+          <label>Logical Filtering</label>
+          <button class="ui fluid green toggle button">OR Categories</button>
+        </div>
+      </div>
+      <div class="field">
+        <div class="three wide field">
+          <label>By Distance</label>
+          <div class="ui selection dropdown">
+            <input type="hidden" name="distance">
+            <i class="dropdown icon"></i>
+            <div class="default text">Within...</div>
+            <div class="menu">
+              <div class="item">0.1 miles</div>
+              <div class="item">0.5 miles</div>
+              <div class="item">1.0 miles</div>
+              <div class="item">5.0 miles</div>
+              <div class="item">10.0 miles</div>
+              <div class="item">50.0 miles</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Event Cards -->
     <div class="ui padded segment">
       <div class="ui four cards">
+
         <div class="ui link card">
           <div class="image"><img src="/images/events/baseball.jpg"></div>
           <div class="content">
@@ -99,6 +154,103 @@
             <a class="left floated"><i class="user icon"></i>Hawaiian Brians</a>
           </div>
         </div>
+
+        <div class="ui link card">
+          <div class="image"><img src="/images/events/baseball.jpg"></div>
+          <div class="content">
+            <div class="header">Intramural Baseball</div>
+            <div class="description">Baseball with the boys at McCully park.</div>
+          </div>
+          <div class="extra content">
+            <a class="right floated"><i class="calendar icon"></i> Mon. Jan. 14</a>
+            <a class="left floated"><i class="user icon"></i>Dylan Tokita</a>
+          </div>
+        </div>
+
+        <div class="ui link card">
+          <div class="image"><img src="/images/events/basketball.jpg"></div>
+          <div class="content">
+            <div class="header">Pickup Basketball</div>
+            <div class="description">Play some pickup basketball at the rec center.</div>
+          </div>
+          <div class="extra content">
+            <a class="right floated"><i class="calendar icon"></i> Mon. Jan. 14</a>
+            <a class="left floated"><i class="user icon"></i>LeBron James</a>
+          </div>
+        </div>
+
+        <div class="ui link card">
+          <div class="image"><img src="/images/events/beach-volleyball.jpeg"></div>
+          <div class="content">
+            <div class="header">Beach Volleyball</div>
+            <div class="description">Beach volleyball at Ala Moana beach.</div>
+          </div>
+          <div class="extra content">
+            <a class="right floated"><i class="calendar icon"></i> Mon. Jan. 14</a>
+            <a class="left floated"><i class="user icon"></i>Jerry Wu</a>
+          </div>
+        </div>
+
+        <div class="ui link card">
+          <div class="image"><img src="/images/events/billiards.jpg"></div>
+          <div class="content">
+            <div class="header">8-Ball Pool</div>
+            <div class="description">Billiards at Frear Hall. All welcome (except Nathan).</div>
+          </div>
+          <div class="extra content">
+            <a class="right floated"><i class="calendar icon"></i> Mon. Jan. 14</a>
+            <a class="left floated"><i class="user icon"></i>Glenn Galvizo</a>
+          </div>
+        </div>
+
+        <div class="ui link card">
+          <div class="image"><img src="/images/events/paddleboard-yoga.jpg"></div>
+          <div class="content">
+            <div class="header">Paddleboard Yoga</div>
+            <div class="description">Do yoga on paddleboards! Woo!</div>
+          </div>
+          <div class="extra content">
+            <a class="right floated"><i class="calendar icon"></i> Mon. Jan. 14</a>
+            <a class="left floated"><i class="user icon"></i>Allie Kim</a>
+          </div>
+        </div>
+
+        <div class="ui link card">
+          <div class="image"><img src="/images/events/ping-pong.jpg"></div>
+          <div class="content">
+            <div class="header">Ping-Pong Tournament</div>
+            <div class="description">Show off your ping-pong skills!</div>
+          </div>
+          <div class="extra content">
+            <a class="right floated"><i class="calendar icon"></i> Mon. Jan. 14</a>
+            <a class="left floated"><i class="user icon"></i>Andrew Obatake</a>
+          </div>
+        </div>
+
+        <div class="ui link card">
+          <div class="image"><img src="/images/events/skateboarding.jpg"></div>
+          <div class="content">
+            <div class="header">Skateboard Sesh</div>
+            <div class="description">Skate sesh at Paki Park.</div>
+          </div>
+          <div class="extra content">
+            <a class="right floated"><i class="calendar icon"></i> Mon. Jan. 14</a>
+            <a class="left floated"><i class="user icon"></i>Tony Hawk</a>
+          </div>
+        </div>
+
+        <div class="ui link card">
+          <div class="image"><img src="/images/events/surfing.jpg"></div>
+          <div class="content">
+            <div class="header">Surfs Up</div>
+            <div class="description">Surf session at Diamond Head!</div>
+          </div>
+          <div class="extra content">
+            <a class="right floated"><i class="calendar icon"></i> Mon. Jan. 14</a>
+            <a class="left floated"><i class="user icon"></i>Hawaiian Brians</a>
+          </div>
+        </div>
+
       </div>
     </div>
 
