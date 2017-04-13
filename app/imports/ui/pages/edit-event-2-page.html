@@ -1,0 +1,69 @@
+<template name="Edit_Event_2_Page">
+  <div style="padding-top: 20px; padding-bottom: 20px" class="ui text container">
+    <div class="ui attached message">
+      <div class="header">
+        Spread the word! List your event!
+      </div>
+      <p>Edit your already listed event.</p>
+    </div>
+    <form class="ui form attached fluid segment">
+      <h4 class="ui horizontal divider header">
+        <i class="linkify icon"></i>
+        External Link
+      </h4>
+      <div class="field">
+        <div class="ui labeled input">
+          <div class="ui label">
+            http://
+          </div>
+          <input type="text" placeholder="goo.gl/forms/NxdlcFDtHyOOBaFi1">
+        </div>
+      </div>
+
+      <h4 class="ui horizontal divider header">
+        <i class="file image outline icon"></i>
+        Event Picture
+      </h4>
+      <div class="field">
+        <div class="ui labeled input">
+          <div class="ui blue label">
+            Choose an image
+          </div>
+          <input type="text" placeholder="myimage2.png">
+        </div>
+      </div>
+
+      <h4 class="ui horizontal divider header">
+        <i class="location arrow icon"></i>
+        Location
+      </h4>
+      <div class="required field">
+        <img style="max-height: 400px" class="ui fluid image" src="/images/google-maps.PNG">
+      </div>
+
+      <h4 class="ui horizontal divider header">
+        <i class="law icon"></i>
+      </h4>
+      <div class="inline field">
+        <div class="ui checkbox">
+          <input type="checkbox" id="terms">
+          <label for="terms">I agree to the terms and conditions listed <a href="#">here</a>.</label>
+        </div>
+      </div>
+
+      <div class="two fields">
+        <div class="field">
+          <div class="ui left floated blue button"><i class="caret left icon"></i> Page 1</div>
+        </div>
+        <div class="field">
+          <div class="ui right floated green submit button"><i class="icon add square"></i> List my event
+            </div>
+        </div>
+      </div>
+    </form>
+    <div class="ui bottom attached warning message">
+      <i class="icon help"></i>
+      Want to add a new listing? <a href="#">Click here</a> instead.
+    </div>
+  </div>
+</template>

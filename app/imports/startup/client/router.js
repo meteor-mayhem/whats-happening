@@ -55,3 +55,18 @@ FlowRouter.route('/add-event-2-page', {
     BlazeLayout.render('App_Body', { main: 'Add_Event_2_Page' });
   },
 });
+
+FlowRouter.route('/edit-event-page', {
+  name: 'Edit_Event_Page',
+  action() {
+    BlazeLayout.render('App_Body', { main: 'Edit_Event_Page' });
+  },
+});
+
+FlowRouter.route('/edit-event-2-page', {
+  name: 'Edit_Event_2_Page',
+  action() {
+    BlazeLayout.render('App_Body', { main: 'Edit_Event_2_Page' });
+  },
+});
+
