@@ -22,5 +22,9 @@
     "prefer-arrow-callback": "off",
     "linebreak-style": "off",
     "max-len": ["error", 120]
+  },
+  "globals": { // disable eslint errors for '_' or '$' not defined
+    "_": true,
+    "$": true
   }
 }
