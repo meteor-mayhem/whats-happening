@@ -14,3 +14,6 @@ settings.production.json
 node_modules/
 
 npm-debug.log
+
+# Don't push sensitive settings.json
+config/settings.json
