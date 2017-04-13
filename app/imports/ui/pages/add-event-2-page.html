@@ -4,46 +4,66 @@
       <div class="header">
         Spread the word! List your event!
       </div>
-      <p>Fill out the form below to tell UH Manoa about what's happening!</p>
+      <p>Fill out the form below to tell UH Manoa about what's happening.</p>
     </div>
     <form class="ui form attached fluid segment">
+      <h4 class="ui horizontal divider header">
+        <i class="linkify icon"></i>
+        External Link
+      </h4>
       <div class="field">
-        <label>External Link</label>
         <div class="ui labeled input">
           <div class="ui label">
             http://
           </div>
-          <input type="text" placeholder="mysite.com">
+          <input type="text" placeholder="google.com">
         </div>
       </div>
-      <div class="field">
-        <label>Event Picture</label>
-        <div class="ui blue button">Choose a file...</div>
-      </div>
-      <div class="required field">
-        <label>Location</label>
 
+      <h4 class="ui horizontal divider header">
+        <i class="file image outline icon"></i>
+        Event Picture
+      </h4>
+      <div class="field">
+        <div class="ui labeled input">
+          <div class="ui blue label">
+            Choose an image
+          </div>
+          <input type="text" placeholder="image.png">
+        </div>
+      </div>
+
+      <h4 class="ui horizontal divider header">
+        <i class="location arrow icon"></i>
+        Location
+      </h4>
+      <div class="required field">
         <img style="max-height: 400px" class="ui fluid image" src="/images/google-maps.PNG">
       </div>
+
+      <h4 class="ui horizontal divider header">
+        <i class="law icon"></i>
+      </h4>
       <div class="inline field">
         <div class="ui checkbox">
           <input type="checkbox" id="terms">
-          <label for="terms">I agree to the terms and conditions</label>
+          <label for="terms">I agree to the terms and conditions listed <a href="#">here</a>.</label>
         </div>
       </div>
 
       <div class="two fields">
         <div class="field">
-          <div class="ui left floated blue button">Page 1</div>
+          <div class="ui left floated blue button"><i class="caret left icon"></i> Page 1</div>
         </div>
         <div class="field">
-          <div class="ui right floated green submit button">List my event</div>
+          <div class="ui right floated green submit button"><i class="icon add square"></i> List my event
+          </div>
         </div>
       </div>
     </form>
     <div class="ui bottom attached warning message">
       <i class="icon help"></i>
-      Want to edit a listing you posted here? <a href="#">Click here</a> instead.
+      Want to edit a new listing you made? <a href="#">Click here</a> instead.
     </div>
   </div>
 </template>
