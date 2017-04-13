@@ -22,9 +22,6 @@
 }
 
 .profile-picture {
-  padding: 7px !important;
+  padding: 6px !important;
 }
 
-.spacer { /* TODO -- remove when css is fixed up */
-  height: 100px;
-}
