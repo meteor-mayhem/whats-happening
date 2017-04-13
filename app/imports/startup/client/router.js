@@ -62,3 +62,4 @@ FlowRouter.route('/add-event-2-page', {
     BlazeLayout.render('App_Body', { main: 'Add_Event_2_Page' });
   },
 });
+
