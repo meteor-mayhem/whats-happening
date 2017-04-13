@@ -20,3 +20,11 @@
 .ui.center.aligned.container.landing.page {
   padding-top: 225px;
 }
+
+.profile-picture {
+  padding: 7px !important;
+}
+
+.spacer { /* TODO -- remove when css is fixed up */
+  height: 100px;
+}
