@@ -1,32 +1,25 @@
-body {
-  padding-top: 61px;  /* Move body of page below navbar. */
-}
-
 .ui.top.fixed.borderless.inverted.menu.navbar {
-  background-color: #166545;
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
-.page-footer {
-  background-color: #166545;
-  color: #FFFFFF;
-  padding-bottom: 15px;
+.ui.bottom.fixed.borderless.inverted.menu.navbar {
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 .ui.fluid.container.landing.page.background {
-  background-image: url("/images/uh_background.jpg");
+  background-image: url("/images/landing-background.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
-  height: 700px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow: auto;
 }
 
-.ui.middle.aligned.centered.grid.text.container.landing.page {
-  padding-top: 125px;
-}
-
-.ui.text.container.segment.landing.page {
-  background-image: url("/images/uh_background_blur.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
+.ui.center.aligned.container.landing.page {
+  padding-top: 19%;
+  padding-bottom: 10%;
 }
