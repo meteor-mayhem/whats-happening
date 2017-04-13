@@ -15,6 +15,13 @@ FlowRouter.route('/home', {
   },
 });
 
+FlowRouter.route('/profile', {
+  name: 'Profile_Page',
+  action() {
+    BlazeLayout.render('App_Body', { main: 'Profile_Page' });
+  },
+});
+
 FlowRouter.route('/list', {
   name: 'List_Stuff_Page',
   action() {
@@ -42,13 +49,6 @@ FlowRouter.notFound = {
   },
 };
 
-FlowRouter.route('/landing-page', {
-  name: 'Landing_Page',
-  action() {
-    BlazeLayout.render('Landing_App_Body', { main: 'Landing_Page' });
-  },
-});
-
 FlowRouter.route('/add-event-page', {
   name: 'Add_Event_Page',
   action() {
@@ -62,3 +62,4 @@ FlowRouter.route('/add-event-2-page', {
     BlazeLayout.render('App_Body', { main: 'Add_Event_2_Page' });
   },
 });
+
