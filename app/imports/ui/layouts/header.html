@@ -1,17 +1,17 @@
 <template name="Header">
   <div class="ui top borderless inverted menu navbar">
     <div class="ui container">
-      <a class="item" href="{{pathFor 'Home_Page'}}"><h1>What's Happening</h1></a>
+      <a class="item" href="{{pathFor 'Landing_Page'}}"><h1>What's Happening</h1></a>
 
       {{#if currentUser}} <!-- If the user is logged in -->
-      <a class="right aligned item" href="{{ pathFor 'Add_Stuff_Page' }}"><i class="browser icon"></i>Browse Events</a>
-      <a class="item" href="{{ pathFor 'Add_Stuff_Page' }}"><i class="add to calendar icon"></i>Add Event</a>
-      <a class="item" href="{{ pathFor 'Add_Stuff_Page' }}"><i class="options icon"></i>Edit Event</a>
-      <a class="item" href="{{ pathFor 'Add_Stuff_Page' }}"><i class="calendar icon"></i>My Events</a>
+      <a class="right aligned item" href="{{ pathFor 'Add_Event_Page' }}"><i class="browser icon"></i>Browse Events</a>
+      <a class="item" href="{{ pathFor 'Add_Event_Page' }}"><i class="add to calendar icon"></i>Add Event</a>
+      <a class="item" href="{{ pathFor 'Add_Event_Page' }}"><i class="options icon"></i>Edit Event</a>
+      <a class="item" href="{{ pathFor 'Add_Event_Page' }}"><i class="calendar icon"></i>My Events</a>
 
       {{else}} <!-- If the user isn't logged in -->
-      <a class="right aligned item" href="{{ pathFor 'Add_Stuff_Page' }}"><i class="sign in icon"></i>Login</a>
-      <a class="item" href="{{ pathFor 'Add_Stuff_Page' }}"><i class="lock icon"></i>Admin</a>
+      <a class="right aligned item" href="{{ pathFor 'Add_Event_Page' }}"><i class="sign in icon"></i>Login</a>
+      <a class="item" href="{{ pathFor 'Add_Event_Page' }}"><i class="lock icon"></i>Admin</a>
       {{/if}}
 
       <a href="#" class="aligned item">{{> loginButtons align="right"}} </a>
