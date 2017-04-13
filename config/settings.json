@@ -1,0 +1,7 @@
+{
+  "galaxy.meteor.com": {
+     "env": {
+       "MONGO_URL": "mongodb://dbuser:dbpassword@dbh74.mlab.com:27747/whats-happening-uhm"
+     }
+   }
+}
