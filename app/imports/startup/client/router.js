@@ -38,7 +38,7 @@ FlowRouter.notFound = {
 FlowRouter.route('/landing-page', {
   name: 'Landing_Page',
   action() {
-    BlazeLayout.render('App_Body', { main: 'Landing_Page' });
+    BlazeLayout.render('Landing_App_Body', { main: 'Landing_Page' });
   },
 });
 

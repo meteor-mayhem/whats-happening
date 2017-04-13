@@ -3,6 +3,11 @@ import './app-body.js';
 import './app-not-found.html';
 import './footer.html';
 import './header.html';
+import './landing-app-body.html'
+import './landing-app-body.js'
+import './landing-header.html'
+import './landing-header.js'
+import './landing-footer.html'
 import './header.js';
 import './if-logged-in.html';
 import './if-logged-in.js';
