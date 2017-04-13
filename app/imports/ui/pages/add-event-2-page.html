@@ -1,0 +1,49 @@
+<template name="Add_Event_2_Page">
+  <div style="padding-top: 20px; padding-bottom: 20px" class="ui text container">
+    <div class="ui attached message">
+      <div class="header">
+        Spread the word! List your event!
+      </div>
+      <p>Fill out the form below to tell UH Manoa about what's happening!</p>
+    </div>
+    <form class="ui form attached fluid segment">
+      <div class="field">
+        <label>External Link</label>
+        <div class="ui labeled input">
+          <div class="ui label">
+            http://
+          </div>
+          <input type="text" placeholder="mysite.com">
+        </div>
+      </div>
+      <div class="field">
+        <label>Event Picture</label>
+        <div class="ui blue button">Choose a file...</div>
+      </div>
+      <div class="required field">
+        <label>Location</label>
+
+        <img style="max-height: 400px" class="ui fluid image" src="/images/google-maps.PNG">
+      </div>
+      <div class="inline field">
+        <div class="ui checkbox">
+          <input type="checkbox" id="terms">
+          <label for="terms">I agree to the terms and conditions</label>
+        </div>
+      </div>
+
+      <div class="two fields">
+        <div class="field">
+          <div class="ui left floated blue button">Page 1</div>
+        </div>
+        <div class="field">
+          <div class="ui right floated green submit button">List my event</div>
+        </div>
+      </div>
+    </form>
+    <div class="ui bottom attached warning message">
+      <i class="icon help"></i>
+      Want to edit a listing you posted here? <a href="#">Click here</a> instead.
+    </div>
+  </div>
+</template>

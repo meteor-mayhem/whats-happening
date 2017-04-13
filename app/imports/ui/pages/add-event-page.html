@@ -1,47 +1,71 @@
 <template name="Add_Event_Page">
-  <div style="padding-top: 20px" class="ui text container">
-    <form class="ui form">
-      <h4 class="ui dividing header">List an Event</h4>
+  <div style="padding-top: 20px; padding-bottom: 20px" class="ui text container">
+    <div class="ui attached message">
+      <div class="header">
+        Spread the word! List your event!
+      </div>
+      <p>Fill out the form below to tell UH Manoa about what's happening!</p>
+    </div>
+
+    <form class="ui form attached fluid segment">
       <div class="required field">
         <label>Event Name</label>
         <div class="field">
-          <input type="text"
-                 name="event-name"
-                 placeholder="Event Name">
+          <input type="text" name="event-name" placeholder="Event Name">
         </div>
       </div>
       <div class="required field">
-        <label>Description</label>
+        <label>Description </label>
         <div class="field">
-          <input type="text"
-                 name="description"
-                 placeholder="Description">
+          <textarea rows="5" name="event-description"
+                    placeholder="Enter a short description about the event."></textarea>
+        </div>
+      </div>
+      <div class="required field">
+        <label>Organization</label>
+        <div class="ui fluid search selection dropdown">
+          <input type="hidden" name="event-organization">
+          <i class="dropdown icon"></i>
+          <div class="default text">Organization</div>
+          <div class="menu">
+            <div class="item" data-value="accounting-club">Accounting Club</div>
+            <div class="item" data-value="association-for-computing-machinery-at-manoa">Association for Computing
+              Machinery at Manoa
+            </div>
+            <div class="item" data-value="art-club">Art Club</div>
+            <div class="item" data-value="geology-and-geophysics-club">Geology & Geophysics Club</div>
+          </div>
         </div>
       </div>
       <div class="two fields">
-        <div class="required field">
+        <div class="field">
           <label>Contact Email</label>
           <div class="field">
-            <input type="text"
-                   name="contact-email"
-                   placeholder="Contact Email">
+            <input type="text" name="contact-email" placeholder="Contact Email">
           </div>
         </div>
-        <div class="required field">
+        <div class="field">
           <label>Contact Phone</label>
           <div class="field">
-            <input type="text"
-                   name="contact-phone"
-                   placeholder="Contact Phone">
+            <input type="text" name="contact-phone" placeholder="Contact Phone">
           </div>
         </div>
       </div>
       <div class="required field">
-        <label>Location</label>
-        <img style="max-height: 400px" class="ui fluid image" src="/images/google-maps.PNG">
+        <label>Date</label>
+        <input type="datetime-local" name="event-datetime">
       </div>
-
-      <button class="ui button" type="submit" tabindex="0">Add to Listing</button>
+      <br>
+      <div class="field">
+        <div class="ui right floated blue button">Page 2</div>
+      </div>
+      <br>
     </form>
+
   </div>
+  <script>
+    $('.ui.dropdown')
+        .dropdown()
+    ;
+  </script>
 </template>
