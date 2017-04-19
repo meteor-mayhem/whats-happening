@@ -12,3 +12,11 @@ Template.Header.helpers({
     return Meteor.user().profile.name;
   },
 });
+
+Template.Header.events({
+  'click .item.sign.out': function signOut(event) {
+    event.preventDefault();
+    Meteor.logout();
+    return false;
+  },
+})
