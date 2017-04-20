@@ -1,0 +1,114 @@
+<template name="User_Setup_Page">
+  <div style="padding-top: 20px; padding-bottom: 20px" class="ui text container">
+    <div class="ui attached message">
+      <div class="header">
+        Tell us about yourself!
+      </div>
+      <p>Fill out the form below to start browsing and creating events!</p>
+    </div>
+
+    <form class="ui form attached fluid segment">
+      <h4 class="ui horizontal divider header">
+        <i class="tag icon"></i>
+        First and Last Name
+      </h4>
+      <div class="required field">
+        <div class="field">
+          <input type="text" name="user-name" placeholder="John Doe">
+        </div>
+      </div>
+      <h4 class="ui horizontal divider header">
+        <i class="content icon"></i>
+        Interests
+      </h4>
+      <div class="required field">
+        <div class="field">
+          <select class="ui fluid search dropdown" multiple="">
+            <option value="">Interests</option>
+            <option value="Animals">Animals</option>
+            <option value="Art">Art</option>
+            <option value="Baseball">Baseball</option>
+            <option value="Basketball">Basketball</option>
+            <option value="Beach">Beach</option>
+            <option value="Billiards">Billiards</option>
+            <option value="Bowling">Bowling</option>
+            <option value="Cooking">Cooking</option>
+            <option value="Dancing">Dancing</option>
+            <option value="Exercise">Exercise</option>
+            <option value="Fishing">Fishing</option>
+            <option value="Food">Food</option>
+            <option value="Football">Football</option>
+            <option value="Geocaching">Geocaching</option>
+            <option value="Golfing">Golfing</option>
+            <option value="Martial Arts">Martial Arts</option>
+            <option value="Movies">Movies</option>
+            <option value="Music">Music</option>
+            <option value="Photography">Photography</option>
+            <option value="Programming">Programming</option>
+            <option value="Running">Running</option>
+            <option value="Shopping">Shopping</option>
+            <option value="Singing">Singing</option>
+            <option value="Skateboarding">Skateboarding</option>
+            <option value="Soccer">Soccer</option>
+            <option value="Sports">Sports</option>
+            <option value="Surfing">Surfing</option>
+            <option value="Swimming">Swimming</option>
+            <option value="Tennis">Tennis</option>
+            <option value="Video Games">Video Games</option>
+            <option value="Volleyball">Volleyball</option>
+            <option value="Weightlifting">Weightlifting</option>
+            <option value="Yoga">Yoga</option>
+          </select>
+        </div>
+      </div>
+      <h4 class="ui horizontal divider header">
+        <i class="users icon"></i>
+        Organizations You Belong To
+      </h4>
+      <div class="required field">
+        <div class="ui fluid search selection dropdown">
+          <input type="hidden" name="event-organization">
+          <i class="dropdown icon"></i>
+          <div class="default text">Organization</div>
+          <div class="menu">
+            <div class="item" data-value="accounting-club">Accounting Club</div>
+            <div class="item" data-value="association-for-computing-machinery-at-manoa">Association for Computing
+              Machinery at Manoa
+            </div>
+            <div class="item" data-value="art-club">Art Club</div>
+            <div class="item" data-value="geology-and-geophysics-club">Geology & Geophysics Club</div>
+            <div class="item" data-value="institute-for-teacher-education">Institute for Teacher Education</div>
+          </div>
+        </div>
+      </div>
+      <h4 class="ui horizontal divider header">
+        <i class="mail icon"></i>
+        Contact Information
+      </h4>
+      <div class="two fields">
+        <div class="field">
+          <label>Email</label>
+          <div class="field">
+            <input type="text" name="user-email" placeholder="foo@gmail.com">
+          </div>
+        </div>
+        <div class="field">
+          <label>Phone</label>
+          <div class="field">
+            <input type="text" name="user-phone" placeholder="xxx-xxx-xxxx">
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="field">
+        <div class="ui right floated blue button">Submit<i class="caret right icon"></i></div>
+      </div>
+      <br>
+    </form>
+  </div>
+  <script>
+  $('.ui.dropdown')
+  .dropdown()
+  ;
+  </script>
+</template>

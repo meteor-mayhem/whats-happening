@@ -26,3 +26,6 @@ import './edit-event-page.js';
 
 import './edit-event-2-page.html';
 import './edit-event-2-page.js';
+
+import './user-setup.html';
+import './user-setup.js';

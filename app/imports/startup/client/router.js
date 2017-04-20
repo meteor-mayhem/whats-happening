@@ -77,4 +77,9 @@ FlowRouter.route('/edit-event-2-page', {
   },
 });
 
-
+FlowRouter.route('/user-setup', {
+  name: 'User_Setup_Page',
+  action() {
+    BlazeLayout.render('App_Body', { main: 'User_Setup_Page' });
+  },
+});
