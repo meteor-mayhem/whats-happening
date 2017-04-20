@@ -13,8 +13,16 @@
         First and Last Name
       </h4>
       <div class="required field">
-        <div class="field">
-          <input type="text" name="user-name" placeholder="John Doe">
+        <div class="two fields">
+
+          <div class="field">
+            <input type="text" name="first-name" placeholder="First Name">
+          </div>
+
+          <div class="field">
+            <input type="text" name="last-name" placeholder="Last Name">
+          </div>
+
         </div>
       </div>
       <h4 class="ui horizontal divider header">
@@ -66,19 +74,30 @@
         Organizations You Belong To
       </h4>
       <div class="required field">
-        <div class="ui fluid search selection dropdown">
-          <input type="hidden" name="event-organization">
-          <i class="dropdown icon"></i>
-          <div class="default text">Organization</div>
-          <div class="menu">
-            <div class="item" data-value="accounting-club">Accounting Club</div>
-            <div class="item" data-value="association-for-computing-machinery-at-manoa">Association for Computing
-              Machinery at Manoa
-            </div>
-            <div class="item" data-value="art-club">Art Club</div>
-            <div class="item" data-value="geology-and-geophysics-club">Geology & Geophysics Club</div>
-            <div class="item" data-value="institute-for-teacher-education">Institute for Teacher Education</div>
-          </div>
+        <div class="field">
+          <select class="ui fluid search dropdown" multiple="">
+            <option value="">Organizations</option>
+            <option value="Academy of Creative Media Student Association">Academy of Creative Media Student Association</option>
+            <option value="Accounting Club">Accounting Club</option>
+            <option value="American Marketing Association">American Marketing Association</option>
+            <option value="American Society of Civil Engineers">American Society of Civil Engineers</option>
+            <option value="American Society of Mechnical Engineers">American Society of Mechnical Engineers</option>
+            <option value="Art Club">Art Club</option>
+            <option value="Biological Engineering Student Association">Biological Engineering Student Association</option>
+            <option value="Chemistry Club at the University of Hawaii at Manoa">Chemistry Club at the University of Hawaii at Manoa</option>
+            <option value="Ethnic Studies Student Association">Ethnic Studies Student Association</option>
+            <option value="Financial Management Association">Financial Management Association</option>
+            <option value="Geology and Geophysics Club">Geology and Geophysics Club</option>
+            <option value="Hawaii Student Entrepreneurs">Hawaii Student Entrepreneurs</option>
+            <option value="Information Technology Management Association">Information Technology Management Association</option>
+            <option value="Institute of Electrical and Electronics Engineers">Institute of Electrical and Electronics Engineers</option>
+            <option value="Ke Koa Ekola O Ke Alahele">Ke Koa Ekola O Ke Alahele</option>
+            <option value="Linguistic Society of Hawaii">Linguistic Society of Hawaii</option>
+            <option value="Marine Robotics at the University of Hawaii">Marine Robotics at the University of Hawaii</option>
+            <option value="Philosophy Students Association">Philosophy Students Association</option>
+            <option value="Society of Women Engineers">Society of Women Engineers</option>
+            <option value="Travel Industry Management Student Association">Travel Industry Management Student Association</option>
+          </select>
         </div>
       </div>
       <h4 class="ui horizontal divider header">
@@ -89,7 +108,7 @@
         <div class="field">
           <label>Email</label>
           <div class="field">
-            <input type="text" name="user-email" placeholder="foo@gmail.com">
+            <input type="text" name="user-email" placeholder="foo@hawaii.edu">
           </div>
         </div>
         <div class="field">
@@ -99,11 +118,19 @@
           </div>
         </div>
       </div>
-      <br>
-      <div class="field">
-        <div class="ui right floated blue button">Submit<i class="caret right icon"></i></div>
+      <h4 class="ui horizontal divider header"><i class="add user icon"></i></h4>
+      <div class="two fields">
+        <div class="inline field">
+          <div class="ui checkbox">
+            <input type="checkbox" id="terms">
+            <label for="terms">I agree to the terms and conditions listed <a href="#">here</a>.</label>
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui right floated blue button">Sign Up<i class="caret right icon"></i></div>
+        </div>
       </div>
-      <br>
+
     </form>
   </div>
   <script>
