@@ -14,17 +14,16 @@ profiles = Profiles; // globally access mongodb
 export const ProfileSchema = new SimpleSchema({
   username: {
     label: 'Username',
-    type: String, // figure out how we can set this to the myUH username automatically
+    type: String,
+    defaultValue: 'MC Hammer', // TODO replace this with the UH username
   },
   first: {
     label: 'First',
     type: String,
-    optional: false,
   },
   last: {
     label: 'Last',
     type: String,
-    optional: false,
   },
   interests: {
     label: 'Interests',
