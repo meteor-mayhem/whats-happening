@@ -1,3 +1,4 @@
 import './accounts.js';
-import './profiles.js';
+import './profile-seeds.js';
+import './event-seeds.js';
 import './publications.js';

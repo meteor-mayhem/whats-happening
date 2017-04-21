@@ -6,6 +6,7 @@ import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 export const Profiles = new Mongo.Collection('Profiles');
 
 // TODO remove this later
+/* eslint-disable no-undef */
 profiles = Profiles; // globally access mongodb
 
 /**
@@ -15,7 +16,6 @@ export const ProfileSchema = new SimpleSchema({
   username: {
     label: 'Username',
     type: String,
-    defaultValue: 'MC Hammer', // TODO replace this with the UH username
   },
   first: {
     label: 'First',
@@ -28,10 +28,22 @@ export const ProfileSchema = new SimpleSchema({
   interests: {
     label: 'Interests',
     type: [String],
+    optional: true,
   },
   organizations: {
     label: 'Organizations',
     type: [String],
+    optional: true,
+  },
+  bio: {
+    label: 'bio',
+    type: String,
+    optional: true,
+  },
+  picture: {
+    label: 'Picture',
+    type: String,
+    optional: true,
   },
 });
 
