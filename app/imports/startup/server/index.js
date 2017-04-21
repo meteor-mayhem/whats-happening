@@ -1,2 +1,3 @@
 import './accounts.js';
-import './stuff.js';
+import './profiles.js';
+import './publications.js';
