@@ -7,9 +7,15 @@ export const Profiles = new Mongo.Collection('Profiles');
 
 // TODO remove this later
 /* eslint-disable no-undef */
-profiles = Profiles; // globally access mongodb
+/* eslint-disable no-console */
+profiles = function show() {
+  _.each(Profiles.find().fetch(), function print(profile) {
+    console.log(profile);
+  });
+  return `There are ${Profiles.find().fetch().length} profiles`;
+};
 
-/**
+/*
  * Create the schema for Profile
  */
 export const ProfileSchema = new SimpleSchema({
@@ -42,7 +48,7 @@ export const ProfileSchema = new SimpleSchema({
   },
   events: {
     label: 'Events',
-    type: SimpleSchema,
+    type: String,
     optional: true,
   },
   picture: {

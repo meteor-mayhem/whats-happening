@@ -7,7 +7,13 @@ export const Events = new Mongo.Collection('Events');
 
 // TODO remove this later
 /* eslint-disable no-undef */
-events = Events; // globally access mongodb
+/* eslint-disable no-console */
+events = function show() {
+  _.each(Events.find().fetch(), function print(event) {
+    console.log(event);
+  });
+  return `There are ${Events.find().fetch().length} events`;
+};
 
 /**
  * Create the schema for Profile
