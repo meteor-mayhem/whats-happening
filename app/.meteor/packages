@@ -53,3 +53,5 @@ insecure@1.0.7
 
 atoy40:accounts-cas
 random
+dburles:google-maps
+jeremy:geocomplete
