@@ -69,9 +69,7 @@
         <i class="calendar icon"></i>
         Date
       </h4>
-      <div class="required field">
-        <input type="datetime-local" name="event-datetime">
-      </div>
+      {{> Date_Field required=true id="date-time"}}
       <br>
       <div class="field">
         <a href="{{pathFor 'Add_Event_2_Page'}}">
