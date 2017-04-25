@@ -36,8 +36,13 @@ export const ProfileSchema = new SimpleSchema({
     optional: true,
   },
   bio: {
-    label: 'bio',
+    label: 'Bio',
     type: String,
+    optional: true,
+  },
+  events: {
+    label: 'Events',
+    type: SimpleSchema,
     optional: true,
   },
   picture: {
