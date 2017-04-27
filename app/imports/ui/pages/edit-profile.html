@@ -1,13 +1,14 @@
-<template name="User_Setup_Page">
+<template name="Edit_Profile_Page">
   <div style="padding-top: 20px; padding-bottom: 20px" class="ui text container">
     <div class="ui attached message">
       <div class="header">
-        Tell us about yourself!
+        Want to change something?
       </div>
-      <p>Fill out the form below to start browsing and creating events!</p>
+      <p>Use the form below to modify your profile!</p>
     </div>
 
     <form class="ui form attached fluid segment">
+
       <h4 class="ui horizontal divider header">
         <i class="university icon"></i>
         Username (UH ID)
@@ -18,7 +19,7 @@
           <input type="username" placeholder={{user}}>
         </div>
       </div>
-
+      
       <h4 class="ui horizontal divider header">
         <i class="tag icon"></i>
         First and Last Name
@@ -157,8 +158,8 @@
       <div class="two fields">
         <div class="inline field">
           <div class="ui checkbox">
-            <input type="checkbox" id="terms">
-            <label for="terms">I agree to the terms and conditions listed <a href="#">here</a>.</label>
+            <input type="checkbox" id="confirm">
+            <label for="terms">Confirm changes?</label>
           </div>
         </div>
         <div class="field">
