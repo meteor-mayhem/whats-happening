@@ -28,6 +28,12 @@
         </div>
       </div>
       <h4 class="ui horizontal divider header">
+        <i class="calendar icon"></i>
+        Date/Time
+      </h4>
+      {{> Date_Field}}
+
+      <h4 class="ui horizontal divider header">
         <i class="users icon"></i>
         Organization
       </h4>
@@ -65,17 +71,7 @@
           </div>
         </div>
       </div>
-      <h4 class="ui horizontal divider header">
-        <i class="calendar icon"></i>
-        Date
-      </h4>
-      {{> Date_Field required=true id="date-time"}}
-      <br>
-      <div class="field">
-        <a href="{{pathFor 'Add_Event_2_Page'}}">
-          <div class="ui right floated blue button">Page 2 <i class="caret right icon"></i></div>
-        </a>
-      </div>
+
       <br>
     </form>
     <div class="ui bottom attached warning message">
@@ -83,9 +79,9 @@
       Want to edit a new listing you made? <a href="{{pathFor 'Edit_Event_Page'}}">Click here</a> instead.
     </div>
   </div>
-  <script>
-    $('.ui.dropdown')
-        .dropdown()
-    ;
-  </script>
+  <!--<script>-->
+    <!--$('.ui.dropdown')-->
+        <!--.dropdown()-->
+    <!--;-->
+  <!--</script>-->
 </template>
