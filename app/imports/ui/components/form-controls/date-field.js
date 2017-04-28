@@ -7,7 +7,7 @@ Template.Date_Field.onRendered(function onRendered() {
     timePicker: true,
     timePickerIncrement: 30,
     locale: {
-      format: 'MM/DD/YYYY h:mm A'
-    }
+      format: 'MM/DD/YYYY h:mm A',
+    },
   });
 });

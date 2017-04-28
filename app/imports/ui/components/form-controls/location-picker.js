@@ -1,5 +1,7 @@
 import { Template } from 'meteor/templating';
 
+/* eslint-disable no-undef, object-shorthand */
+
 Template.Location_Picker.onRendered(function onRendered() {
   GoogleMaps.load({ key: 'AIzaSyDCfPvG1jV3AgS_TTp_KaIH8RlRi0keSpk', libraries: 'places' });
 });
@@ -75,5 +77,6 @@ Template.Location_Picker.helpers({
         mapTypeId: 'roadmap',
       };
     }
+    return 0;
   },
 });

@@ -1,4 +1,5 @@
 import { Template } from 'meteor/templating';
+import { Meteor } from 'meteor/meteor';
 
 Template.Landing_Page.events({
   'click .ui.large.green.button.sign.up': function casLogin(event) {
