@@ -3,8 +3,9 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
 import { Template } from 'meteor/templating';
 import { _ } from 'meteor/underscore';
 import { Events, EventSchema } from '../../api/events/events.js';
+import { organizationList } from './organizations.js';
 
-/* eslint-disable object-shorthand, no-unused-vars, no-param-reassign */
+/* eslint-disable object-shorthand, no-unused-vars, no-param-reassign, prefer-template */
 
 const displaySuccessMessage = 'displaySuccessMessage';
 const displayErrorMessages = 'displayErrorMessages';
@@ -25,13 +26,13 @@ Template.Edit_Event_Page.helpers({
   },
   organizations() {
     const eventData = Events.findOne(FlowRouter.getParam('_id'));
-    const selectedOrganization = eventData && eventData.organizer;
+    const selectedOrganizer = eventData && eventData.organizer;
     return eventData && _.map(organizationList,
             function makeOrganizationObject(organization) {
-              if (organization.value === selectedOrganization) {
-                organization.selected = true;
+              if (organization === selectedOrganizer) {
+                return { label: organization, selected: true };
               }
-              return organization;
+              return { label: organization };
             });
   },
   successClass() {
@@ -46,38 +47,45 @@ Template.Edit_Event_Page.helpers({
 });
 
 Template.Edit_Event_Page.events({
-
   'submit .event-form'(event, instance) {
     event.preventDefault();
-    // Get name (text field)
     const name = event.target.Name.value;
-    // Get description (text field)
     const description = event.target.Description.value;
-    // Get date (date-picker)
     // TODO: add date to an event...
-    // Get organizer (drop down list)
+    const start = '2012-04-23T18:25:43.511Z';
+    const end = '2012-04-23T18:25:43.511Z';
     const organizer = event.target.Organization.value;
-    // Get email (text field)
     const email = event.target.Email.value;
-    // Get phone number (text field)
     const phone = event.target.Phone.value;
 
     // TODO: add date fields to here
-    const updatedEventData = { name, description, organizer, email, phone };
-
+    // grab previous record data
+    const eventData = Events.findOne(FlowRouter.getParam('_id'));
+    const updatedEventData = {
+      name,
+      description,
+      start,
+      end,
+      organizer,
+      email,
+      phone,
+      categories: eventData && eventData.categories,
+      location: eventData && eventData.location,
+      coordinates: eventData && eventData.coordinates,
+      website: eventData && eventData.website,
+      picture: eventData && eventData.picture,
+    };
     // Clear out any old validation errors.
     instance.context.resetValidation();
-    // Invoke clean so that newStudentData reflects what will be inserted.
-    Events.clean(updatedEventData);
+    // Invoke clean so that newEventData reflects what will be inserted.
+    EventSchema.clean(updatedEventData);
     // Determine validity.
     instance.context.validate(updatedEventData);
-
     if (instance.context.isValid()) {
       const id = Events.update(FlowRouter.getParam('_id'), { $set: updatedEventData });
-      instance.messageFlags.set(displaySuccessMessage, id);
       instance.messageFlags.set(displayErrorMessages, false);
+      FlowRouter.go('../edit-event-2-page/' + FlowRouter.getParam('_id'));
     } else {
-      instance.messageFlags.set(displaySuccessMessage, false);
       instance.messageFlags.set(displayErrorMessages, true);
     }
   },

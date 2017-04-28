@@ -1,72 +1,55 @@
 <template name="Edit_Event_2_Page">
-  <div style="padding-top: 20px; padding-bottom: 20px" class="ui text container">
-    <div class="ui attached message">
-      <div class="header">
-        Spread the word! List your event!
+  {{#if Template.subscriptionsReady}}
+    <div style="padding-top: 20px; padding-bottom: 20px" class="ui text container">
+      <div class="ui attached message">
+        <div class="header">
+          Spread the word! List your event!
+        </div>
+        <p>Fill out the form below to tell UH Manoa about what's happening.</p>
       </div>
-      <p>Edit your already listed event.</p>
-    </div>
-    <form class="ui form attached fluid segment">
-      <h4 class="ui horizontal divider header">
-        <i class="linkify icon"></i>
-        External Link
-      </h4>
-      <div class="field">
-        <div class="ui labeled input">
-          <div class="ui label">
-            http://
+      <form class="ui form attached fluid segment event-form {{ successClass }} {{ errorClass }}">
+        <h4 class="ui horizontal divider header">
+          <i class="content icon"></i>
+          Categories
+        </h4>
+        {{> Select_Form_Control label="Categories" required=true options=categories errorMessage=(fieldError 'categories') multiple=true value=(eventDataField 'categories')}}
+
+        <h4 class="ui horizontal divider header">
+          <i class="linkify icon"></i>
+          External Link
+        </h4>
+        {{> Text_Form_Control link=true label="Website" errorMessage=(fieldError "website") value=(eventDataField 'website')}}
+
+        <h4 class="ui horizontal divider header">
+          <i class="file image outline icon"></i>
+          Event Picture
+        </h4>
+        {{> Text_Form_Control link=true label="Picture" errorMessage=(fieldError "picture") value=(eventDataField 'picture')}}
+
+        <h4 class="ui horizontal divider header">
+          <i class="location arrow icon"></i>
+          Location
+        </h4>
+        {{> Location_Picker required=true}}
+        <br><br>
+
+        <div class="two fields">
+          <div class="field">
+            <a href="{{pathFor 'Edit_Event_Page' _id=eventId}}">
+              <button class="ui left floated blue button"><i class="caret left icon"></i> Page 1</button>
+            </a>
           </div>
-          <input type="text" placeholder="goo.gl/forms/NxdlcFDtHyOOBaFi1">
-        </div>
-      </div>
-
-      <h4 class="ui horizontal divider header">
-        <i class="file image outline icon"></i>
-        Event Picture
-      </h4>
-      <div class="field">
-        <div class="ui labeled input">
-          <div class="ui blue label">
-            Choose an image
+          <div class="field">
+            <button class="ui right floated green submit button" type="submit"><i class="icon add square"></i> List my
+              event
+            </button>
           </div>
-          <input type="text" placeholder="myimage2.png">
         </div>
+      </form>
+      <div class="ui bottom attached warning message">
+        <i class="icon help"></i>
+        Want to add a new listing? <a href="{{pathFor 'Add_Event_Page'}}">Click here</a> instead.
       </div>
-
-      <h4 class="ui horizontal divider header">
-        <i class="location arrow icon"></i>
-        Location
-      </h4>
-      <div class="required field">
-        {{> Location_Picker}}
-      </div>
-
-      <h4 class="ui horizontal divider header">
-        <i class="law icon"></i>
-      </h4>
-      <div class="inline field">
-        <div class="ui checkbox">
-          <input type="checkbox" id="terms">
-          <label for="terms">I agree to the terms and conditions listed <a href="#">here</a>.</label>
-        </div>
-      </div>
-
-      <div class="two fields">
-        <div class="field">
-          <a href="{{pathFor 'Edit_Event_Page'}}">
-            <div class="ui left floated blue button"><i class="caret left icon"></i> Page 1</div>
-          </a></div>
-        <div class="field">
-          <a href="{{pathFor 'Home_Page'}}">
-            <div class="ui right floated green submit button"><i class="icon add square"></i> List my event
-            </div>
-          </a>
-        </div>
-      </div>
-    </form>
-    <div class="ui bottom attached warning message">
-      <i class="icon help"></i>
-      Want to add a new listing? <a href="{{pathFor 'Add_Event_Page'}}">Click here</a> instead.
     </div>
-  </div>
+  {{/if}}
 </template>

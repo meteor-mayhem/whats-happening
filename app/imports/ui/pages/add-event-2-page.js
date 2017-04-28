@@ -46,20 +46,16 @@ Template.Add_Event_2_Page.helpers({
 Template.Add_Event_2_Page.events({
   'submit .event-form'(event, instance) {
     event.preventDefault();
-    // get categories (dropdown multiple selection)
-    const categories = ['none', 'none'];
-    // get location (location picker)
-    // TODO: add location
+    const selectedCategories = _.filter(event.target.Categories.selectedOptions, (option) => option.selected);
+    const categories = _.map(selectedCategories, (option) => option.value);
+// TODO: add location
     const location = 'none';
     const coordinates = [0.0, 0.0];
-    // get website (text)
     const website = event.target.Website.value;
-    // get event picture (text)
     const picture = event.target.Picture.value;
 
-    // grab previous record data
+// grab previous record data
     const eventData = Events.findOne(FlowRouter.getParam('_id'));
-    console.log(eventData);
     const newEventData = {
       name: eventData && eventData.name,
       description: eventData && eventData.description,
@@ -74,11 +70,11 @@ Template.Add_Event_2_Page.events({
       website,
       picture,
     };
-    // Clear out any old validation errors.
+// Clear out any old validation errors.
     instance.context.resetValidation();
-    // Invoke clean so that newEventdata reflects what will be inserted.
+// Invoke clean so that newEventdata reflects what will be inserted.
     EventSchema.clean(newEventData);
-    // Determine validity.
+// Determine validity.
     instance.context.validate(newEventData);
 
     if (instance.context.isValid()) {
@@ -87,12 +83,12 @@ Template.Add_Event_2_Page.events({
       instance.messageFlags.set(displayErrorMessages, false);
       instance.find('form').reset();
       instance.$('.dropdown').dropdown('restore defaults');
+      FlowRouter.go('../profile');
     } else {
       instance.messageFlags.set(displaySuccessMessage, false);
       instance.messageFlags.set(displayErrorMessages, true);
-      // console.log(newEventData);
-      // console.log(eventData);
     }
   },
-});
+})
+;
 
