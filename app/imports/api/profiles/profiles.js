@@ -56,6 +56,11 @@ export const ProfileSchema = new SimpleSchema({
     type: String,
     optional: true,
   },
+  followers: {
+    label: 'Followers',
+    type: Number,
+    optional: true,
+  }
 });
 
 Profiles.attachSchema(ProfileSchema);

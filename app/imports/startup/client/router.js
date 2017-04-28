@@ -15,7 +15,7 @@ FlowRouter.route('/home', {
   },
 });
 
-FlowRouter.route('/profile', {
+FlowRouter.route('/profile/:username', {
   name: 'Profile_Page',
   action() {
     BlazeLayout.render('App_Body', { main: 'Profile_Page' });

@@ -14,6 +14,7 @@ const profileSeeds = [
     organizations: ['HKN', 'IEEE', 'SCEL'],
     bio: 'Hi my name is Jerry',
     picture: 'https://pbs.twimg.com/media/CCuF1T6VEAA_GAM.png',
+    followers: 9001,
   },
   {
     username: 'dtokita',
@@ -22,6 +23,7 @@ const profileSeeds = [
     interests: ['Basketball', 'Weatherboxes', 'Cloning Git Repos'],
     organizations: ['SCEL'],
     picture: 'https://cdn.meme.am/images/600x600/9895039/sponge-bob-square-pants.jpg',
+    followers: 90,
   },
   {
     username: 'glennga',
@@ -31,6 +33,7 @@ const profileSeeds = [
     organizations: [],
     bio: 'Hi my name is Glenn',
     picture: 'https://cdn.meme.am/cache/images/folder640/600x600/12104640/patrick-chocolate-face.jpg',
+    followers: 91,
   },
 ];
 
