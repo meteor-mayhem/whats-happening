@@ -20,3 +20,9 @@ import './edit-event-2-page.js';
 
 import './user-setup.html';
 import './user-setup.js';
+
+import './edit-profile.html';
+import './edit-profile.js';
+
+import './organizations.js';
+import './categories.js';

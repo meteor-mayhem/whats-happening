@@ -1,0 +1,19 @@
+<template name="Date_Field">
+  {{!
+    Implements a date-picker field.
+
+    Parameters: required, label, name, id, placeholder, value, errorMessage.
+      name, id, and placeholder are optional and default to label.
+      value and required are optional.
+    }}
+  <div class="{{#if required}}required{{/if}} field">
+    <input type="text"
+           class="ui fluid daterangepicker"
+           style="position: static"
+           name="{{#if name}}{{name}}{{else}}{{label}}{{/if}}"
+           id="{{#if id}}{{id}}{{else}}{{label}}{{/if}}"
+           placeholder="{{#if placeholder}}{{placeholder}}{{else}}{{label}}{{/if}}"
+           value="{{value}}">
+  </div>
+  {{> Form_Error_Message errorMessage=errorMessage}}
+</template>

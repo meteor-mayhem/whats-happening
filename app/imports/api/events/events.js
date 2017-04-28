@@ -39,6 +39,17 @@ export const EventSchema = new SimpleSchema({
     label: 'Organizer',
     type: String,
   },
+  email: {
+    label: 'Email',
+    type: String,
+  },
+  phone: {
+    label: 'Phone',
+    type: String,
+    // regEx: /^[1-9]\d{2}-\d{3}-\d{4}/,
+    optional: false,
+    max: 12,
+  },
   categories: {
     label: 'Categories',
     type: [String],

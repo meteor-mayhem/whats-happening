@@ -1,14 +1,14 @@
 import { Template } from 'meteor/templating';
 
 Template.Location_Picker.onRendered(function onRendered() {
-  GoogleMaps.load({ key: 'AIzaSyDCfPvG1jV3AgS_TTp_KaIH8RlRi0keSpk', libraries: 'places'});
+  GoogleMaps.load({ key: 'AIzaSyDCfPvG1jV3AgS_TTp_KaIH8RlRi0keSpk', libraries: 'places' });
 });
 
 Template.Location_Picker.onCreated(function () {
   // We can use the `ready` callback to interact with the map API once the map is ready.
   GoogleMaps.ready('event-map', function (map) {
-    let input = document.getElementById('pac-input');
-    let searchBox = new google.maps.places.SearchBox(input);
+    const input = document.getElementById('pac-input');
+    const searchBox = new google.maps.places.SearchBox(input);
     map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
     // Bias the SearchBox results towards current map's viewport.
@@ -16,7 +16,7 @@ Template.Location_Picker.onCreated(function () {
       searchBox.setBounds(map.getBounds());
     });
 
-    let markers = [];
+    const markers = [];
     // Listen for the event fired when the user selects a prediction and retrieve
     // more details for that place.
     searchBox.addListener('places_changed', function () {
@@ -75,5 +75,5 @@ Template.Location_Picker.helpers({
         mapTypeId: 'roadmap',
       };
     }
-  }
+  },
 });

@@ -1,6 +1,12 @@
 <template name="Location_Picker">
-  <div id="map-container" style="max-height: 500px; height: 100vh; margin: 0; padding: 0">
-    <input id="pac-input" class="controls" type="text" placeholder="Search Box">
-    {{> googleMap name="event-map" options=locationPicker}}
+  <div class="{{#if required}}required{{/if}} field">
+    <div id="map-container" style="max-height: 500px; height: 100vh; margin: 0; padding: 0">
+      <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+      <!--{{> googleMap name="event-map" options=locationPicker}}-->
+      {{> googleMap name="event-map" options=locationPicker}}
+    </div>
   </div>
+
+  <br>
+  {{> Form_Error_Message errorMessage=errorMessage}}
 </template>

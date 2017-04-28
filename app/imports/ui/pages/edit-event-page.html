@@ -1,93 +1,66 @@
 <template name="Edit_Event_Page">
-  <div style="padding-top: 20px; padding-bottom: 20px" class="ui text container">
-    <div class="ui attached message">
-      <div class="header">
-        Spread the word! List your event!
-      </div>
-      <p>Edit your already listed event.</p>
-    </div>
+  {{#if Template.subscriptionsReady}}
+    <div style="padding-top: 20px; padding-bottom: 20px" class="ui text container">
 
-    <form class="ui form attached fluid segment">
-      <h4 class="ui horizontal divider header">
-        <i class="tag icon"></i>
-        Event Name
-      </h4>
-      <div class="required field">
-        <div class="field">
-          <input type="text" name="event-name" placeholder="Information Session Education Courses for STEM Majors">
+      <div class="ui attached message">
+        <div class="header">
+          Spread the word! List your event!
         </div>
+        <p>Edit your already listed event.</p>
       </div>
-      <h4 class="ui horizontal divider header">
-        <i class="content icon"></i>
-        Event Description
-      </h4>
-      <div class="required field">
-        <div class="field">
-          <textarea rows="2" name="event-description"
-                    placeholder="Learning to teach does more than open the door to an always-in-demand career... it provides skills that will boost any STEM career."></textarea>
-        </div>
-      </div>
-      <h4 class="ui horizontal divider header">
-        <i class="users icon"></i>
-        Organization
-      </h4>
-      <div class="required field">
-        <div class="ui fluid search selection dropdown">
-          <input type="hidden" name="event-organization">
-          <i class="dropdown icon"></i>
-          <div class="default text">Organization</div>
-          <div class="menu">
-            <div class="item" data-value="accounting-club">Accounting Club</div>
-            <div class="item" data-value="association-for-computing-machinery-at-manoa">Association for Computing
-              Machinery at Manoa
-            </div>
-            <div class="item" data-value="art-club">Art Club</div>
-            <div class="item" data-value="geology-and-geophysics-club">Geology & Geophysics Club</div>
-            <div class="item" data-value="institute-for-teacher-education">Institute for Teacher Education</div>
+
+      <form class="ui form attached fluid segment event-form {{ successClass }} {{ errorClass }}">
+        <h4 class="ui horizontal divider header">
+          <i class="tag icon"></i>
+          Event Name
+        </h4>
+        {{> Text_Form_Control label="Name" required=true value=(eventDataField 'name') errorMessage=(fieldError "name")}}
+
+        <h4 class="ui horizontal divider header">
+          <i class="content icon"></i>
+          Event Description
+        </h4>
+        {{> TextArea_Form_Control label="Description" required=true value=(eventDataField 'description') errorMessage=(fieldError 'description')}}
+
+        <h4 class="ui horizontal divider header">
+          <i class="calendar icon"></i>
+          Date/Time
+        </h4>
+        {{> Date_Field label="DateTime" required=true value=(eventDataField)}}
+
+        <h4 class="ui horizontal divider header">
+          <i class="users icon"></i>
+          Organization
+        </h4>
+        {{> Select_Form_Control label="Organization" required=true value=(eventDataField 'organizer') options=organizations errorMessage=(fieldError 'organizer')}}
+
+        <h4 class="ui horizontal divider header">
+          <i class="mail icon"></i>
+          Contact Information
+        </h4>
+        <div class="two fields">
+          <div class="required field">
+            <label>Email</label>
+            {{> Text_Form_Control required=true value=(eventDataField 'email') errorMessage=(fieldError "email")}}
           </div>
-        </div>
-      </div>
-      <h4 class="ui horizontal divider header">
-        <i class="mail icon"></i>
-        Contact Information
-      </h4>
-      <div class="two fields">
-        <div class="field">
-          <label>Email</label>
           <div class="field">
-            <input type="text" name="contact-email" placeholder="toniel@hawaii.edu">
+            <label>Phone</label>
+            {{> Text_Form_Control required=true value=(eventDataField 'phone') errorMessage=(fieldError "phone")}}
           </div>
         </div>
+        <br>
+
         <div class="field">
-          <label>Phone</label>
-          <div class="field">
-            <input type="text" name="contact-phone" placeholder="Contact Phone">
-          </div>
+          <a href="{{pathFor 'Edit_Event_2_Page'}}">
+            <button class="ui right floated blue button" type="submit">Page 2 <i class="caret right icon"></i></button>
+          </a>
         </div>
+        <br>
+      </form>
+      <div class="ui bottom attached warning message">
+        <i class="icon help"></i>
+        Want to add a new listing? <a href="{{pathFor 'Add_Event_Page'}}">Click here</a> instead.
       </div>
-      <h4 class="ui horizontal divider header">
-        <i class="calendar icon"></i>
-        Date
-      </h4>
-      <div class="required field">
-        <input type="datetime-local" name="event-datetime">
-      </div>
-      <br>
-      <div class="field">
-        <a href="{{pathFor 'Edit_Event_2_Page'}}">
-          <div class="ui right floated blue button">Page 2 <i class="caret right icon"></i></div>
-        </a>
-      </div>
-      <br>
-    </form>
-    <div class="ui bottom attached warning message">
-      <i class="icon help"></i>
-      Want to add a new listing? <a href="{{pathFor 'Add_Event_Page'}}">Click here</a> instead.
     </div>
-  </div>
-  <script>
-    $('.ui.dropdown')
-        .dropdown()
-    ;
-  </script>
+  {{/if}}
 </template>
