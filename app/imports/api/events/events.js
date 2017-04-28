@@ -40,7 +40,7 @@ export const EventSchema = new SimpleSchema({
   phone: {
     label: 'Phone',
     type: String,
-    regEx: /^[1-9]\d{2}-\d{3}-\d{4}/,
+    // regEx: /^[1-9]\d{2}-\d{3}-\d{4}/,
     optional: false,
     max: 12,
   },

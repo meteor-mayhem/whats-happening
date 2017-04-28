@@ -1,5 +1,6 @@
 <template name="Add_Event_Page">
   <div style="padding-top: 20px; padding-bottom: 20px" class="ui text container">
+
     <div class="ui attached message">
       <div class="header">
         Spread the word! List your event!
@@ -7,52 +8,31 @@
       <p>Fill out the form below to tell UH Manoa about what's happening.</p>
     </div>
 
-    <form class="ui form attached fluid segment">
+    <form class="ui form attached fluid segment event-form {{ successClass }} {{ errorClass }}">
       <h4 class="ui horizontal divider header">
         <i class="tag icon"></i>
         Event Name
       </h4>
-      <div class="required field">
-        <div class="field">
-          <input type="text" name="event-name" placeholder="Event Name">
-        </div>
-      </div>
+      {{> Text_Form_Control label="Name" required=true errorMessage=(fieldError "name")}}
+
       <h4 class="ui horizontal divider header">
         <i class="content icon"></i>
         Event Description
       </h4>
-      <div class="required field">
-        <div class="field">
-          <textarea rows="2" name="event-description"
-                    placeholder="Event Description"></textarea>
-        </div>
-      </div>
+      {{> TextArea_Form_Control label="Description" required=true errorMessage=(fieldError 'description')}}
+
       <h4 class="ui horizontal divider header">
         <i class="calendar icon"></i>
         Date/Time
       </h4>
-      {{> Date_Field}}
+      {{> Date_Field label="DateTime" required=true}}
 
       <h4 class="ui horizontal divider header">
         <i class="users icon"></i>
         Organization
       </h4>
-      <div class="required field">
-        <div class="ui fluid search selection dropdown">
-          <input type="hidden" name="event-organization">
-          <i class="dropdown icon"></i>
-          <div class="default text">Organization</div>
-          <div class="menu">
-            <div class="item" data-value="accounting-club">Accounting Club</div>
-            <div class="item" data-value="association-for-computing-machinery-at-manoa">Association for Computing
-              Machinery at Manoa
-            </div>
-            <div class="item" data-value="art-club">Art Club</div>
-            <div class="item" data-value="geology-and-geophysics-club">Geology & Geophysics Club</div>
-            <div class="item" data-value="institute-for-teacher-education">Institute for Teacher Education</div>
-          </div>
-        </div>
-      </div>
+      {{> Select_Form_Control label="Organization" required=true options=organizations errorMessage=(fieldError 'organizer')}}
+
       <h4 class="ui horizontal divider header">
         <i class="mail icon"></i>
         Contact Information
@@ -60,28 +40,24 @@
       <div class="two fields">
         <div class="field">
           <label>Email</label>
-          <div class="field">
-            <input type="text" name="contact-email" placeholder="foo@gmail.com">
-          </div>
+          {{> Text_Form_Control label="Email" required=true errorMessage=(fieldError "email")}}
         </div>
         <div class="field">
           <label>Phone</label>
-          <div class="field">
-            <input type="text" name="contact-phone" placeholder="xxx-xxx-xxxx">
-          </div>
+          {{> Text_Form_Control label="Phone" required=true errorMessage=(fieldError "phone")}}
         </div>
       </div>
+      <br>
 
+      <div class="field">
+        <button class="ui right floated blue button" type="submit">Page 2 <i class="caret right icon"></i>
+        </button>
+      </div>
       <br>
     </form>
     <div class="ui bottom attached warning message">
       <i class="icon help"></i>
-      Want to edit a new listing you made? <a href="{{pathFor 'Edit_Event_Page'}}">Click here</a> instead.
+      Want to edit one of your listings? <a href="{{pathFor 'Profile_Page'}}">Click here</a> instead.
     </div>
   </div>
-  <!--<script>-->
-    <!--$('.ui.dropdown')-->
-        <!--.dropdown()-->
-    <!--;-->
-  <!--</script>-->
 </template>

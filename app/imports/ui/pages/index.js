@@ -23,3 +23,6 @@ import './user-setup.js';
 
 import './edit-profile.html';
 import './edit-profile.js';
+
+import './organizations.js';
+import './categories.js';

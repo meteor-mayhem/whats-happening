@@ -2,7 +2,7 @@
   {{!
     Implements a text field.
 
-    Parameters: required, label, name, id, placeholder, value, errorMessage.
+    Parameters: required, label, link, name, id, placeholder, value, errorMessage.
       name, id, and placeholder are optional and default to label.
       value and required are optional.
 
@@ -17,11 +17,24 @@
     }}
   <div class="{{#if required}}required{{/if}} field">
     <div class="field">
-      <input type="text"
-             name="{{#if name}}{{name}}{{else}}{{label}}{{/if}}"
-             id="{{#if id}}{{id}}{{else}}{{label}}{{/if}}"
-             placeholder="{{#if placeholder}}{{placeholder}}{{else}}{{label}}{{/if}}"
-             value="{{value}}">
+      {{#if link}}
+        <div class="ui labeled input">
+          <div class="ui label">
+            http://
+          </div>
+          <input type="text"
+                 name="{{#if name}}{{name}}{{else}}{{label}}{{/if}}"
+                 id="{{#if id}}{{id}}{{else}}{{label}}{{/if}}"
+                 placeholder="{{#if placeholder}}{{placeholder}}{{else}}{{label}}{{/if}}"
+                 value="{{value}}">
+        </div>
+      {{else}}
+        <input type="text"
+               name="{{#if name}}{{name}}{{else}}{{label}}{{/if}}"
+               id="{{#if id}}{{id}}{{else}}{{label}}{{/if}}"
+               placeholder="{{#if placeholder}}{{placeholder}}{{else}}{{label}}{{/if}}"
+               value="{{value}}">
+      {{/if}}
     </div>
     {{> Form_Error_Message errorMessage=errorMessage}}
   </div>
