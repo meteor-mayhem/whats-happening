@@ -12,7 +12,7 @@ events = function show() {
   _.each(Events.find().fetch(), function print(event) {
     console.log(event);
   });
-  return `There are ${Events.find().fetch().length} events`;
+  return `There are ${Events.find().count()} events`;
 };
 
 /**

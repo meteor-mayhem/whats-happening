@@ -12,7 +12,7 @@ profiles = function show() {
   _.each(Profiles.find().fetch(), function print(profile) {
     console.log(profile);
   });
-  return `There are ${Profiles.find().fetch().length} profiles`;
+  return `There are ${Profiles.find().count()} profiles`;
 };
 
 /*
