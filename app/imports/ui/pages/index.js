@@ -2,6 +2,7 @@ import './home-page.html';
 import './home-page.js';
 
 import './profile-page.html';
+import './profile-page.js';
 
 import './landing-page.html';
 import './landing-page.js';

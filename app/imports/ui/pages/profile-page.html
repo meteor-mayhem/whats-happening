@@ -4,41 +4,39 @@
       <div style="height: 30px;"></div>
 
       <!-- User profile -->
-      <div class="ui padded raised grid segment">
-        <div class="ui four wide column">
-          <div class="ui circular raised profile-picture segment">
-            <img class="ui circular image" src="/images/profiles/kevin-hart.png">
+      {{#each profile}}
+        <div class="ui padded raised grid segment">
+          <div class="ui four wide column">
+            <div class="ui circular raised profile-picture segment">
+              <img class="ui circular image" src="{{this.picture}}">
+            </div>
           </div>
-        </div>
-        <div class="ui twelve wide column">
-          <div class="ui one column grid">
-            <div class="column">
-              <div class="ui huge header">Kevin Hart</div>
-              <p>Hey what's up all. I'm Kevin and I like to just have fun. Come see what's happening at UHM!</p>
-            </div>
-            <div class="column">
-              <div class="ui small header">My interests</div>
-              <button class="ui small compact red button">Comedy</button>
-              <button class="ui small compact green button">Acting</button>
-              <button class="ui small compact orange button">Basketball</button>
-              <button class="ui small compact teal button">Surfing</button>
-              <button class="ui small compact brown button">Hiking</button>
-            </div>
-            <div class="column">
-              <div class="ui small header">Connect with me</div>
-              <button class="ui circular facebook icon button"><i class="facebook icon"></i></button>
-              <button class="ui circular twitter icon button"><i class="twitter icon"></i></button>
-              <button class="ui circular instagram icon button"><i class="instagram icon"></i></button>
-              <button class="ui circular linkedin icon button"><i class="linkedin icon"></i></button>
-              <button class="ui circular google plus icon button"><i class="google plus icon"></i></button>
-              <div class="ui right floated labeled follow button" tabindex="0">
-                <button class="ui blue button"><i class="feed icon"></i>Follow</button>
-                <a class="ui basic blue left pointing label">9,001</a>
+          <div class="ui twelve wide column">
+            <div class="ui one column grid">
+              <div class="column">
+                <div class="ui huge header">{{this.first}} {{this.last}}</div>
+                <p>{{this.bio}}</p>
+              </div>
+              <div class="column">
+                <div class="ui small header">My interests</div>
+                {{#each this.interests}}
+                  <button class="ui small teal compact button">{{this}}</button>
+                {{/each}}
+              </div>
+              <div class="column">
+                <div class="ui small header">My organizations</div>
+                {{#each this.organizations}}
+                  <button class="ui small teal compact button">{{this}}</button>
+                {{/each}}
+                <div class="ui right floated labeled follow button" tabindex="0">
+                  <button class="ui blue button"><i class="feed icon"></i>Follow</button>
+                  <a class="ui basic blue left pointing label">{{this.followers}}</a>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      {{/each}}
 
       <div style="height: 40px;"></div>
 
