@@ -1,5 +1,6 @@
 import { Template } from 'meteor/templating';
 import { Profiles } from '../../api/profiles/profiles.js';
+import { Events } from '../../api/events/events.js';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 
 Template.Profile_Page.helpers({
@@ -10,6 +11,13 @@ Template.Profile_Page.helpers({
   profile() {
     return Profiles.find({ username: FlowRouter.getParam('username') });
   },
+
+  /**
+   * @returns {*} The events owned by the user
+   */
+  profileEvents() {
+  },
+
 
   /**
    * Hash function that maps a string input to a color--used for coloring stuff
@@ -39,4 +47,5 @@ Template.Profile_Page.helpers({
 // Client will 'subscribe' to the 'Profiles' data
 Template.Profile_Page.onCreated(function onCreated() {
   this.subscribe('Profiles'); // subscribe to 'Profiles'
+  this.subscribe('Events');
 });

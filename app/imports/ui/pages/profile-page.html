@@ -47,6 +47,10 @@
         <a class="right floated item"><i class="ui search icon"></i>Search Events</a>
       </div>
 
+      {{#each profileEvents}}
+        <div style="background-color: blanchedalmond">{{this.name}}</div>
+      {{/each}}
+
       <!-- Event Cards -->
       <div class="ui padded segment">
         <div class="ui four cards">

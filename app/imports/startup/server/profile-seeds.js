@@ -21,6 +21,7 @@ const profileSeeds = [
     first: 'Dylan',
     last: 'Tokita',
     interests: ['Basketball', 'Weatherboxes', 'Cloning Git Repos'],
+    bio: 'Hi all, I am Dylan',
     organizations: ['SCEL'],
     picture: 'https://cdn.meme.am/images/600x600/9895039/sponge-bob-square-pants.jpg',
     followers: 90,

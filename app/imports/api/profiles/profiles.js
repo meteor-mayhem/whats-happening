@@ -8,7 +8,8 @@ export const Profiles = new Mongo.Collection('Profiles');
 // TODO remove this later
 /* eslint-disable no-undef */
 /* eslint-disable no-console */
-profiles = function show() {
+profiles = Profiles;
+showProfiles = function show() {
   _.each(Profiles.find().fetch(), function print(profile) {
     console.log(profile);
   });
@@ -48,7 +49,12 @@ export const ProfileSchema = new SimpleSchema({
   },
   events: {
     label: 'Events',
-    type: String,
+    type: [String],
+    optional: true,
+  },
+  attending: {
+    label: 'Attending',
+    type: [String],
     optional: true,
   },
   picture: {
