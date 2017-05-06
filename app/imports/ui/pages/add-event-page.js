@@ -45,9 +45,8 @@ Template.Add_Event_Page.events({
     event.preventDefault();
     const name = event.target.Name.value;
     const description = event.target.Description.value;
-    // TODO: add date to an event...
-    const start = '2012-04-23T18:25:43.511Z';
-    const end = '2012-04-23T18:25:43.511Z';
+    const start = new Date(event.target.DateTime.value.toString().slice(0, 20));
+    const end = new Date(event.target.DateTime.value.toString().slice(22, 42));
     const organizer = event.target.Organization.value;
     const email = event.target.Email.value;
     const phone = event.target.Phone.value;
@@ -75,7 +74,7 @@ Template.Add_Event_Page.events({
     if (instance.context.isValid()) {
       const id = Events.insert(newEventData);
       instance.messageFlags.set(displayErrorMessages, false);
-      FlowRouter.go('add-event-2-page/' + id);
+      FlowRouter.go(FlowRouter.path('Add_Event_2_Page', { _id: id }));
     } else {
       instance.messageFlags.set(displayErrorMessages, true);
     }

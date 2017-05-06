@@ -4,6 +4,7 @@ import { Template } from 'meteor/templating';
 import { _ } from 'meteor/underscore';
 import { Events, EventSchema } from '../../api/events/events.js';
 import { categoryList } from './categories.js';
+import { Meteor } from 'meteor/meteor';
 
 /* eslint-disable object-shorthand, no-unused-vars, no-param-reassign */
 
@@ -83,7 +84,7 @@ Template.Add_Event_2_Page.events({
       instance.messageFlags.set(displayErrorMessages, false);
       instance.find('form').reset();
       instance.$('.dropdown').dropdown('restore defaults');
-      FlowRouter.go('../profile');
+      FlowRouter.go(FlowRouter.path('Profile_Page', { username: Meteor.user().profile.name }));
     } else {
       instance.messageFlags.set(displaySuccessMessage, false);
       instance.messageFlags.set(displayErrorMessages, true);
