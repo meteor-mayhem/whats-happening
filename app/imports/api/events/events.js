@@ -61,13 +61,6 @@ export const EventSchema = new SimpleSchema({
     type: String,
     optional: true,
   },
-  coordinates: {
-    label: 'Coordinates',
-    type: [Number],
-    decimal: true,
-    minCount: 2,
-    optional: true,
-  },
   website: {
     label: 'Website',
     type: String,

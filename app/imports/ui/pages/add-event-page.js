@@ -61,7 +61,6 @@ Template.Add_Event_Page.events({
       phone,
       categories: ['none-set'],
       location: 'none',
-      coordinates: [0, 0],
       website: 'none',
       picture: 'none',
     };
