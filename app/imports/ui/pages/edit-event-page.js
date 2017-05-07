@@ -39,10 +39,12 @@ Template.Edit_Event_Page.helpers({
       }
       minutes = minutes < 10 ? '0' + minutes : minutes;
       const strTime = hours + ':' + minutes + ' ' + ampm;
-      return date.getMonth() + 1 + '/' + date.getDate() + '/' + date.getFullYear() + '  ' + strTime;
+      const month = date.getMonth() >= 11 ? date.getMonth() + 1 : '0' + (date.getMonth() + 1);
+      const day = date.getDate < 10 ? date.getDate() : '0' + date.getDate();
+      return month + '/' + day + '/' + date.getFullYear() + '  ' + strTime;
     }
 
-    return formatDate(start) + ' - ' + formatDate(end);
+    return formatDate(start) + ' -' + formatDate(end);
   },
   organizations() {
     const eventData = Events.findOne(FlowRouter.getParam('_id'));
@@ -76,7 +78,6 @@ Template.Edit_Event_Page.events({
     const organizer = event.target.Organization.value;
     const email = event.target.Email.value;
     const phone = event.target.Phone.value;
-
     // grab previous record data
     const eventData = Events.findOne(FlowRouter.getParam('_id'));
     const updatedEventData = {
@@ -89,7 +90,6 @@ Template.Edit_Event_Page.events({
       phone,
       categories: eventData && eventData.categories,
       location: eventData && eventData.location,
-      coordinates: eventData && eventData.coordinates,
       website: eventData && eventData.website,
       picture: eventData && eventData.picture,
     };

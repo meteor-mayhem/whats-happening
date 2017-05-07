@@ -37,11 +37,6 @@ Template.Edit_Event_2_Page.helpers({
   errorClass() {
     return Template.instance().messageFlags.get(displayErrorMessages) ? 'error' : '';
   },
-  fieldError(fieldName) {
-    const invalidKeys = Template.instance().context.invalidKeys();
-    const errorObject = _.find(invalidKeys, (keyObj) => keyObj.name === fieldName);
-    return errorObject & Template.instance().context.keyErrorMessage(errorObject.name);
-  },
   categories() {
     const eventData = Events.findOne(FlowRouter.getParam('_id'));
     const selectedCategories = eventData && eventData.categories;
@@ -57,10 +52,7 @@ Template.Edit_Event_2_Page.events({
     event.preventDefault();
     const selectedCategories = _.filter(event.target.Categories.selectedOptions, (option) => option.selected);
     const categories = _.map(selectedCategories, (option) => option.value);
-    // get location (location picker)
-    // TODO: add location
-    const location = 'none';
-    const coordinates = [0.0, 0.0];
+    const location = event.target.EventMap.value;
     const website = event.target.Website.value;
     const picture = event.target.Picture.value;
 
@@ -76,7 +68,6 @@ Template.Edit_Event_2_Page.events({
       phone: eventData && eventData.phone,
       categories,
       location,
-      coordinates,
       website,
       picture,
     };

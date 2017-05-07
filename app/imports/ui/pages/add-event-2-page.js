@@ -49,9 +49,7 @@ Template.Add_Event_2_Page.events({
     event.preventDefault();
     const selectedCategories = _.filter(event.target.Categories.selectedOptions, (option) => option.selected);
     const categories = _.map(selectedCategories, (option) => option.value);
-// TODO: add location
-    const location = 'none';
-    const coordinates = [0.0, 0.0];
+    const location = event.target.EventMap.value;
     const website = event.target.Website.value;
     const picture = event.target.Picture.value;
 
@@ -67,7 +65,6 @@ Template.Add_Event_2_Page.events({
       phone: eventData && eventData.phone,
       categories,
       location,
-      coordinates,
       website,
       picture,
     };

@@ -16,7 +16,6 @@ const eventSeeds = [
     phone: '808-967-5309',
     categories: ['Sports', 'Bonding', 'Good times'],
     location: 'Holmes Hall',
-    coordinates: [3.14, 159],
     website: 'youtube.com',
     picture: 'http://jugssports.com/images/products/s3000.jpg',
   },
