@@ -64,7 +64,12 @@ export const ProfileSchema = new SimpleSchema({
   },
   followers: {
     label: 'Followers',
-    type: Number,
+    type: [String],
+    optional: true,
+  },
+  following: {
+    label: 'Following',
+    type: [String],
     optional: true,
   },
 });

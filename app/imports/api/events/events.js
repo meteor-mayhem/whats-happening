@@ -40,6 +40,11 @@ export const EventSchema = new SimpleSchema({
     label: 'Organizer',
     type: String,
   },
+  organizations: {
+    label: 'Organizations',
+    type: [String],
+    optional: true,
+  },
   email: {
     label: 'Email',
     type: String,
