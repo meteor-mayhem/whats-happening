@@ -24,6 +24,28 @@ Template.Edit_Event_Page.helpers({
     // See https://dweldon.silvrback.com/guards to understand '&&' in next line.
     return eventData && eventData[fieldName];
   },
+  dateFieldAsString() {
+    const eventData = Events.findOne(FlowRouter.getParam('_id'));
+    const start = eventData && eventData.start;
+    const end = eventData && eventData.end;
+
+    function formatDate(date) {
+      let hours = date.getHours();
+      let minutes = date.getMinutes();
+      const ampm = hours >= 12 ? 'PM' : 'AM';
+      hours = hours % 12;
+      if (!hours) {  // the hour '0' should be '12'
+        hours = 12;
+      }
+      minutes = minutes < 10 ? '0' + minutes : minutes;
+      const strTime = hours + ':' + minutes + ' ' + ampm;
+      const month = date.getMonth() >= 11 ? date.getMonth() + 1 : '0' + (date.getMonth() + 1);
+      const day = date.getDate < 10 ? date.getDate() : '0' + date.getDate();
+      return month + '/' + day + '/' + date.getFullYear() + '  ' + strTime;
+    }
+
+    return formatDate(start) + ' -' + formatDate(end);
+  },
   organizations() {
     const eventData = Events.findOne(FlowRouter.getParam('_id'));
     const selectedOrganizer = eventData && eventData.organizer;
@@ -51,14 +73,11 @@ Template.Edit_Event_Page.events({
     event.preventDefault();
     const name = event.target.Name.value;
     const description = event.target.Description.value;
-    // TODO: add date to an event...
-    const start = '2012-04-23T18:25:43.511Z';
-    const end = '2012-04-23T18:25:43.511Z';
+    const start = new Date(event.target.DateTime.value.toString().slice(0, 20));
+    const end = new Date(event.target.DateTime.value.toString().slice(22, 42));
     const organizer = event.target.Organization.value;
     const email = event.target.Email.value;
     const phone = event.target.Phone.value;
-
-    // TODO: add date fields to here
     // grab previous record data
     const eventData = Events.findOne(FlowRouter.getParam('_id'));
     const updatedEventData = {
@@ -71,7 +90,6 @@ Template.Edit_Event_Page.events({
       phone,
       categories: eventData && eventData.categories,
       location: eventData && eventData.location,
-      coordinates: eventData && eventData.coordinates,
       website: eventData && eventData.website,
       picture: eventData && eventData.picture,
     };
@@ -84,7 +102,7 @@ Template.Edit_Event_Page.events({
     if (instance.context.isValid()) {
       const id = Events.update(FlowRouter.getParam('_id'), { $set: updatedEventData });
       instance.messageFlags.set(displayErrorMessages, false);
-      FlowRouter.go('../edit-event-2-page/' + FlowRouter.getParam('_id'));
+      FlowRouter.go(FlowRouter.path('Edit_Event_2_Page', { _id: FlowRouter.getParam('_id') }));
     } else {
       instance.messageFlags.set(displayErrorMessages, true);
     }
