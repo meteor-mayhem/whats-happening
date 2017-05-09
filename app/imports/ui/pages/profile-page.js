@@ -2,8 +2,20 @@ import { Template } from 'meteor/templating';
 import { Profiles } from '../../api/profiles/profiles.js';
 import { Events } from '../../api/events/events.js';
 import { FlowRouter } from 'meteor/kadira:flow-router';
+import { Meteor } from 'meteor/meteor';
+
+Template.Profile_Page.onCreated(function onCreated() {
+  this.subscribe('Profiles');
+  this.subscribe('Events');
+});
 
 Template.Profile_Page.helpers({
+  /**
+   * @returns {*} True if logged in as the profile user, false otherwise
+   */
+  isUser() {
+    return Meteor.user().profile.name === FlowRouter.getParam('username');
+  },
 
   /**
    * @returns {*} The current profile given the username
@@ -15,8 +27,22 @@ Template.Profile_Page.helpers({
   /**
    * @returns {*} The events owned by the user
    */
-  profileEvents() {
+  ownEvents() {
     return Events.find({ organizer: FlowRouter.getParam('username') });
+  },
+
+  /**
+   * @returns {*} The events owned by the user
+   */
+  attendingEvents() {
+    return Events.find({ organizer: 'dtokita' });
+  },
+
+  /**
+   * @returns {*} The events owned by the user
+   */
+  savedEvents() {
+    return Events.find({ organizer: 'glennga' });
   },
 
   /**
@@ -51,8 +77,55 @@ Template.Profile_Page.helpers({
   },
 });
 
-// Client will 'subscribe' to the 'Profiles' data
-Template.Profile_Page.onCreated(function onCreated() {
-  this.subscribe('Profiles'); // subscribe to 'Profiles'
-  this.subscribe('Events');
+Template.Profile_Page.events({
+  /**
+   * @returns {*} Logic for the active menu item and transitions
+   */
+  'click .event'(event) {
+    let newItem;
+    let oldItem;
+
+    // Determine which item was just clicked
+    if (event.target.classList.contains('own')) {
+      newItem = 'own';
+    } else
+      if (event.target.classList.contains('attending')) {
+        newItem = 'attending';
+      } else {
+        newItem = 'saved';
+      }
+
+    // Determine which item was previously active
+    if ($('.ui.event.menu .active.item').hasClass('own')) {
+      oldItem = 'own';
+    } else
+      if ($('.ui.event.menu .active.item').hasClass('attending')) {
+        oldItem = 'attending';
+      } else {
+        oldItem = 'saved';
+      }
+
+    // Update the 'active' class
+    $(`.ui.event.menu .${oldItem}.item`).removeClass('active');
+    $(`.ui.event.menu .${newItem}.item`).addClass('active');
+
+    // Transition cards
+    if (oldItem === 'own') {
+      $(`.ui.${oldItem}.four.cards`).transition('slide right', function after() {
+        $(`.ui.${newItem}.four.cards`).transition('slide left');
+      });
+    } else if (oldItem === 'saved') {
+      $(`.ui.${oldItem}.four.cards`).transition('slide left', function after() {
+        $(`.ui.${newItem}.four.cards`).transition('slide right');
+      });
+    } else if (newItem === 'own') {
+      $(`.ui.${oldItem}.four.cards`).transition('slide left', function after() {
+        $(`.ui.${newItem}.four.cards`).transition('slide right');
+      });
+    } else {
+      $(`.ui.${oldItem}.four.cards`).transition('slide right', function after() {
+        $(`.ui.${newItem}.four.cards`).transition('slide left');
+      });
+    }
+  },
 });

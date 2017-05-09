@@ -52,6 +52,11 @@ export const ProfileSchema = new SimpleSchema({
     type: [String],
     optional: true,
   },
+  saved: {
+    label: 'Saved',
+    type: [String],
+    optional: true,
+  },
   picture: {
     label: 'Picture',
     type: String,
