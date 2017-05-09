@@ -44,3 +44,7 @@
 .profile-picture {
   padding: 6px !important;
 }
+
+.ui.segment .ui.four.cards {
+  margin: -12px;
+}

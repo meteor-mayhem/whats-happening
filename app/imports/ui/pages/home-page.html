@@ -25,58 +25,47 @@
           <input type="text" placeholder="Owner name">
         </div>
       </div>
-      <div class="fields">
-        <div class="thirteen wide field">
-          <label>Category Search</label>
+      <div class="two fields">
+        <div class="field">
+          <label>By Categories</label>
           <input type="text" placeholder="Categories">
         </div>
-        <div class="three wide field">
-          <label>Logical Filtering</label>
-          <button class="ui fluid green toggle button">OR Categories</button>
+        <div class="field">
+          <label>By Organizations</label>
+          <input type="text" placeholder="Organizations">
         </div>
       </div>
-      <div class="field">
-        <div class="three wide field">
-          <label>By Distance</label>
-          <div class="ui selection dropdown">
-            <input type="hidden" name="distance">
-            <i class="dropdown icon"></i>
-            <div class="default text">Within...</div>
-            <div class="menu">
-              <div class="item">0.1 miles</div>
-              <div class="item">0.5 miles</div>
-              <div class="item">1.0 miles</div>
-              <div class="item">5.0 miles</div>
-              <div class="item">10.0 miles</div>
-              <div class="item">50.0 miles</div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <button class="ui primary button">Search</button>
+      <!--<div class="field">-->
+        <!--<div class="three wide field">-->
+          <!--<label>By Distance</label>-->
+          <!--<div class="ui selection dropdown">-->
+            <!--<input type="hidden" name="distance">-->
+            <!--<i class="dropdown icon"></i>-->
+            <!--<div class="default text">Within...</div>-->
+            <!--<div class="menu">-->
+              <!--<div class="item">0.1 miles</div>-->
+              <!--<div class="item">0.5 miles</div>-->
+              <!--<div class="item">1.0 miles</div>-->
+              <!--<div class="item">5.0 miles</div>-->
+              <!--<div class="item">10.0 miles</div>-->
+              <!--<div class="item">50.0 miles</div>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
     </div>
 
     <!-- Event Cards -->
     <div class="ui padded segment">
       <div class="ui four cards">
-
-        {{#each event}}
-          <div class="ui link card">
-            <div class="image"><img src={{this.picture}}></div>
-            <div class="content">
-              <div class="header">{{this.name}}</div>
-              <div class="description">{{this.description}}</div>
-            </div>
-            <div class="extra content">
-              <a class="right floated"><i class="calendar icon"></i> Mon. Jan. 14</a>
-              <a class="left floated" href="{{pathFor 'Profile_Page' username=this.organizer}}">
-                <i class="user icon"></i>{{this.organizer}}
-              </a>
-            </div>
-          </div>
+        {{#each listEvents}}
+          {{> Event_Card id=this._id picture=this.picture name=this.name description=this.description organizer=this.organizer}}
         {{/each}}
       </div>
-
-      <div style="height: 30px;"></div>
     </div>
+
+    <div style="height: 30px;"></div>
+
   </div>
 </template>
