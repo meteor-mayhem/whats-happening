@@ -86,11 +86,8 @@ Template.Add_Event_Page.events({
 
       // Insert this _id to the user's 'events' field
       const user = Profiles.findOne({ username: organizer });
-      const events = user.events;
-      events.push(id); // insert event id into user events[]
-      console.log(Profiles.update(user._id, { $set: events }));
-      console.log(Profiles.findOne({ username: organizer }));
-      // const id = Events.update(FlowRouter.getParam('_id'), { $set: newEventData });
+      user.events.push(id); // insert event id into user events[]
+      Profiles.update(user._id, { $set: { events: user.events } });
 
       FlowRouter.go(FlowRouter.path('Add_Event_2_Page', { _id: id }));
     } else {
