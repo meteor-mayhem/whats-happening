@@ -68,6 +68,7 @@ Template.User_Setup_Page.events({
     const phone = event.target.Phone.value;
     const followers = " ";
     const following = " ";
+    const saved = " ";
     const attending = " ";
     const newProfileData = {
       username,
@@ -76,8 +77,11 @@ Template.User_Setup_Page.events({
       interests,
       organizations,
       bio,
-      attending,
       picture,
+      phone,
+      email,
+      attending,
+      saved,
       followers,
       following,
     };

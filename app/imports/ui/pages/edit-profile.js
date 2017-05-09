@@ -15,12 +15,12 @@ Template.Edit_Profile_Page.onCreated(function onCreated() {
   this.messageFlags = new ReactiveDict();
   this.messageFlags.set(displaySuccessMessage, false);
   this.messageFlags.set(displayErrorMessages, false);
-  this.context = ProfileSchema.namedContext('User_Setup_Page');
+  this.context = ProfileSchema.namedContext('Edit_Profile_Page');
 });
 
 Template.Edit_Profile_Page.helpers({
   profileDataField(fieldName) {
-    const profileData = Profiles.findOne(FlowRouter.getParam('username'));
+    const profileData = Profiles.findOne({ 'username' : FlowRouter.getParam('username') });
     // See https://dweldon.silvrback.com/guards to understand '&&' in next line.
     return profileData && profileData[fieldName];
   },
@@ -84,6 +84,7 @@ Template.Edit_Profile_Page.events({
     const phone = event.target.Phone.value;
     const followers = " ";
     const following = " ";
+    const saved = " ";
     const attending = " ";
     const newProfileData = {
       username,
@@ -92,8 +93,11 @@ Template.Edit_Profile_Page.events({
       interests,
       organizations,
       bio,
-      attending,
       picture,
+      phone,
+      email,
+      attending,
+      saved,
       followers,
       following,
     };
@@ -105,7 +109,7 @@ Template.Edit_Profile_Page.events({
     instance.context.validate(newProfileData);
     if (instance.context.isValid()) {
       console.log("Valid");
-      const id = Profiles.insert(newProfileData);
+      const id = Profiles.update(newProfileData);
       instance.messageFlags.set(displayErrorMessages, false);
       FlowRouter.go(FlowRouter.path('Home_Page', { _id: id }));
     } else {
