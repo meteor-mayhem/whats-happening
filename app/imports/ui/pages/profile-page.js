@@ -12,7 +12,11 @@ Template.Profile_Page.onCreated(function onCreated() {
 Template.Profile_Page.helpers({
   /** Returns true if the profile is of the current user */
   isUser() {
-    return Meteor.user().profile.name === FlowRouter.getParam('username');
+    const user = Meteor.user();
+    if (user) {
+      return user.profile.name === FlowRouter.getParam('username');
+    }
+    return false;
   },
 
   /** Returns the profile */
