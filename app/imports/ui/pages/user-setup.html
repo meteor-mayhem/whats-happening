@@ -83,7 +83,7 @@
         <div class="inline field">
           <div class="ui checkbox">
             <input type="checkbox" id="terms">
-            <label for="terms">I agree to the terms and conditions listed <a href="#">here</a>.</label>
+            <label for="terms">I agree to the terms and conditions listed <a href="" onclick="term()">here</a>.</label>
           </div>
         </div>
         <div class="field">
@@ -93,4 +93,10 @@
 
     </form>
   </div>
+  <script>
+  function term() {
+      var myWindow = window.open("", "MsgWindow", "width=700,height=300");
+      myWindow.document.write("<h4>This application has been developed by students at the University of Hawaii. It is provided on a pilot basis and there are no guarantees regarding future access to this system. All users are expected to adhere to the principles specified in the University of Hawaii Systemwide Student Conduct Code. The developers reserve the right to ban access to this system by any students who violate this code of conduct or otherwise display inappropriate behavior on the site.</h4>");
+  }
+</script>
 </template>

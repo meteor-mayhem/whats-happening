@@ -4,7 +4,6 @@ import { Template } from 'meteor/templating';
 import { Meteor } from 'meteor/meteor';
 import { _ } from 'meteor/underscore';
 import { Events, EventSchema } from '../../api/events/events.js';
-import { Profiles } from '../../api/profiles/profiles.js';
 import { organizationList } from './organizations.js';
 import { categoryList } from './categories.js';
 
@@ -92,10 +91,6 @@ Template.Add_Event_Page.events({
     if (instance.context.isValid()) {
       const id = Events.insert(newEventData);
       instance.messageFlags.set(displayErrorMessages, false);
-      const user = Profiles.findOne({ username: organizer });
-      user.events.push(id); // insert event id into user events[]
-      Profiles.update(user._id, { $set: { events: user.events } });
-
       instance.find('form').reset();
       instance.$('.dropdown').dropdown('restore defaults');
       FlowRouter.go(FlowRouter.path('Profile_Page', { username: Meteor.user().profile.name }));
