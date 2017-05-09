@@ -16,8 +16,8 @@ Template.Profile_Page.helpers({
    * @returns {*} The events owned by the user
    */
   profileEvents() {
+    return Events.find({ organizer: FlowRouter.getParam('username') });
   },
-
 
   /**
    * Hash function that maps a string input to a color--used for coloring stuff
@@ -33,13 +33,20 @@ Template.Profile_Page.helpers({
     }
 
     switch ((hash >>> 0) % 6) {
-      case 0: return 'orange';
-      case 1: return 'green';
-      case 2: return 'red';
-      case 3: return 'teal';
-      case 4: return 'blue';
-      case 5: return 'yellow';
-      default: return 'secondary';
+      case 0:
+        return 'orange';
+      case 1:
+        return 'green';
+      case 2:
+        return 'red';
+      case 3:
+        return 'teal';
+      case 4:
+        return 'blue';
+      case 5:
+        return 'yellow';
+      default:
+        return 'secondary';
     }
   },
 });
