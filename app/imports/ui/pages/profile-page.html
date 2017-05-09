@@ -54,18 +54,18 @@
       <div class="ui padded segment">
         <div class="ui own four cards">
           {{#each ownEvents}}
-            {{> Event_Card picture=this.picture name=this.name description=this.description organizer=this.organizer}}
+            {{> Event_Card id=this._id picture=this.picture name=this.name description=this.description organizer=this.organizer}}
           {{/each}}
         </div>
         <div class="ui attending four cards transition hidden">
           {{#each attendingEvents}}
-            {{> Event_Card picture=this.picture name=this.name description=this.description organizer=this.organizer}}
+            {{> Event_Card id=this._id picture=this.picture name=this.name description=this.description organizer=this.organizer}}
           {{/each}}
         </div>
         {{#if isUser}}
           <div class="ui saved four cards transition hidden">
             {{#each savedEvents}}
-              {{> Event_Card picture=this.picture name=this.name description=this.description organizer=this.organizer}}
+              {{> Event_Card id=this._id picture=this.picture name=this.name description=this.description organizer=this.organizer}}
             {{/each}}
           </div>
         {{/if}}

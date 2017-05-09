@@ -1,8 +1,8 @@
 <template name="Event_Card">
-  <div class="ui link card">
+  <div id="{{id}}" class="ui link card">
     <div class="image"><img src="{{picture}}"></div>
     <div class="content">
-      <i class="right floated large empty star icon"></i>
+      <i class="right floated large {{#if starred id}}yellow{{else}}empty{{/if}} star icon"></i>
       <div class="header">{{name}}</div>
       <div class="description">{{description}}</div>
     </div>

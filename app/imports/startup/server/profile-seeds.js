@@ -14,6 +14,10 @@ const profileSeeds = [
     organizations: ['IEEE', 'HKN'],
     bio: 'Hi I am Jerry. I like to play sports and program.',
     picture: 'https://pbs.twimg.com/media/CCuF1T6VEAA_GAM.png',
+    attending: [],
+    saved: [],
+    followers: [],
+    following: [],
   },
   {
     username: 'glennga',
@@ -23,6 +27,10 @@ const profileSeeds = [
     organizations: ['ICS 314'],
     bio: 'Hi I am Glenn. I like to program and Math.',
     picture: 'https://cdn.meme.am/cache/images/folder640/600x600/12104640/patrick-chocolate-face.jpg',
+    attending: [],
+    saved: [],
+    followers: [],
+    following: [],
   },
   {
     username: 'dtokita',
@@ -32,6 +40,10 @@ const profileSeeds = [
     organizations: ['SCEL'],
     bio: 'Hi I am Dylan. I like to program weatherboxes and play with Git.',
     picture: 'https://cdn.meme.am/images/600x600/9895039/sponge-bob-square-pants.jpg',
+    attending: [],
+    saved: [],
+    followers: [],
+    following: [],
   },
 ];
 

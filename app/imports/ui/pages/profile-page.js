@@ -21,7 +21,7 @@ Template.Profile_Page.helpers({
    * @returns {*} The current profile given the username
    */
   profile() {
-    return Profiles.find({ username: FlowRouter.getParam('username') });
+    return [Profiles.findOne({ username: FlowRouter.getParam('username') })];
   },
 
   /**
@@ -42,7 +42,11 @@ Template.Profile_Page.helpers({
    * @returns {*} The events owned by the user
    */
   savedEvents() {
-    return Events.find({ organizer: 'glennga' });
+    const user = Profiles.findOne({ username: Meteor.user().profile.name });
+    if (user) {
+      return Events.find({ _id: { $in: user.saved } });
+    }
+    return null;
   },
 
   /**
@@ -88,20 +92,22 @@ Template.Profile_Page.events({
     // Determine which item was just clicked
     if (event.target.classList.contains('own')) {
       newItem = 'own';
-    } else if (event.target.classList.contains('attending')) {
-      newItem = 'attending';
-    } else {
-      newItem = 'saved';
-    }
+    } else
+      if (event.target.classList.contains('attending')) {
+        newItem = 'attending';
+      } else {
+        newItem = 'saved';
+      }
 
     // Determine which item was previously active
     if ($('.ui.event.menu .active.item').hasClass('own')) {
       oldItem = 'own';
-    } else if ($('.ui.event.menu .active.item').hasClass('attending')) {
-      oldItem = 'attending';
-    } else {
-      oldItem = 'saved';
-    }
+    } else
+      if ($('.ui.event.menu .active.item').hasClass('attending')) {
+        oldItem = 'attending';
+      } else {
+        oldItem = 'saved';
+      }
 
     // If the two items are the same, don't do anything
     if (newItem === oldItem) {
@@ -112,16 +118,8 @@ Template.Profile_Page.events({
     $(`.ui.event.menu .${oldItem}.item`).removeClass('active');
     $(`.ui.event.menu .${newItem}.item`).addClass('active');
 
-    // Transition cards
-    if (oldItem === 'own') {
-      $(`.ui.${oldItem}.four.cards`).transition('slide right', function after() {
-        $(`.ui.${newItem}.four.cards`).transition('slide left');
-      });
-    } else if (oldItem === 'saved') {
-      $(`.ui.${oldItem}.four.cards`).transition('slide left', function after() {
-        $(`.ui.${newItem}.four.cards`).transition('slide right');
-      });
-    } else if (newItem === 'own') {
+    // Transition in the right direction
+    if (oldItem === 'saved' || newItem === 'own') {
       $(`.ui.${oldItem}.four.cards`).transition('slide left', function after() {
         $(`.ui.${newItem}.four.cards`).transition('slide right');
       });

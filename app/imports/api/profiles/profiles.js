@@ -35,42 +35,34 @@ export const ProfileSchema = new SimpleSchema({
   interests: {
     label: 'Interests',
     type: [String],
-    optional: true,
   },
   organizations: {
     label: 'Organizations',
     type: [String],
-    optional: true,
   },
   bio: {
     label: 'Bio',
     type: String,
-    optional: true,
-  },
-  attending: {
-    label: 'Attending',
-    type: [String],
-    optional: true,
-  },
-  saved: {
-    label: 'Saved',
-    type: [String],
-    optional: true,
   },
   picture: {
     label: 'Picture',
     type: String,
-    optional: true,
+  },
+  attending: {
+    label: 'Attending',
+    type: [String],
+  },
+  saved: {
+    label: 'Saved',
+    type: [String],
   },
   followers: {
     label: 'Followers',
     type: [String],
-    optional: true,
   },
   following: {
     label: 'Following',
     type: [String],
-    optional: true,
   },
 });
 

@@ -3,7 +3,7 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
 import { Template } from 'meteor/templating';
 import { _ } from 'meteor/underscore';
 import { Events, EventSchema } from '../../api/events/events.js';
-import { Profiles } from '../../api/profiles/profiles.js';
+// import { Profiles } from '../../api/profiles/profiles.js';
 import { organizationList } from './organizations.js';
 import { categoryList } from './categories.js';
 import { Meteor } from 'meteor/meteor';
@@ -117,10 +117,6 @@ Template.Edit_Event_Page.events({
     if (instance.context.isValid()) {
       const id = Events.update(FlowRouter.getParam('_id'), { $set: updatedEventData });
       instance.messageFlags.set(displayErrorMessages, false);
-      const user = Profiles.findOne({ username: organizer });
-      user.events.push(id); // insert event id into user events[]
-      Profiles.update(user._id, { $set: { events: user.events } });
-
       instance.find('form').reset();
       instance.$('.dropdown').dropdown('restore defaults');
       FlowRouter.go(FlowRouter.path('Profile_Page', { username: Meteor.user().profile.name }));
