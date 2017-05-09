@@ -10,37 +10,27 @@ Template.Profile_Page.onCreated(function onCreated() {
 });
 
 Template.Profile_Page.helpers({
-  /**
-   * @returns {*} True if logged in as the profile user, false otherwise
-   */
+  /** Returns true if the profile is of the current user */
   isUser() {
     return Meteor.user().profile.name === FlowRouter.getParam('username');
   },
 
-  /**
-   * @returns {*} The current profile given the username
-   */
+  /** Returns the profile */
   profile() {
     return [Profiles.findOne({ username: FlowRouter.getParam('username') })];
   },
 
-  /**
-   * @returns {*} The events owned by the user
-   */
+  /** Returns a list of the current profile's events */
   ownEvents() {
     return Events.find({ organizer: FlowRouter.getParam('username') });
   },
 
-  /**
-   * @returns {*} The events owned by the user
-   */
+  /** Returns a list of the current profile's attending events */
   attendingEvents() {
     return Events.find({ organizer: 'dtokita' });
   },
 
-  /**
-   * @returns {*} The events owned by the user
-   */
+  /** Returns a list of the current profile's saved events */
   savedEvents() {
     const user = Profiles.findOne({ username: Meteor.user().profile.name });
     if (user) {
@@ -49,11 +39,7 @@ Template.Profile_Page.helpers({
     return null;
   },
 
-  /**
-   * Hash function that maps a string input to a color--used for coloring stuff
-   * @param str
-   * @returns {*} a string representing a color
-   */
+  /** Hash function that maps a string input to a color--used for coloring stuff */
   colorize(str) {
     let hash = 5381;
     let i = str.length;
@@ -82,9 +68,7 @@ Template.Profile_Page.helpers({
 });
 
 Template.Profile_Page.events({
-  /**
-   * Logic for the active menu item and transitions
-   */
+  /** Logic for the active menu item and transitions */
   'click .event'(event) {
     let newItem;
     let oldItem;
@@ -92,22 +76,20 @@ Template.Profile_Page.events({
     // Determine which item was just clicked
     if (event.target.classList.contains('own')) {
       newItem = 'own';
-    } else
-      if (event.target.classList.contains('attending')) {
-        newItem = 'attending';
-      } else {
-        newItem = 'saved';
-      }
+    } else if (event.target.classList.contains('attending')) {
+      newItem = 'attending';
+    } else {
+      newItem = 'saved';
+    }
 
     // Determine which item was previously active
     if ($('.ui.event.menu .active.item').hasClass('own')) {
       oldItem = 'own';
-    } else
-      if ($('.ui.event.menu .active.item').hasClass('attending')) {
-        oldItem = 'attending';
-      } else {
-        oldItem = 'saved';
-      }
+    } else if ($('.ui.event.menu .active.item').hasClass('attending')) {
+      oldItem = 'attending';
+    } else {
+      oldItem = 'saved';
+    }
 
     // If the two items are the same, don't do anything
     if (newItem === oldItem) {
