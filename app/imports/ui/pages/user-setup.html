@@ -26,13 +26,8 @@
       <div class="required field">
         <div class="two fields">
 
-          <div class="field">
-            <input type="text" name="first-name" placeholder="First Name">
-          </div>
-
-          <div class="field">
-            <input type="text" name="last-name" placeholder="Last Name">
-          </div>
+          {{> Text_Form_Control label="First Name" required=true errorMessage=(fieldError "first")}}
+          {{> Text_Form_Control label="Last Name" required=true errorMessage=(fieldError "last")}}
 
         </div>
       </div>
@@ -41,75 +36,14 @@
         Interests
       </h4>
       <div class="required field">
-        <div class="field">
-          <select class="ui fluid search dropdown" multiple="">
-            <option value="">Interests</option>
-            <option value="Animals">Animals</option>
-            <option value="Art">Art</option>
-            <option value="Baseball">Baseball</option>
-            <option value="Basketball">Basketball</option>
-            <option value="Beach">Beach</option>
-            <option value="Billiards">Billiards</option>
-            <option value="Bowling">Bowling</option>
-            <option value="Cooking">Cooking</option>
-            <option value="Dancing">Dancing</option>
-            <option value="Exercise">Exercise</option>
-            <option value="Fishing">Fishing</option>
-            <option value="Food">Food</option>
-            <option value="Football">Football</option>
-            <option value="Geocaching">Geocaching</option>
-            <option value="Golfing">Golfing</option>
-            <option value="Martial Arts">Martial Arts</option>
-            <option value="Movies">Movies</option>
-            <option value="Music">Music</option>
-            <option value="Photography">Photography</option>
-            <option value="Programming">Programming</option>
-            <option value="Running">Running</option>
-            <option value="Shopping">Shopping</option>
-            <option value="Singing">Singing</option>
-            <option value="Skateboarding">Skateboarding</option>
-            <option value="Soccer">Soccer</option>
-            <option value="Sports">Sports</option>
-            <option value="Surfing">Surfing</option>
-            <option value="Swimming">Swimming</option>
-            <option value="Tennis">Tennis</option>
-            <option value="Video Games">Video Games</option>
-            <option value="Volleyball">Volleyball</option>
-            <option value="Weightlifting">Weightlifting</option>
-            <option value="Yoga">Yoga</option>
-          </select>
-        </div>
+        {{> Select_Form_Control label="Interests" required=true multiple=true options=categories errorMessage=(fieldError 'organizer')}}
       </div>
       <h4 class="ui horizontal divider header">
         <i class="users icon"></i>
         Organizations You Belong To
       </h4>
       <div class="required field">
-        <div class="field">
-          <select class="ui fluid search dropdown" multiple="">
-            <option value="">Organizations</option>
-            <option value="Academy of Creative Media Student Association">Academy of Creative Media Student Association</option>
-            <option value="Accounting Club">Accounting Club</option>
-            <option value="American Marketing Association">American Marketing Association</option>
-            <option value="American Society of Civil Engineers">American Society of Civil Engineers</option>
-            <option value="American Society of Mechnical Engineers">American Society of Mechnical Engineers</option>
-            <option value="Art Club">Art Club</option>
-            <option value="Biological Engineering Student Association">Biological Engineering Student Association</option>
-            <option value="Chemistry Club at the University of Hawaii at Manoa">Chemistry Club at the University of Hawaii at Manoa</option>
-            <option value="Ethnic Studies Student Association">Ethnic Studies Student Association</option>
-            <option value="Financial Management Association">Financial Management Association</option>
-            <option value="Geology and Geophysics Club">Geology and Geophysics Club</option>
-            <option value="Hawaii Student Entrepreneurs">Hawaii Student Entrepreneurs</option>
-            <option value="Information Technology Management Association">Information Technology Management Association</option>
-            <option value="Institute of Electrical and Electronics Engineers">Institute of Electrical and Electronics Engineers</option>
-            <option value="Ke Koa Ekola O Ke Alahele">Ke Koa Ekola O Ke Alahele</option>
-            <option value="Linguistic Society of Hawaii">Linguistic Society of Hawaii</option>
-            <option value="Marine Robotics at the University of Hawaii">Marine Robotics at the University of Hawaii</option>
-            <option value="Philosophy Students Association">Philosophy Students Association</option>
-            <option value="Society of Women Engineers">Society of Women Engineers</option>
-            <option value="Travel Industry Management Student Association">Travel Industry Management Student Association</option>
-          </select>
-        </div>
+        {{> Select_Form_Control label="Organizations" required=false multiple=true options=organizations errorMessage=(fieldError 'organizer')}}
       </div>
 
       <h4 class="ui horizontal divider header">
@@ -168,9 +102,4 @@
 
     </form>
   </div>
-  <script>
-  $('.ui.dropdown')
-  .dropdown()
-  ;
-  </script>
 </template>
