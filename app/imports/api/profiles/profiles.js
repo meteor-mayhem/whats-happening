@@ -47,11 +47,6 @@ export const ProfileSchema = new SimpleSchema({
     type: String,
     optional: true,
   },
-  events: {
-    label: 'Events',
-    type: [String],
-    optional: true,
-  },
   attending: {
     label: 'Attending',
     type: [String],

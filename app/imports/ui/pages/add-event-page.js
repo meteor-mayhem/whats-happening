@@ -83,12 +83,6 @@ Template.Add_Event_Page.events({
     if (instance.context.isValid()) {
       const id = Events.insert(newEventData);
       instance.messageFlags.set(displayErrorMessages, false);
-
-      // Insert this _id to the user's 'events' field
-      const user = Profiles.findOne({ username: organizer });
-      user.events.push(id); // insert event id into user events[]
-      Profiles.update(user._id, { $set: { events: user.events } });
-
       FlowRouter.go(FlowRouter.path('Add_Event_2_Page', { _id: id }));
     } else {
       instance.messageFlags.set(displayErrorMessages, true);

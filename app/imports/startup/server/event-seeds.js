@@ -5,56 +5,51 @@ import { _ } from 'meteor/underscore';
  * A list of Stuff to pre-fill the Collection.
  * @type {*[]}
  */
+/* eslint-disable max-len */
 const eventSeeds = [
   {
-    name: 'Event1',
-    description: 'Event1 description',
-    start: new Date(2017, 3, 20),
-    end: new Date(2017, 3, 20),
+    name: 'Basketball',
+    description: 'Basketball at McCully Park.',
+    start: 'Mon May 08 2017 00:00:00 GMT-1000 (Hawaiian Standard Time)',
+    end: 'Mon May 08 2017 23:59:00 GMT-1000 (Hawaiian Standard Time)',
     organizer: 'mengyuan',
-    organizations: ['IEEE', 'HKN'],
-    email: 'jerry@jerry.com',
-    phone: '111-222-3333',
-    categories: ['Fun1', 'Fun2'],
-    location: 'Holmes Hall',
-    website: 'Google.com',
-    picture: 'http://www.texasfootball.com/wp-content/uploads/2015/09/DC-29-e1441947941542.jpg',
+    email: 'jerry@tom.com',
+    phone: '111-111-1111',
+    categories: ['Basketball', 'Sports'],
+    location: 'McCully Park',
+    picture: 'http://2.bp.blogspot.com/-W7oHjTpjLfY/UA4EcGG_RRI/AAAAAAAAAAM/IcINgw4R9z0/s1600/New+Basketball+Blog+Page+(Why+We+Love+Basketball).jpg',
   },
   {
-    name: 'Event2',
-    description: 'Event2 description',
-    start: new Date(2017, 3, 20),
-    end: new Date(2017, 3, 20),
+    name: 'Billiards',
+    description: 'All welcome to play 8-ball (except Nathan).',
+    start: 'Mon May 08 2017 00:00:00 GMT-1000 (Hawaiian Standard Time)',
+    end: 'Mon May 08 2017 23:59:00 GMT-1000 (Hawaiian Standard Time)',
     organizer: 'dtokita',
-    organizations: ['Dylan', 'Boss'],
-    email: 'dylan@jerry.com',
-    phone: '112-222-3333',
-    categories: ['Good1', 'Good2'],
-    location: 'Campus Center',
-    website: 'Youtube.com',
-    picture: 'http://jugssports.com/images/products/s3000.jpg',
+    email: 'dylan@tom.com',
+    phone: '222-222-2222',
+    categories: ['Billiards', 'Casual'],
+    location: 'Frear Hall',
+    picture: 'http://www.divinesgrill.com/wp-content/uploads/2016/07/339405-1600x1600.jpg',
   },
   {
-    name: 'Event3',
-    description: 'Event3 description',
-    start: new Date(2017, 3, 20),
-    end: new Date(2017, 3, 20),
+    name: 'Math Study Session',
+    description: 'Study Math with us to prepare for our exams.',
+    start: 'Mon May 08 2017 00:00:00 GMT-1000 (Hawaiian Standard Time)',
+    end: 'Mon May 08 2017 23:59:00 GMT-1000 (Hawaiian Standard Time)',
     organizer: 'glennga',
-    organizations: ['ICS', 'Johnson'],
-    email: 'glenn@jerry.com',
-    phone: '113-222-3333',
-    categories: ['Boo1', 'Boo2'],
-    location: 'ICS space',
-    website: 'amazon.com.com',
-    picture: 'http://www.teamexos.com/wp-content/uploads/2016/10/Location_Minneapolis3.jpg',
+    email: 'glenn@tom.com',
+    phone: '333-333-3333',
+    categories: ['Math', 'Study'],
+    location: 'Keller Hall',
+    picture: 'https://az616578.vo.msecnd.net/files/responsive/cover/main/desktop/2017/04/28/636290142205786443-1628724858_Her%20Campus%20Studying%20Main%20_0.jpg',
   },
 ];
 
 /**
  * Initialize the Profile collection if empty with seed data.
  */
-// if (Events.find().count() === 0) {
-//   _.each(eventSeeds, function seedEvents(event) {
-//     Events.insert(event);
-//   });
-// }
+if (Events.find().count() === 0) {
+  _.each(eventSeeds, function seedEvents(event) {
+    Events.insert(event);
+  });
+}

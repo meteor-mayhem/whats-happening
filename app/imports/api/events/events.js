@@ -76,6 +76,11 @@ export const EventSchema = new SimpleSchema({
     type: String,
     optional: true,
   },
+  attendees: {
+    label: 'Attendees',
+    type: [String],
+    optional: true,
+  },
 });
 
 Events.attachSchema(EventSchema);

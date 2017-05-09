@@ -47,62 +47,23 @@
         <a class="right floated item"><i class="ui search icon"></i>Search Events</a>
       </div>
 
-      {{#each profileEvents}}
-        <div style="background-color: blanchedalmond">{{this.name}}</div>
-      {{/each}}
-
-      <!-- Event Cards -->
       <div class="ui padded segment">
         <div class="ui four cards">
-
-          <div class="ui link card">
-            <div class="image"><img src="/images/events/basketball.jpg"></div>
-            <div class="content">
-              <div class="header">Pickup Basketball</div>
-              <div class="description">Play some pickup basketball at the rec center.</div>
+          {{#each profileEvents}}
+            <div class="ui link card">
+              <div class="image"><img src="{{this.picture}}"></div>
+              <div class="content">
+                <div class="header">{{this.name}}</div>
+                <div class="description">{{this.description}}</div>
+              </div>
+              <div class="extra content">
+                <a class="right floated"><i class="calendar icon"></i> Mon. Jan. 14</a>
+                <a class="left floated" href="{{pathFor 'Profile_Page' username=this.organizer}}">
+                  <i class="user icon"></i>{{this.organizer}}
+                </a>
+              </div>
             </div>
-            <div class="extra content">
-              <a class="right floated"><i class="calendar icon"></i> Mon. Jan. 14</a>
-              <a class="left floated"><i class="user icon"></i>LeBron James</a>
-            </div>
-          </div>
-
-          <div class="ui link card">
-            <div class="image"><img src="/images/events/billiards.jpg"></div>
-            <div class="content">
-              <div class="header">8-Ball Pool</div>
-              <div class="description">Billiards at Frear Hall. All welcome (except Nathan).</div>
-            </div>
-            <div class="extra content">
-              <a class="right floated"><i class="calendar icon"></i> Mon. Jan. 14</a>
-              <a class="left floated"><i class="user icon"></i>Glenn Galvizo</a>
-            </div>
-          </div>
-
-          <div class="ui link card">
-            <div class="image"><img src="/images/events/paddleboard-yoga.jpg"></div>
-            <div class="content">
-              <div class="header">Paddleboard Yoga</div>
-              <div class="description">Do yoga on paddleboards! Woo!</div>
-            </div>
-            <div class="extra content">
-              <a class="right floated"><i class="calendar icon"></i> Mon. Jan. 14</a>
-              <a class="left floated"><i class="user icon"></i>Allie Kim</a>
-            </div>
-          </div>
-
-          <div class="ui link card">
-            <div class="image"><img src="/images/events/surfing.jpg"></div>
-            <div class="content">
-              <div class="header">Surfs Up</div>
-              <div class="description">Surf session at Diamond Head!</div>
-            </div>
-            <div class="extra content">
-              <a class="right floated"><i class="calendar icon"></i> Mon. Jan. 14</a>
-              <a class="left floated"><i class="user icon"></i>Hawaiian Brians</a>
-            </div>
-          </div>
-
+          {{/each}}
         </div>
       </div>
 
