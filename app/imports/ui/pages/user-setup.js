@@ -49,22 +49,26 @@ Template.User_Setup_Page.helpers({
 });
 
 Template.User_Setup_Page.events({
-  'submit'(event, instance) {
+  'submit .user-form'(event, instance) {
     console.log("Press");
     event.preventDefault();
     const username = Meteor.user().profile.name;
     const first = event.target.First_Name.value;
     const last = event.target.Last_Name.value;
-    const interests = event.target.Interests.value;
-    const organizations = event.target.Organizations.value;
+
+    const selectedInterests = _.filter(event.target.Interests.selecetedOptions, (option) => option.selected);
+    const interests = _.map(selectedInterests, (option) => option.value);
+
+    const selectedOrganizations = _.filter(event.target.Organizations.selecetedOptions, (option) => option.selected);
+    const organizations = _.map(selectedOrganizations, (option) => option.value);
+
     const bio = event.target.About_Me.value;
     const picture = event.target.Profile_Picture.value;
     const email = event.target.Email.value;
     const phone = event.target.Phone.value;
-    const events = "";
-    const followers = "";
-    const following = "";
-    const attending = "";
+    const followers = " ";
+    const following = " ";
+    const attending = " ";
     const newProfileData = {
       username,
       first,
@@ -72,7 +76,6 @@ Template.User_Setup_Page.events({
       interests,
       organizations,
       bio,
-      events,
       attending,
       picture,
       followers,
@@ -86,7 +89,7 @@ Template.User_Setup_Page.events({
     instance.context.validate(newProfileData);
     if (instance.context.isValid()) {
       console.log("Valid");
-      const id = Events.insert(newProfileData);
+      const id = Profiles.insert(newProfileData);
       instance.messageFlags.set(displayErrorMessages, false);
       FlowRouter.go(FlowRouter.path('Home_Page', { _id: id }));
     } else {
