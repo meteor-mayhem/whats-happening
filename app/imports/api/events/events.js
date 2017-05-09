@@ -74,7 +74,6 @@ export const EventSchema = new SimpleSchema({
   picture: {
     label: 'Picture',
     type: String,
-    optional: true,
   },
 });
 
