@@ -1,0 +1,16 @@
+<template name="Event_Card">
+  <div class="ui link card">
+    <div class="image"><img src="{{picture}}"></div>
+    <div class="content">
+      <i class="right floated large empty star icon"></i>
+      <div class="header">{{name}}</div>
+      <div class="description">{{description}}</div>
+    </div>
+    <div class="extra content">
+      <span class="right floated"><i class="calendar icon"></i> Mon. Jan. 14</span>
+      <a class="left floated" href="{{pathFor 'Profile_Page' username=organizer}}">
+        <i class="user icon"></i>{{organizer}}
+      </a>
+    </div>
+  </div>
+</template>

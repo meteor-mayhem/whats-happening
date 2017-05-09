@@ -105,11 +105,8 @@ Template.Profile_Page.events({
 
     // If the two items are the same, don't do anything
     if (newItem === oldItem) {
-      console.log('same');
       return;
     }
-
-    console.log(oldItem, newItem);
 
     // Update the 'active' class
     $(`.ui.event.menu .${oldItem}.item`).removeClass('active');
@@ -120,22 +117,18 @@ Template.Profile_Page.events({
       $(`.ui.${oldItem}.four.cards`).transition('slide right', function after() {
         $(`.ui.${newItem}.four.cards`).transition('slide left');
       });
-      console.log('old right, new left');
     } else if (oldItem === 'saved') {
       $(`.ui.${oldItem}.four.cards`).transition('slide left', function after() {
         $(`.ui.${newItem}.four.cards`).transition('slide right');
       });
-      console.log('old left, new right');
     } else if (newItem === 'own') {
       $(`.ui.${oldItem}.four.cards`).transition('slide left', function after() {
         $(`.ui.${newItem}.four.cards`).transition('slide right');
       });
-      console.log('old left, new right');
     } else {
       $(`.ui.${oldItem}.four.cards`).transition('slide right', function after() {
         $(`.ui.${newItem}.four.cards`).transition('slide left');
       });
-      console.log('old right, new left');
     }
   },
 });

@@ -58,25 +58,13 @@
     <!-- Event Cards -->
     <div class="ui padded segment">
       <div class="ui four cards">
-
-        {{#each event}}
-          <div class="ui link card">
-            <div class="image"><img src={{this.picture}}></div>
-            <div class="content">
-              <div class="header">{{this.name}}</div>
-              <div class="description">{{this.description}}</div>
-            </div>
-            <div class="extra content">
-              <a class="right floated"><i class="calendar icon"></i> Mon. Jan. 14</a>
-              <a class="left floated" href="{{pathFor 'Profile_Page' username=this.organizer}}">
-                <i class="user icon"></i>{{this.organizer}}
-              </a>
-            </div>
-          </div>
+        {{#each listEvents}}
+          {{> Event_Card picture=this.picture name=this.name description=this.description organizer=this.organizer}}
         {{/each}}
       </div>
-
-      <div style="height: 30px;"></div>
     </div>
+
+    <div style="height: 30px;"></div>
+
   </div>
 </template>
