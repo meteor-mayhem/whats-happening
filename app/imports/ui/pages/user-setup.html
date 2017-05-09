@@ -26,8 +26,8 @@
       <div class="required field">
         <div class="two fields">
 
-          {{> Text_Form_Control label="First Name" required=true errorMessage=(fieldError "first")}}
-          {{> Text_Form_Control label="Last Name" required=true errorMessage=(fieldError "last")}}
+          {{> Text_Form_Control label="First_Name" required=true errorMessage=(fieldError "first")}}
+          {{> Text_Form_Control label="Last_Name" required=true errorMessage=(fieldError "last")}}
 
         </div>
       </div>
@@ -36,14 +36,14 @@
         Interests
       </h4>
       <div class="required field">
-        {{> Select_Form_Control label="Interests" required=true multiple=true options=categories errorMessage=(fieldError 'organizer')}}
+        {{> Select_Form_Control label="Interests" required=true multiple=true options=categories errorMessage=(fieldError 'interests')}}
       </div>
       <h4 class="ui horizontal divider header">
         <i class="users icon"></i>
         Organizations You Belong To
       </h4>
       <div class="required field">
-        {{> Select_Form_Control label="Organizations" required=false multiple=true options=organizations errorMessage=(fieldError 'organizer')}}
+        {{> Select_Form_Control label="Organizations" required=false multiple=true options=organizations errorMessage=(fieldError 'organizations')}}
       </div>
 
       <h4 class="ui horizontal divider header">
@@ -52,9 +52,7 @@
       </h4>
       <div class="required field">
         <div class="field">
-          <div class="field">
-            <input type="text" name="picture-url" placeholder="http://image.com">
-          </div>
+          {{> Text_Form_Control label="Profile_Picture" required=true errorMessage=(fieldError "picture")}}
         </div>
       </div>
 
@@ -63,10 +61,7 @@
         About Me
       </h4>
       <div class="required field">
-        <div class="field">
-          <textarea rows="2" name="bio"
-                    placeholder="Tell us all little about yourself."></textarea>
-        </div>
+        {{> TextArea_Form_Control label="About_Me" required=true errorMessage=(fieldError "bio")}}
       </div>
 
       <h4 class="ui horizontal divider header">
@@ -76,15 +71,11 @@
       <div class="two fields">
         <div class="field">
           <label>Email</label>
-          <div class="field">
-            <input type="text" name="user-email" placeholder="foo@hawaii.edu">
-          </div>
+          {{> Text_Form_Control label="Email" required=true errorMessage=(fieldError "email")}}
         </div>
         <div class="field">
           <label>Phone</label>
-          <div class="field">
-            <input type="text" name="user-phone" placeholder="xxx-xxx-xxxx">
-          </div>
+          {{> Text_Form_Control label="Phone" required=true errorMessage=(fieldError "phone")}}
         </div>
       </div>
       <h4 class="ui horizontal divider header"><i class="add user icon"></i></h4>
@@ -96,7 +87,7 @@
           </div>
         </div>
         <div class="field">
-          <div class="ui right floated blue button">Sign Up<i class="caret right icon"></i></div>
+          <button class="ui right floated blue button" type="submit">Sign Up<i class="caret right icon"></i></button>
         </div>
       </div>
 
