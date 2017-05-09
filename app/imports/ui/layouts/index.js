@@ -14,3 +14,5 @@ import './if-logged-in.js';
 import './loading.html';
 import './event-card.html';
 import './event-card.js';
+import './event-modal.html';
+import './event-modal.js';

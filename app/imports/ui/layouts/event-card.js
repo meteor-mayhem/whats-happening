@@ -2,6 +2,8 @@ import { Template } from 'meteor/templating';
 import { Profiles } from '../../api/profiles/profiles.js';
 import { Meteor } from 'meteor/meteor';
 
+/* eslint-disable meteor/no-session */
+
 Template.Event_Card.onCreated(function onCreated() {
   this.subscribe('Profiles');
   this.subscribe('Events');
@@ -21,7 +23,7 @@ Template.Event_Card.helpers({
 Template.Event_Card.events({
   /** Save events */
   'click .star.icon'(event) {
-    const eventId = event.target.parentElement.parentElement.id;
+    const eventId = event.target.closest('.ui.card').id;
     const user = Profiles.findOne({ username: Meteor.user().profile.name });
 
     // Either save event or remove it
@@ -44,5 +46,19 @@ Template.Event_Card.events({
       user.saved.splice(user.saved.indexOf(eventId), 1); // remove eventId from user's saved array
       Profiles.update(user._id, { $set: { saved: user.saved } });
     }
+  },
+
+  /** Show modal */
+  'click .ui.card'(event) {
+    // Prevent modal from activating from user link or star
+    if (event.target.classList.contains('user-link') || event.target.classList.contains('star')) {
+      return;
+    }
+
+    // Save event id into a session
+    Session.set('eventId', event.target.closest('.ui.card').id);
+    $('.ui.event.modal').modal('setting', 'transition', 'fade up').modal({
+      inverted: true,
+    }).modal('show');
   },
 });
