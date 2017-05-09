@@ -79,7 +79,7 @@ Template.Profile_Page.helpers({
 
 Template.Profile_Page.events({
   /**
-   * @returns {*} Logic for the active menu item and transitions
+   * Logic for the active menu item and transitions
    */
   'click .event'(event) {
     let newItem;
@@ -88,22 +88,28 @@ Template.Profile_Page.events({
     // Determine which item was just clicked
     if (event.target.classList.contains('own')) {
       newItem = 'own';
-    } else
-      if (event.target.classList.contains('attending')) {
-        newItem = 'attending';
-      } else {
-        newItem = 'saved';
-      }
+    } else if (event.target.classList.contains('attending')) {
+      newItem = 'attending';
+    } else {
+      newItem = 'saved';
+    }
 
     // Determine which item was previously active
     if ($('.ui.event.menu .active.item').hasClass('own')) {
       oldItem = 'own';
-    } else
-      if ($('.ui.event.menu .active.item').hasClass('attending')) {
-        oldItem = 'attending';
-      } else {
-        oldItem = 'saved';
-      }
+    } else if ($('.ui.event.menu .active.item').hasClass('attending')) {
+      oldItem = 'attending';
+    } else {
+      oldItem = 'saved';
+    }
+
+    // If the two items are the same, don't do anything
+    if (newItem === oldItem) {
+      console.log('same');
+      return;
+    }
+
+    console.log(oldItem, newItem);
 
     // Update the 'active' class
     $(`.ui.event.menu .${oldItem}.item`).removeClass('active');
@@ -114,18 +120,22 @@ Template.Profile_Page.events({
       $(`.ui.${oldItem}.four.cards`).transition('slide right', function after() {
         $(`.ui.${newItem}.four.cards`).transition('slide left');
       });
+      console.log('old right, new left');
     } else if (oldItem === 'saved') {
       $(`.ui.${oldItem}.four.cards`).transition('slide left', function after() {
         $(`.ui.${newItem}.four.cards`).transition('slide right');
       });
+      console.log('old left, new right');
     } else if (newItem === 'own') {
       $(`.ui.${oldItem}.four.cards`).transition('slide left', function after() {
         $(`.ui.${newItem}.four.cards`).transition('slide right');
       });
+      console.log('old left, new right');
     } else {
       $(`.ui.${oldItem}.four.cards`).transition('slide right', function after() {
         $(`.ui.${newItem}.four.cards`).transition('slide left');
       });
+      console.log('old right, new left');
     }
   },
 });
