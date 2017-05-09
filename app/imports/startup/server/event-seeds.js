@@ -53,8 +53,8 @@ const eventSeeds = [
 /**
  * Initialize the Profile collection if empty with seed data.
  */
-if (Events.find().count() === 0) {
-  _.each(eventSeeds, function seedEvents(event) {
-    Events.insert(event);
-  });
-}
+// if (Events.find().count() === 0) {
+//   _.each(eventSeeds, function seedEvents(event) {
+//     Events.insert(event);
+//   });
+// }

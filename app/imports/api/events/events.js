@@ -8,7 +8,7 @@ export const Events = new Mongo.Collection('Events');
 // TODO remove this later
 /* eslint-disable no-undef */
 /* eslint-disable no-console */
-events = Events;
+gevents = Events;
 showEvents = function show() {
   _.each(Events.find().fetch(), function print(event) {
     console.log(event);

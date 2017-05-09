@@ -24,7 +24,7 @@
           <i class="file image outline icon"></i>
           Event Picture
         </h4>
-        {{> Text_Form_Control link=true label="Picture" errorMessage=(fieldError "picture") value=(eventDataField 'picture')}}
+        {{> Text_Form_Control link=true label="Picture" required=true errorMessage=(fieldError "picture") value=(eventDataField 'picture')}}
 
         <h4 class="ui horizontal divider header">
           <i class="location arrow icon"></i>

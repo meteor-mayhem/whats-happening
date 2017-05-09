@@ -1,8 +1,10 @@
 import { ReactiveDict } from 'meteor/reactive-dict';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { Template } from 'meteor/templating';
+import { Meteor } from 'meteor/meteor';
 import { _ } from 'meteor/underscore';
 import { Events, EventSchema } from '../../api/events/events.js';
+import { Profiles } from '../../api/profiles/profiles.js';
 import { organizationList } from './organizations.js';
 
 /* eslint-disable object-shorthand, no-unused-vars, no-param-reassign, prefer-template */
@@ -12,6 +14,7 @@ const displayErrorMessages = 'displayErrorMessages';
 
 Template.Add_Event_Page.onCreated(function onCreated() {
   this.subscribe('Events');
+  this.subscribe('Profiles');
   this.messageFlags = new ReactiveDict();
   this.messageFlags.set(displaySuccessMessage, false);
   this.messageFlags.set(displayErrorMessages, false);
@@ -47,16 +50,23 @@ Template.Add_Event_Page.events({
     const description = event.target.Description.value;
     const start = new Date(event.target.DateTime.value.toString().slice(0, 20));
     const end = new Date(event.target.DateTime.value.toString().slice(22, 42));
-    const organizer = event.target.Organization.value;
+    const organizer = Meteor.user().profile.name;
+    const selectedOrganizations = _.filter(event.target.Organizations.selectedOptions, (option) => option.selected);
+    const organizations = _.map(selectedOrganizations, (option) => option.value);
     const email = event.target.Email.value;
     const phone = event.target.Phone.value;
     // fill in page-2 fields, will update in next page
+    //     categories: ['Fun1', 'Fun2'],
+    //     location: 'Holmes Hall',
+    //     website: 'Google.com',
+    //     picture: 'http://www.texasfootball.com/wp-content/uploads/2015/09/DC-29-e1441947941542.jpg',
     const newEventData = {
       name,
       description,
       start,
       end,
       organizer,
+      organizations,
       email,
       phone,
       categories: ['none-set'],
@@ -73,6 +83,15 @@ Template.Add_Event_Page.events({
     if (instance.context.isValid()) {
       const id = Events.insert(newEventData);
       instance.messageFlags.set(displayErrorMessages, false);
+
+      // Insert this _id to the user's 'events' field
+      const user = Profiles.findOne({ username: organizer });
+      const events = user.events;
+      events.push(id); // insert event id into user events[]
+      console.log(Profiles.update(user._id, { $set: events }));
+      console.log(Profiles.findOne({ username: organizer }));
+      // const id = Events.update(FlowRouter.getParam('_id'), { $set: newEventData });
+
       FlowRouter.go(FlowRouter.path('Add_Event_2_Page', { _id: id }));
     } else {
       instance.messageFlags.set(displayErrorMessages, true);

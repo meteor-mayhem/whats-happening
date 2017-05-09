@@ -30,9 +30,9 @@
 
         <h4 class="ui horizontal divider header">
           <i class="users icon"></i>
-          Organization
+          Organizations
         </h4>
-        {{> Select_Form_Control label="Organization" required=true options=organizations errorMessage=(fieldError 'organizer') selected=(eventDataField 'organizer')}}
+        {{> Select_Form_Control label="Organizations" options=organizations errorMessage=(fieldError 'organizer') multiple=true selected=(eventDataField 'organizer')}}
 
         <h4 class="ui horizontal divider header">
           <i class="mail icon"></i>

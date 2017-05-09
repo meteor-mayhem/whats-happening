@@ -8,7 +8,7 @@ export const Profiles = new Mongo.Collection('Profiles');
 // TODO remove this later
 /* eslint-disable no-undef */
 /* eslint-disable no-console */
-profiles = Profiles;
+gprofiles = Profiles;
 showProfiles = function show() {
   _.each(Profiles.find().fetch(), function print(profile) {
     console.log(profile);
