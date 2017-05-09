@@ -7,7 +7,7 @@ Template.Home_Page.helpers({
    * @returns {*} The current profile given the username
    */
   event() {
-    return Events.find().fetch();
+    return Events.find();
   },
 });
 
