@@ -3,7 +3,6 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
 import { Template } from 'meteor/templating';
 import { _ } from 'meteor/underscore';
 import { Events, EventSchema } from '../../api/events/events.js';
-// import { Profiles } from '../../api/profiles/profiles.js';
 import { organizationList } from './organizations.js';
 import { categoryList } from './categories.js';
 import { Meteor } from 'meteor/meteor';
@@ -23,6 +22,12 @@ Template.Edit_Event_Page.onCreated(function onCreated() {
 });
 
 Template.Edit_Event_Page.helpers({
+  userHasEvent() {
+    const currentUser = Meteor.user().profile.name;
+    const currentEvent = FlowRouter.getParam('_id');
+
+    return Events.find({ organizer: currentUser, _id: currentEvent }).fetch();
+  },
   eventDataField(fieldName) {
     const eventData = Events.findOne(FlowRouter.getParam('_id'));
     // See https://dweldon.silvrback.com/guards to understand '&&' in next line.
