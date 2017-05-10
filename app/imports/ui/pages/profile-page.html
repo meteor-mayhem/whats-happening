@@ -40,7 +40,6 @@
     <div style="height: 40px;"></div>
 
     <!-- Event Menu -->
-    {{> Event_Modal}}
     <div class="ui event secondary pointing menu">
       <a class="own item active">My Events</a>
       <a class="attending item">Events I'm Attending</a>
@@ -51,6 +50,7 @@
     </div>
 
     <!--Card Menu-->
+    {{> Event_Modal}}
     <div class="ui padded segment">
       <div class="ui own four cards">
         {{#each ownEvents}}

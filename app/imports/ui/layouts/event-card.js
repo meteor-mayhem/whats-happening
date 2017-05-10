@@ -1,6 +1,7 @@
 import { Template } from 'meteor/templating';
 import { Profiles } from '../../api/profiles/profiles.js';
 import { Meteor } from 'meteor/meteor';
+import { Session } from 'meteor/session';
 
 /* eslint-disable meteor/no-session */
 
@@ -56,9 +57,9 @@ Template.Event_Card.events({
     }
 
     // Save event id into a session
-    Session.set('eventId', event.target.closest('.ui.card').id);
-    $('.ui.event.modal').modal('setting', 'transition', 'fade up').modal({
-      inverted: true,
-    }).modal('show');
+    Session.set('clickedEventId', event.target.closest('.ui.card').id);
+
+    // Open modal
+    $('.ui.event.modal').modal('setting', 'transition', 'fade up').modal('show');
   },
 });

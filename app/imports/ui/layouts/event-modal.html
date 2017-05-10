@@ -1,10 +1,79 @@
 <template name="Event_Modal">
-  <div class="ui container">
-    <div class="ui event modal">
-      {{#if populate id}}
-        ayyye
-      {{else}}
-      {{/if}}
+  {{#if shouldLoad}}
+    <div class="ui container">
+      <div class="ui event modal">
+        {{#each clickedEvent}}
+          <div class="ui fluid card">
+            <div class="content">
+              <div class="ui grid">
+                <div class="row">
+                  <div class="column">
+                    <img class="ui large avatar image"
+                         src="http://www.divinesgrill.com/wp-content/uploads/2016/07/339405-1600x1600.jpg">
+                    <a class="meta">{{this.organizer}}</a>
+                  </div>
+                </div>
+                <div class="ui divider" style="margin: 0;"></div>
+                <div class="row">
+                  <div class="five wide column">
+                    <img class="ui fluid rounded image"
+                         src="{{this.picture}}">
+                  </div>
+                  <div class="eleven wide column">
+                    <div class="ui one column grid">
+                      <div class="row">
+                        <div class="column">
+                          <span class="ui huge header">{{this.name}}</span>
+                          {{#if currentUser}}<i class="right floated big {{#if
+                              starred}}yellow{{else}}empty{{/if}} star icon"></i>{{/if}}
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="column">
+                          <div class="ui small header">Categories</div>
+                          {{#each this.categories}}
+                            <button class="ui small teal compact button">{{this}}</button>
+                          {{/each}}
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="column">
+                          <div class="ui small header">Organizations</div>
+                          {{#each this.organizations}}
+                            <button class="ui small teal compact button">{{this}}</button>
+                          {{/each}}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="column">
+                    <div class="ui medium header">Description</div>
+                    <p>{{this.description}}</p>
+                  </div>
+                </div>
+                <div class="two column row">
+                  <div class="column">
+                    <div class="ui small header">Time</div>
+                    <p>{{this.start}} To {{this.end}}</p>
+                  </div>
+                  <div class="column">
+                    <div class="ui small header">Location</div>
+                    <p>{{this.location}}</p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="column">
+                    <button class="ui right floated large blue button">Attend</button>
+                    <button class="ui right floated large red button">Edit</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {{/each}}
+      </div>
     </div>
-  </div>
+  {{/if}}
 </template>
