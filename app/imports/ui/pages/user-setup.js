@@ -16,11 +16,16 @@ Template.User_Setup_Page.onCreated(function onCreated() {
   this.messageFlags.set(displaySuccessMessage, false);
   this.messageFlags.set(displayErrorMessages, false);
   this.context = ProfileSchema.namedContext('User_Setup_Page');
+
+  // Update header menu
+  $('.active.item').removeClass('active');
+  $('.setup.item').addClass('active');
 });
 
 Template.User_Setup_Page.helpers({
-  user: function user() {
-    return Meteor.user().profile.name;
+  user() {
+    const user = Meteor.user();
+    return user && user.profile.name;
   },
   categories() {
     return _.map(categoryList, function makeCategoryObject(category) {

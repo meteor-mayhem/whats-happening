@@ -7,21 +7,6 @@ import { _ } from 'meteor/underscore';
  */
 const profileSeeds = [
   {
-    username: 'mengyuan',
-    first: 'Jerry',
-    last: 'Wu',
-    interests: ['Basketball', 'Volleyball', 'Programming'],
-    organizations: ['IEEE', 'HKN'],
-    bio: 'Hi I am Jerry. I like to play sports and program.',
-    picture: 'https://pbs.twimg.com/media/CCuF1T6VEAA_GAM.png',
-    phone: '111-111-1111',
-    email: 'jerry@tom.com',
-    attending: [],
-    saved: [],
-    followers: [],
-    following: [],
-  },
-  {
     username: 'glennga',
     first: 'Glenn',
     last: 'Galvizo',

@@ -1,7 +1,13 @@
 import { Template } from 'meteor/templating';
 import { Meteor } from 'meteor/meteor';
+import { Profiles } from '../../../api/profiles/profiles.js';
+import { FlowRouter } from 'meteor/kadira:flow-router';
 
 /* eslint-disable no-console */
+
+Template.Cas_Login.onCreated(function onCreated() {
+  this.subscribe('Profiles');
+});
 
 Template.Cas_Login.events({
   /**
@@ -25,6 +31,12 @@ Template.Cas_Login.events({
     const callback = function loginCallback(error) {
       if (error) {
         console.log(error);
+      } else {
+        // If user is not in system, go to setup page
+        const user = Meteor.user();
+        if (user && !Profiles.findOne({ username: user.profile.name })) {
+          FlowRouter.go('User_Setup_Page');
+        }
       }
     };
     Meteor.loginWithCas(callback);

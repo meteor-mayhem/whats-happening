@@ -29,8 +29,9 @@ Template.Edit_Profile_Page.helpers({
     // See https://dweldon.silvrback.com/guards to understand '&&' in next line.
     return profileData && profileData[fieldName];
   },
-  user: function user() {
-    return Meteor.user().profile.name;
+  user() {
+    const user = Meteor.user();
+    return user && user.profile.name;
   },
   profile() {
     return Profiles.find({ username: FlowRouter.getParam('username') });

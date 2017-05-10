@@ -3,11 +3,14 @@
     <div class="ui container">
       {{#if currentUser}}
         <a class="item" href="{{pathFor 'Home_Page'}}"><h1>What's Happening</h1></a>
+        <a class="browse right aligned item" href="{{ pathFor 'Home_Page' }}"><i class="browser icon"></i>Browse Events</a>
+        {{#if currentUser}}<a class="setup item" href="{{ pathFor 'User_Setup_Page' }}"><i class="add user icon"></i>User Setup</a>{{/if}}
+        <a class="item">{{> Cas_Login }}</a>
       {{else}}
         <a class="item" href="{{pathFor 'Landing_Page'}}"><h1>What's Happening</h1></a>
+        <a class="right aligned item">{{> Cas_Login }}</a>
       {{/if}}
 
-      <a class="right aligned item">{{> Cas_Login }}</a>
     </div>
   </div>
 </template>

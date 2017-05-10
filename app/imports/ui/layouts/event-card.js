@@ -24,6 +24,11 @@ Template.Event_Card.helpers({
   formatDate(date) {
     return date.toString().substring(4, 15); // return just the month day and year
   },
+
+  loggedIn() {
+    const user = Meteor.user();
+    return user && Profiles.findOne({ username: user.profile.name });
+  },
 });
 
 Template.Event_Card.events({

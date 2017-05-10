@@ -2,17 +2,18 @@
   <div class="ui top borderless inverted menu navbar">
     <div class="ui container">
 
-      {{#if currentUser}} <!-- If the user is logged in -->
+      {{#if loggedIn}} <!-- If the user is logged in -->
         <a class="item" href="{{pathFor 'Home_Page'}}"><h1>What's Happening</h1></a>
         <a class="browse right aligned item" href="{{ pathFor 'Home_Page' }}"><i class="browser icon"></i>Browse Events</a>
         <a class="add item" href="{{ pathFor 'Add_Event_Page' }}"><i class="add to calendar icon"></i>Add Event</a>
         <a class="edit item" href="{{ pathFor 'Edit_Profile_Page' username=user }}"><i class="edit icon"></i>Edit Profile</a>
         <a class="profile item" href="{{ pathFor 'Profile_Page' username=user }}"><i class="calendar icon"></i>{{user}}</a>
         <a class="item sign out"><i class="sign out icon"></i>Sign Out</a>
-
       {{else}} <!-- If the user isn't logged in -->
         <a class="item" href="{{pathFor 'Landing_Page'}}"><h1>What's Happening</h1></a>
-        <a class="right aligned item">{{> Cas_Login }}</a>
+        <a class="browse right aligned item" href="{{ pathFor 'Home_Page' }}"><i class="browser icon"></i>Browse Events</a>
+      {{#if currentUser}}<a class="setup item" href="{{ pathFor 'User_Setup_Page' }}"><i class="add user icon"></i>User Setup</a>{{/if}}
+        <a class="item">{{> Cas_Login }}</a>
       {{/if}}
 
     </div>

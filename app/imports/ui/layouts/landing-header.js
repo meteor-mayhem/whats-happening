@@ -5,3 +5,4 @@ import { Template } from 'meteor/templating';
 Template.Landing_Header.onRendered(function enableDropDown() {
   this.$('.dropdown').dropdown();
 });
+

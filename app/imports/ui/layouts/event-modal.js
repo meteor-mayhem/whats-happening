@@ -74,6 +74,11 @@ Template.Event_Modal.helpers({
     }
     return null;
   },
+
+  loggedIn() {
+    const user = Meteor.user();
+    return user && Profiles.findOne({ username: user.profile.name });
+  },
 });
 
 Template.Event_Modal.events({

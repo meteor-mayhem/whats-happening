@@ -25,7 +25,7 @@
                       <div class="row">
                         <div class="column">
                           <span class="ui huge header">{{this.name}}</span>
-                          {{#if currentUser}}<i class="right floated big {{#if
+                          {{#if loggedIn}}<i class="right floated big {{#if
                               starred}}yellow{{else}}empty{{/if}} star icon"></i>{{/if}}
                         </div>
                       </div>
@@ -77,7 +77,7 @@
                 </div>
                 <div class="row">
                   <div class="column">
-                    {{#if currentUser}}
+                    {{#if loggedIn}}
                       {{#if attending}}
                         <button class="ui right floated large green attend active button">Attending</button>
                       {{else}}

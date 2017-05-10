@@ -12,7 +12,7 @@ const eventSeeds = [
     description: 'Basketball at McCully Park.',
     start: 'Mon May 08 2017 00:00:00 GMT-1000 (Hawaiian Standard Time)',
     end: 'Mon May 08 2017 23:59:00 GMT-1000 (Hawaiian Standard Time)',
-    organizer: 'mengyuan',
+    organizer: 'glennga',
     email: 'jerry@tom.com',
     phone: '111-111-1111',
     categories: ['Basketball', 'Sports'],
