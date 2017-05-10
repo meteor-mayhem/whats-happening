@@ -77,9 +77,11 @@
                 <div class="row">
                   <div class="column">
                     <button class="ui right floated large blue attend button">Attend</button>
-                    <a href="{{pathFor "Edit_Event_Page" _id=this._id}}">
-                      <button class="ui right floated large red edit button">Edit</button>
-                    </a>
+                    {{#if isOwner}}
+                      <a href="{{pathFor "Edit_Event_Page" _id=this._id}}">
+                        <button class="ui right floated large red edit button">Edit</button>
+                      </a>
+                    {{/if}}
                   </div>
                 </div>
               </div>
