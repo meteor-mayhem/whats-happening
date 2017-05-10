@@ -52,6 +52,16 @@ Template.User_Setup_Page.events({
   'submit .user-form'(event, instance) {
     console.log("Press");
     event.preventDefault();
+
+    const profileData = Profiles.findOne({ 'username' : Meteor.user().profile.name });
+    console.log(profileData);
+    if(profileData !== undefined) {
+      console.log("Routing");
+      var myWindow = window.open("", "MsgWindow", "width=700,height=300");
+      myWindow.document.write("<h4>User already exists, fowarding to edit profile page.</h4>");
+      FlowRouter.go(FlowRouter.path('Edit_Profile_Page', { username: Meteor.user().profile.name }));
+    }
+
     const username = Meteor.user().profile.name;
     const first = event.target.First_Name.value;
     const last = event.target.Last_Name.value;
@@ -66,10 +76,10 @@ Template.User_Setup_Page.events({
     const picture = event.target.Profile_Picture.value;
     const email = event.target.Email.value;
     const phone = event.target.Phone.value;
-    const followers = " ";
-    const following = " ";
-    const saved = " ";
-    const attending = " ";
+    const followers = [];
+    const following = [];
+    const saved = [];
+    const attending = [];
     const newProfileData = {
       username,
       first,

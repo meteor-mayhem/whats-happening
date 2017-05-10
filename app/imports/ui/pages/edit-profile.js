@@ -82,10 +82,10 @@ Template.Edit_Profile_Page.events({
     const picture = event.target.Profile_Picture.value;
     const email = event.target.Email.value;
     const phone = event.target.Phone.value;
-    const followers = " ";
-    const following = " ";
-    const saved = " ";
-    const attending = " ";
+    const followers = [];
+    const following = [];
+    const saved = [];
+    const attending = [];
     const newProfileData = {
       username,
       first,
@@ -101,6 +101,7 @@ Template.Edit_Profile_Page.events({
       followers,
       following,
     };
+    console.log(newProfileData);
     // Clear out any old validation errors.
     instance.context.resetValidation();
     // Invoke clean so that newEventdata reflects what will be inserted.
@@ -109,9 +110,11 @@ Template.Edit_Profile_Page.events({
     instance.context.validate(newProfileData);
     if (instance.context.isValid()) {
       console.log("Valid");
-      const id = Profiles.update(newProfileData);
+      const id = Profiles.update(FlowRouter.getParam('username'), { $set: newProfileData });
       instance.messageFlags.set(displayErrorMessages, false);
-      FlowRouter.go(FlowRouter.path('Home_Page', { _id: id }));
+      instance.find('form').reset();
+      instance.$('.dropdown').dropdown('restore defaults');
+      FlowRouter.go(FlowRouter.path('Profile_Page', { username: Meteor.user().profile.name }));
     } else {
       console.log("Invalid");
       instance.messageFlags.set(displayErrorMessages, true);
