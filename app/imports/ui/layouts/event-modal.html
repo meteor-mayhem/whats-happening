@@ -9,8 +9,8 @@
                 <div class="row">
                   <div class="column">
                     <img class="ui large avatar image"
-                         src="http://www.divinesgrill.com/wp-content/uploads/2016/07/339405-1600x1600.jpg">
-                    <a class="meta">{{this.organizer}}</a>
+                         src="{{userPicture this.organizer}}">
+                    <span class="meta">{{this.organizer}}</span>
                   </div>
                 </div>
                 <div class="ui divider" style="margin: 0;"></div>
@@ -28,11 +28,12 @@
                               starred}}yellow{{else}}empty{{/if}} star icon"></i>{{/if}}
                         </div>
                       </div>
+                      {{#if this.website}}<a class="meta" href="{{this.website}}">{{this.website}}</a>{{/if}}
                       <div class="row">
                         <div class="column">
                           <div class="ui small header">Categories</div>
                           {{#each this.categories}}
-                            <button class="ui small teal compact button">{{this}}</button>
+                            <div class="ui medium teal compact label">{{this}}</div>
                           {{/each}}
                         </div>
                       </div>
@@ -40,7 +41,7 @@
                         <div class="column">
                           <div class="ui small header">Organizations</div>
                           {{#each this.organizations}}
-                            <button class="ui small teal compact button">{{this}}</button>
+                            <div class="ui medium teal compact label">{{this}}</div>
                           {{/each}}
                         </div>
                       </div>
@@ -56,17 +57,29 @@
                 <div class="two column row">
                   <div class="column">
                     <div class="ui small header">Time</div>
-                    <p>{{this.start}} To {{this.end}}</p>
+                    <p>{{formatDate this.start}} - {{formatDate this.end}}</p>
                   </div>
                   <div class="column">
                     <div class="ui small header">Location</div>
                     <p>{{this.location}}</p>
                   </div>
                 </div>
+                <div class="two column row">
+                  <div class="column">
+                    <div class="ui small header">Phone</div>
+                    <p>{{this.phone}}</p>
+                  </div>
+                  <div class="column">
+                    <div class="ui small header">Email</div>
+                    <p>{{this.email}}</p>
+                  </div>
+                </div>
                 <div class="row">
                   <div class="column">
-                    <button class="ui right floated large blue button">Attend</button>
-                    <button class="ui right floated large red button">Edit</button>
+                    <button class="ui right floated large blue attend button">Attend</button>
+                    <a href="{{pathFor "Edit_Event_Page" _id=this._id}}">
+                      <button class="ui right floated large red edit button">Edit</button>
+                    </a>
                   </div>
                 </div>
               </div>

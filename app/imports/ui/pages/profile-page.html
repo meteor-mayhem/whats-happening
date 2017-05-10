@@ -19,13 +19,13 @@
             <div class="column">
               <div class="ui small header">My interests</div>
               {{#each this.interests}}
-                <button class="ui small teal compact button">{{this}}</button>
+                <div class="ui medium teal compact label">{{this}}</div>
               {{/each}}
             </div>
             <div class="column">
               <div class="ui small header">My organizations</div>
               {{#each this.organizations}}
-                <button class="ui small teal compact button">{{this}}</button>
+                <div class="ui medium teal compact label">{{this}}</div>
               {{/each}}
               <div class="ui right floated labeled follow button" tabindex="0">
                 <button class="ui blue button"><i class="feed icon"></i>Follow</button>
@@ -54,18 +54,18 @@
     <div class="ui padded segment">
       <div class="ui own four cards">
         {{#each ownEvents}}
-          {{> Event_Card id=this._id picture=this.picture name=this.name description=this.description organizer=this.organizer}}
+          {{> Event_Card id=this._id picture=this.picture name=this.name description=this.description organizer=this.organizer date=this.start}}
         {{/each}}
       </div>
       <div class="ui attending four cards transition hidden">
         {{#each attendingEvents}}
-          {{> Event_Card id=this._id picture=this.picture name=this.name description=this.description organizer=this.organizer}}
+          {{> Event_Card id=this._id picture=this.picture name=this.name description=this.description organizer=this.organizer date=this.start}}
         {{/each}}
       </div>
       {{#if isUser}}
         <div class="ui saved four cards transition hidden">
           {{#each savedEvents}}
-            {{> Event_Card id=this._id picture=this.picture name=this.name description=this.description organizer=this.organizer}}
+            {{> Event_Card id=this._id picture=this.picture name=this.name description=this.description organizer=this.organizer date=this.start}}
           {{/each}}
         </div>
       {{/if}}

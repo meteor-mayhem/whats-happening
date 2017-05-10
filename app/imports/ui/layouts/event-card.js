@@ -19,6 +19,11 @@ Template.Event_Card.helpers({
     }
     return null;
   },
+
+  /** Formats the date into a card-friendly format */
+  formatDate(date) {
+    return date.toString().substring(4, 15); // return just the month day and year
+  },
 });
 
 Template.Event_Card.events({

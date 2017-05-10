@@ -33,6 +33,25 @@ Template.Event_Modal.helpers({
     return false;
   },
 
+  /** Formats the date into a modal-friendly format */
+  formatDate(date) {
+    const day = date.toString().substring(4, 15);
+    const hh = parseInt(date.toString().substring(16, 18), 10);
+    const mm = date.toString().substring(19, 21);
+
+    // Determine AM or PM
+    if (hh < 12) {
+      return `${day} ${hh}:${mm} AM`;
+    }
+    return `${day} ${hh - 12}:${mm} PM`;
+  },
+
+  /** Returns the picture URL of the owner */
+  userPicture(owner) {
+    const user = Profiles.findOne({ username: owner });
+    return user && user.picture;
+  },
+
   /** Determine if event is starred by user */
   starred() {
     const user = Profiles.findOne({ username: Meteor.user().profile.name });
@@ -40,35 +59,5 @@ Template.Event_Modal.helpers({
       return user.saved.includes(Session.get('clickedEventId'));
     }
     return null;
-  },
-});
-
-Template.Event_Modal.events({
-  /** Save events */
-  'click .star.icon'(event) {
-    const eventId = Session.get('clickedEventId');
-    const user = Profiles.findOne({ username: Meteor.user().profile.name });
-
-    // Either save event or remove it
-    if (event.target.classList.contains('empty')) {
-      // Save event
-      event.target.classList.add('yellow');
-      event.target.classList.remove('empty');
-
-      // Add event to user's 'saved' events
-      if (!user.saved.includes(eventId)) {
-        user.saved.push(eventId); // insert event id into user's saved array
-        Profiles.update(user._id, { $set: { saved: user.saved } });
-      }
-    } else {
-      // Remove saved event
-      event.target.classList.remove('yellow');
-      event.target.classList.add('empty');
-
-      // Remove event from user's 'saved' events
-      user.saved.splice(user.saved.indexOf(eventId), 1); // remove eventId from user's saved array
-      Profiles.update(user._id, { $set: { saved: user.saved } });
-    }
-    console.log(user.saved);
   },
 });
