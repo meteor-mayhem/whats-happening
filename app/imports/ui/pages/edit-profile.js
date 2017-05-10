@@ -20,7 +20,7 @@ Template.Edit_Profile_Page.onCreated(function onCreated() {
 
 Template.Edit_Profile_Page.helpers({
   profileDataField(fieldName) {
-    const profileData = Profiles.findOne({ 'username' : FlowRouter.getParam('username') });
+    const profileData = Profiles.findOne({ username: FlowRouter.getParam('username') });
     // See https://dweldon.silvrback.com/guards to understand '&&' in next line.
     return profileData && profileData[fieldName];
   },
@@ -34,19 +34,26 @@ Template.Edit_Profile_Page.helpers({
     return FlowRouter.getParam('username');
   },
   validate() {
-    if(Meteor.user().profile.name == FlowRouter.getParam('username'))
+    if (Meteor.user().profile.name === FlowRouter.getParam('username')) {
       return true;
+    }
     return false;
   },
-  categories() {
-    return _.map(categoryList, function makeCategoryObject(category) {
-      return { label: category };
-    });
-  },
   organizations() {
-    return _.map(organizationList, function makeOrganizationObject(organization) {
-      return { label: organization };
-    });
+    const profileData = Profiles.findOne({ username: FlowRouter.getParam('username') });
+    const selectedOrganizer = profileData && profileData.organizations;
+    return profileData && _.map(organizationList,
+            function makeCategoryObject(organization) {
+              return { label: organization, selected: _.contains(selectedOrganizer, organization) };
+            });
+  },
+  categories() {
+    const profileData = Profiles.findOne({ username: FlowRouter.getParam('username') });
+    const selectedInterests = profileData && profileData.interests;
+    return profileData && _.map(categoryList,
+            function makeCategoryObject(category) {
+              return { label: category, selected: _.contains(selectedInterests, category) };
+            });
   },
   successClass() {
     return Template.instance().messageFlags.get(displaySuccessMessage) ? 'success' : '';
@@ -66,18 +73,14 @@ Template.Edit_Profile_Page.helpers({
 
 Template.Edit_Profile_Page.events({
   'submit .user-form'(event, instance) {
-    console.log("Press");
     event.preventDefault();
     const username = Meteor.user().profile.name;
     const first = event.target.First_Name.value;
     const last = event.target.Last_Name.value;
-
-    const selectedInterests = _.filter(event.target.Interests.selecetedOptions, (option) => option.selected);
+    const selectedInterests = _.filter(event.target.Interests.selectedOptions, (option) => option.selected);
     const interests = _.map(selectedInterests, (option) => option.value);
-
-    const selectedOrganizations = _.filter(event.target.Organizations.selecetedOptions, (option) => option.selected);
+    const selectedOrganizations = _.filter(event.target.Organizations.selectedOptions, (option) => option.selected);
     const organizations = _.map(selectedOrganizations, (option) => option.value);
-
     const bio = event.target.About_Me.value;
     const picture = event.target.Profile_Picture.value;
     const email = event.target.Email.value;
@@ -101,7 +104,6 @@ Template.Edit_Profile_Page.events({
       followers,
       following,
     };
-    console.log(newProfileData);
     // Clear out any old validation errors.
     instance.context.resetValidation();
     // Invoke clean so that newEventdata reflects what will be inserted.
@@ -109,14 +111,13 @@ Template.Edit_Profile_Page.events({
     // Determine validity.
     instance.context.validate(newProfileData);
     if (instance.context.isValid()) {
-      console.log("Valid");
-      const id = Profiles.update(FlowRouter.getParam('username'), { $set: newProfileData });
+      const profile = Profiles.find({ username: FlowRouter.getParam('username') }).fetch();
+      Profiles.update(profile[0]._id, { $set: newProfileData });
       instance.messageFlags.set(displayErrorMessages, false);
       instance.find('form').reset();
       instance.$('.dropdown').dropdown('restore defaults');
       FlowRouter.go(FlowRouter.path('Profile_Page', { username: Meteor.user().profile.name }));
     } else {
-      console.log("Invalid");
       instance.messageFlags.set(displayErrorMessages, true);
     }
   },
