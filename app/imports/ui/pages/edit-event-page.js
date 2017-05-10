@@ -7,7 +7,7 @@ import { organizationList } from './organizations.js';
 import { categoryList } from './categories.js';
 import { Meteor } from 'meteor/meteor';
 
-/* eslint-disable object-shorthand, no-unused-vars, no-param-reassign, prefer-template */
+/* eslint-disable object-shorthand, no-param-reassign, prefer-template */
 
 const displaySuccessMessage = 'displaySuccessMessage';
 const displayErrorMessages = 'displayErrorMessages';
@@ -120,7 +120,7 @@ Template.Edit_Event_Page.events({
     // Determine validity.
     instance.context.validate(updatedEventData);
     if (instance.context.isValid()) {
-      const id = Events.update(FlowRouter.getParam('_id'), { $set: updatedEventData });
+      Events.update(FlowRouter.getParam('_id'), { $set: updatedEventData });
       instance.messageFlags.set(displayErrorMessages, false);
       instance.find('form').reset();
       instance.$('.dropdown').dropdown('restore defaults');
