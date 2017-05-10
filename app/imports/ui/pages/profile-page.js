@@ -7,6 +7,10 @@ import { Meteor } from 'meteor/meteor';
 Template.Profile_Page.onCreated(function onCreated() {
   this.subscribe('Profiles');
   this.subscribe('Events');
+
+  // Update header menu
+  $('.active.item').removeClass('active');
+  $('.profile.item').addClass('active');
 });
 
 Template.Profile_Page.helpers({

@@ -5,6 +5,10 @@ Template.Home_Page.onCreated(function onCreated() {
   this.subscribe('Profiles');
   this.subscribe('Events');
   // $('select.dropdown').dropdown();
+
+  // Update header menu
+  $('.active.item').removeClass('active');
+  $('.browse.item').addClass('active');
 });
 
 Template.Home_Page.helpers({

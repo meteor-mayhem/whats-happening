@@ -19,6 +19,10 @@ Template.Add_Event_Page.onCreated(function onCreated() {
   this.messageFlags.set(displaySuccessMessage, false);
   this.messageFlags.set(displayErrorMessages, false);
   this.context = EventSchema.namedContext('Add_Event_Page');
+
+  // Update header menu
+  $('.active.item').removeClass('active');
+  $('.add.item').addClass('active');
 });
 
 Template.Add_Event_Page.helpers({

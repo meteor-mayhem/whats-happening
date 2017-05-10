@@ -16,6 +16,11 @@ Template.Edit_Profile_Page.onCreated(function onCreated() {
   this.messageFlags.set(displaySuccessMessage, false);
   this.messageFlags.set(displayErrorMessages, false);
   this.context = ProfileSchema.namedContext('Edit_Profile_Page');
+
+  // Update header menu
+  $('.active.item').removeClass('active');
+  $('.edit.item').addClass('active');
+
 });
 
 Template.Edit_Profile_Page.helpers({
