@@ -10,7 +10,6 @@
     <div style="height: 30px;"></div>
 
     <!-- Event Menu -->
-    {{> Event_Modal}}
     <div class="ui secondary pointing menu">
       <a class="item">Browse Events</a>
       <a class="right floated active item"><i class="ui search icon"></i>Search Events</a>
@@ -58,10 +57,11 @@
     </div>
 
     <!-- Event Cards -->
+    {{> Event_Modal}}
     <div class="ui padded segment">
       <div class="ui four cards">
         {{#each listEvents}}
-          {{> Event_Card id=this._id picture=this.picture name=this.name description=this.description organizer=this.organizer}}
+          {{> Event_Card id=this._id picture=this.picture name=this.name description=this.description organizer=this.organizer date=this.start}}
         {{/each}}
       </div>
     </div>
