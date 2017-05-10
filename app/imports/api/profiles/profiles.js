@@ -48,6 +48,14 @@ export const ProfileSchema = new SimpleSchema({
     label: 'Picture',
     type: String,
   },
+  phone: {
+    label: 'Phone',
+    type: String,
+  },
+  email: {
+    label: 'Email',
+    type: String,
+  },
   attending: {
     label: 'Attending',
     type: [String],
