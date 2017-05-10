@@ -4,7 +4,9 @@
     <div class="ui center aligned container landing page">
       <img class="ui small centered image" src="/images/landing-logo.svg">
       <p style="font-size: 60px; color: #FFFFFF">An easy place to view events around you</p>
-      <a href="{{ pathFor 'Home_Page' }}"><button class="ui massive blue button">Find Out What's Happening</button></a>
+      <a href="{{ pathFor 'Home_Page' }}">
+        <button class="ui massive blue button">Find Out What's Happening</button>
+      </a>
     </div>
   </div>
 
@@ -16,7 +18,9 @@
       <p style="font-size: 40px">A better way to spread the word</p>
       <p style="font-size: 30px">Whats Happening brings event planners and event goers together<br>
         to change the way you find out whats going on around you</p>
-        <a href="{{ pathFor 'Home_Page'}}"><button class="ui huge green button">View Events Around You</button></a>
+      <a href="{{ pathFor 'Home_Page'}}">
+        <button class="ui huge green button">View Events Around You</button>
+      </a>
     </div>
 
     <div style="padding-bottom: 50px;" class="ui four cards">
@@ -105,8 +109,10 @@
       <p style="font-size: 30px">Join the rest of the people already using Whats Happening to
         create, plan, and attend events around them. Sign up with your UH Credentials!</p>
 
-      <button class="ui huge green button sign up">Sign up & know Whats Happening</button>
+      <a class="cas-login">
+        <button class="ui huge green button sign up">Sign up & know Whats Happening</button>
+      </a>
     </div>
   </div>
-  <a class="cas-login">><div style="height: 100px;"></div></a>
+  <div style="height: 100px;"></div>
 </template>
