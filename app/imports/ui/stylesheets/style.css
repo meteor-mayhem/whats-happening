@@ -22,6 +22,10 @@
   */
 }
 
+.user-link:hover {
+  color: #1e70bf !important;
+}
+
 .ui.center.aligned.container.landing.page {
   padding-top: 19%;
   padding-bottom: 10%;

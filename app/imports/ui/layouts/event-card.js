@@ -65,6 +65,10 @@ Template.Event_Card.events({
     Session.set('clickedEventId', event.target.closest('.ui.card').id);
 
     // Open modal
-    $('.ui.event.modal').modal('setting', 'transition', 'fade up').modal('show');
+    $('.ui.event.modal').modal({
+      detachable: false,
+      duration: 300,
+      observeChanges: true,
+    }).modal('setting', 'transition', 'fade up').modal('show');
   },
 });

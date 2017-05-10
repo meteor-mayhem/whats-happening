@@ -31,7 +31,11 @@ Template.Profile_Page.helpers({
 
   /** Returns a list of the current profile's attending events */
   attendingEvents() {
-    return Events.find({ organizer: 'dtokita' });
+    const user = Profiles.findOne({ username: FlowRouter.getParam('username') });
+    if (user) {
+      return Events.find({ _id: { $in: user.attending } });
+    }
+    return null;
   },
 
   /** Returns a list of the current profile's saved events */

@@ -10,7 +10,8 @@
                   <div class="column">
                     <img class="ui large avatar image"
                          src="{{userPicture this.organizer}}">
-                    <span class="meta">{{this.organizer}}</span>
+                    <a class="meta user-link"
+                       href="{{pathFor 'Profile_Page' username=this.organizer}}">{{this.organizer}}</a>
                   </div>
                 </div>
                 <div class="ui divider" style="margin: 0;"></div>
@@ -76,11 +77,17 @@
                 </div>
                 <div class="row">
                   <div class="column">
-                    <button class="ui right floated large blue attend button">Attend</button>
-                    {{#if isOwner}}
-                      <a href="{{pathFor "Edit_Event_Page" _id=this._id}}">
-                        <button class="ui right floated large red edit button">Edit</button>
-                      </a>
+                    {{#if currentUser}}
+                      {{#if attending}}
+                        <button class="ui right floated large green attend active button">Attending</button>
+                      {{else}}
+                        <button class="ui right floated large blue attend button">Attend</button>
+                      {{/if}}
+                      {{#if isOwner}}
+                        <a href="{{pathFor "Edit_Event_Page" _id=this._id}}">
+                          <button class="ui right floated large red edit button">Edit</button>
+                        </a>
+                      {{/if}}
                     {{/if}}
                   </div>
                 </div>
