@@ -54,12 +54,16 @@ Template.User_Setup_Page.helpers({
 });
 
 Template.User_Setup_Page.events({
+  'click .terms-link'() {
+    $('.modal.terms-modal').modal('show');
+  },
+
   'submit .user-form'(event, instance) {
     event.preventDefault();
+
     const profileData = Profiles.findOne({ username: Meteor.user().profile.name });
     if (profileData !== undefined) {
-      const myWindow = window.open('', 'MsgWindow', 'width=700,height=300');
-      myWindow.document.write('<h4>User already exists, fowarding to edit profile page.</h4>');
+      $('.modal.existing-account-modal').modal('show');
       FlowRouter.go(FlowRouter.path('Edit_Profile_Page', { username: Meteor.user().profile.name }));
     }
     const username = Meteor.user().profile.name;
@@ -92,6 +96,7 @@ Template.User_Setup_Page.events({
       followers,
       following,
     };
+
     // Clear out any old validation errors.
     instance.context.resetValidation();
     // Invoke clean so that newEventdata reflects what will be inserted.
@@ -99,9 +104,15 @@ Template.User_Setup_Page.events({
     // Determine validity.
     instance.context.validate(newProfileData);
     if (instance.context.isValid()) {
-      const id = Profiles.insert(newProfileData);
+      // Check if checkbox is selected
+      if ($('input.terms-checkbox').prop('checked') === false) {
+        $('div.ui.checkbox').transition('flash');
+        return;
+      }
+
+      Profiles.insert(newProfileData);
       instance.messageFlags.set(displayErrorMessages, false);
-      FlowRouter.go(FlowRouter.path('Home_Page', { _id: id }));
+      FlowRouter.go(FlowRouter.path('Profile_Page', { username: Meteor.user().profile.name }));
     } else {
       instance.messageFlags.set(displayErrorMessages, true);
     }
