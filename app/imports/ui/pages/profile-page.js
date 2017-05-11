@@ -81,7 +81,7 @@ Template.Profile_Page.helpers({
 
 Template.Profile_Page.events({
   /** Logic for the active menu item and transitions */
-  'click .event'(event) {
+  'click .event.pointing.menu'(event) {
     let newItem;
     let oldItem;
 

@@ -19,3 +19,23 @@ Template.Home_Page.helpers({
     return Events.find();
   },
 });
+
+Template.Home_Page.events({
+  'click .search.pointing.menu'(event) {
+    // If clicked on the current tab, do nothing
+    if (event.target.classList.contains('active')) {
+      return;
+    }
+
+    // update active class
+    $('.search.menu .active.item').removeClass('active');
+    event.target.classList.add('active');
+
+    // Toggle search menu
+    $('.ui.search.segment').transition({
+      duration: 300,
+      animation: 'slide down',
+    });
+  },
+});
+
