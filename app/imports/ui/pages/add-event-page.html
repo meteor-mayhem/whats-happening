@@ -26,7 +26,7 @@
           <i class="calendar icon"></i>
           Date/Time
         </h4>
-        {{> Date_Field label="DateTime" required=true errorMessage=(fieldError "start")}}
+        {{> Date_Field label="DateTime" placeholder="Date and Time" required=true errorMessage=(fieldError "start")}}
 
         <h4 class="ui horizontal divider header">
           <i class="mail icon"></i>
@@ -47,7 +47,7 @@
           <i class="file image outline icon"></i>
           Event Picture
         </h4>
-        {{> Text_Form_Control link=true label="Picture" required=true errorMessage=(fieldError "picture") multiple=true}}
+        {{> Text_Form_Control placeholder="Picture URL" label="Picture" required=true errorMessage=(fieldError "picture") multiple=true}}
 
         <h4 class="ui horizontal divider header">
           <i class="users icon"></i>
@@ -65,7 +65,7 @@
           <i class="linkify icon"></i>
           External Link
         </h4>
-        {{> Text_Form_Control link=true label="Website" errorMessage=(fieldError "website")}}
+        {{> Text_Form_Control placeholder="Website URL" label="Website" errorMessage=(fieldError "website")}}
 
         <h4 class="ui horizontal divider header">
           <i class="location arrow icon"></i>
