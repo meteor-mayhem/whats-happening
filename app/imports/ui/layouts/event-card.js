@@ -25,6 +25,12 @@ Template.Event_Card.helpers({
     return date.toString().substring(4, 15); // return just the month day and year
   },
 
+  /** Gets the name of the organizer, given the username*/
+  getName(username) {
+    const user = Profiles.findOne({ username });
+    return user && `${user.first} ${user.last}`;
+  },
+
   loggedIn() {
     const user = Meteor.user();
     return user && Profiles.findOne({ username: user.profile.name });
@@ -73,7 +79,6 @@ Template.Event_Card.events({
     $('.ui.event.modal').modal({
       detachable: false,
       duration: 300,
-      observeChanges: true,
     }).modal('setting', 'transition', 'fade up').modal('show');
   },
 });

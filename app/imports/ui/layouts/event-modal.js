@@ -52,6 +52,12 @@ Template.Event_Modal.helpers({
     return user && user.picture;
   },
 
+  /** Gets the name of the user, given the username */
+  getName(username) {
+    const user = Profiles.findOne({ username });
+    return user && `${user.first} ${user.last}`;
+  },
+
   /** Determine if event is starred by user */
   starred() {
     const user = Profiles.findOne({ username: Meteor.user().profile.name });
@@ -83,7 +89,7 @@ Template.Event_Modal.helpers({
 
 Template.Event_Modal.events({
   /** Attending event handler */
-  'click .event.modal .attend.button'() {
+  'click .event.modal .attend.button'(event) {
     const eventId = Session.get('clickedEventId');
     const user = Profiles.findOne({ username: Meteor.user().profile.name });
 

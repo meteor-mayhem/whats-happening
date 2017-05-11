@@ -7,6 +7,21 @@ import { _ } from 'meteor/underscore';
  */
 const profileSeeds = [
   {
+    username: 'mengyuan',
+    first: 'Jerry',
+    last: 'Wu',
+    interests: ['Programming', 'Weatherboxes', 'Git'],
+    organizations: ['SCEL'],
+    bio: 'Hi I am Jerry. I like to program weatherboxes and play with Git.',
+    picture: 'https://cdn.meme.am/images/600x600/9895039/sponge-bob-square-pants.jpg',
+    phone: '222-222-2222',
+    email: 'jerry@tom.com',
+    attending: [],
+    saved: [],
+    followers: [],
+    following: [],
+  },
+  {
     username: 'glennga',
     first: 'Glenn',
     last: 'Galvizo',
