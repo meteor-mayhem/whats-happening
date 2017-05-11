@@ -1,106 +1,106 @@
 <template name="User_Setup_Page">
 
   {{#if Template.subscriptionsReady}}
-  <div style="padding-top: 20px; padding-bottom: 20px" class="ui text container">
-    <div class="ui attached message">
-      <div class="header">
-        Tell us about yourself!
-      </div>
-      <p>Fill out the form below to start browsing and creating events!</p>
-    </div>
-
-    <form class="ui form attached fluid segment user-form {{ successClass }} {{ errorClass }}">
-      <h4 class="ui horizontal divider header">
-        <i class="university icon"></i>
-        Username (UH ID)
-      </h4>
-
-      <div class="field">
-        <div class="ui disabled input">
-          <input type="text" placeholder={{user}}>
+    <div style="padding-top: 20px; padding-bottom: 20px" class="ui text container">
+      <div class="ui attached message">
+        <div class="header">
+          Tell us about yourself!
         </div>
+        <p>Fill out the form below to start browsing and creating events!</p>
       </div>
 
-      <h4 class="ui horizontal divider header">
-        <i class="tag icon"></i>
-        First and Last Name
-      </h4>
-      <div class="required field">
-        <div class="two fields">
+      <form class="ui form attached fluid segment user-form {{ successClass }} {{ errorClass }}">
+        <h4 class="ui horizontal divider header">
+          <i class="university icon"></i>
+          Username (UH ID)
+        </h4>
 
-          {{> Text_Form_Control label="First_Name" required=true errorMessage=(fieldError "first")}}
-          {{> Text_Form_Control label="Last_Name" required=true errorMessage=(fieldError "last")}}
-
-        </div>
-      </div>
-      <h4 class="ui horizontal divider header">
-        <i class="content icon"></i>
-        Interests
-      </h4>
-      <div class="required field">
-        {{> Select_Form_Control label="Interests" required=true multiple=true options=categories errorMessage=(fieldError 'interests')}}
-      </div>
-      <h4 class="ui horizontal divider header">
-        <i class="users icon"></i>
-        Organizations You Belong To
-      </h4>
-      <div class="required field">
-        {{> Select_Form_Control label="Organizations" required=false multiple=true options=organizations errorMessage=(fieldError 'organizations')}}
-      </div>
-
-      <h4 class="ui horizontal divider header">
-        <i class="image icon"></i>
-        Profile Picture
-      </h4>
-      <div class="required field">
         <div class="field">
-          {{> Text_Form_Control label="Profile_Picture" required=true errorMessage=(fieldError "picture")}}
-        </div>
-      </div>
-
-      <h4 class="ui horizontal divider header">
-        <i class="child icon"></i>
-        About Me
-      </h4>
-      <div class="required field">
-        {{> TextArea_Form_Control label="About_Me" required=true errorMessage=(fieldError "bio")}}
-      </div>
-
-      <h4 class="ui horizontal divider header">
-        <i class="mail icon"></i>
-        Contact Information
-      </h4>
-      <div class="two fields">
-        <div class="field">
-          <label>Email</label>
-          {{> Text_Form_Control label="Email" required=true errorMessage=(fieldError "email")}}
-        </div>
-        <div class="field">
-          <label>Phone</label>
-          {{> Text_Form_Control label="Phone" required=true errorMessage=(fieldError "phone")}}
-        </div>
-      </div>
-      <h4 class="ui horizontal divider header"></h4>
-      <div class="two fields">
-        <div class="inline field">
-          <div class="ui checkbox">
-            <input type="checkbox" id="terms">
-            <label for="terms">I agree to the terms and conditions listed <a href="" onclick="term()">here</a>.</label>
+          <div class="ui disabled input">
+            <input type="text" placeholder={{user}}>
           </div>
         </div>
-        <div class="field">
-          <button class="ui right floated blue button" type="submit">Sign Up<i class="caret right icon"></i></button>
+
+        <h4 class="ui horizontal divider header">
+          <i class="tag icon"></i>
+          First and Last Name
+        </h4>
+        <div class="required field">
+          <div class="two fields">
+
+            {{> Text_Form_Control placeholder="First Name" label="First_Name" required=true errorMessage=(fieldError "first")}}
+            {{> Text_Form_Control placeholder="Last Name" label="Last_Name" required=true errorMessage=(fieldError "last")}}
+
+          </div>
         </div>
-      </div>
+        <h4 class="ui horizontal divider header">
+          <i class="content icon"></i>
+          Interests
+        </h4>
+        <div class="required field">
+          {{> Select_Form_Control label="Interests" required=true multiple=true options=categories errorMessage=(fieldError 'interests')}}
+        </div>
+        <h4 class="ui horizontal divider header">
+          <i class="users icon"></i>
+          Organizations You Belong To
+        </h4>
+        <div class="required field">
+          {{> Select_Form_Control label="Organizations" required=false multiple=true options=organizations errorMessage=(fieldError 'organizations')}}
+        </div>
 
-    </form>
-  </div>
-  <script>
-  function term() {
-      var myWindow = window.open("", "MsgWindow", "width=700,height=300");
-      myWindow.document.write("<h4>This application has been developed by students at the University of Hawaii. It is provided on a pilot basis and there are no guarantees regarding future access to this system. All users are expected to adhere to the principles specified in the University of Hawaii Systemwide Student Conduct Code. The developers reserve the right to ban access to this system by any students who violate this code of conduct or otherwise display inappropriate behavior on the site.</h4>");
-  }
-</script>
+        <h4 class="ui horizontal divider header">
+          <i class="image icon"></i>
+          Profile Picture
+        </h4>
+        <div class="required field">
+          <div class="field">
+            {{> Text_Form_Control placeholder="Picture URL" label="Profile_Picture" required=true errorMessage=(fieldError "picture")}}
+          </div>
+        </div>
 
-{{/if}}
+        <h4 class="ui horizontal divider header">
+          <i class="child icon"></i>
+          About Me
+        </h4>
+        <div class="required field">
+          {{> TextArea_Form_Control placeholder="About Me..." label="About_Me" required=true errorMessage=(fieldError "bio")}}
+        </div>
+
+        <h4 class="ui horizontal divider header">
+          <i class="mail icon"></i>
+          Contact Information
+        </h4>
+        <div class="two fields">
+          <div class="field">
+            <label>Email</label>
+            {{> Text_Form_Control label="Email" required=true errorMessage=(fieldError "email")}}
+          </div>
+          <div class="field">
+            <label>Phone</label>
+            {{> Text_Form_Control label="Phone" required=true errorMessage=(fieldError "phone")}}
+          </div>
+        </div>
+        <h4 class="ui horizontal divider header"></h4>
+        <div class="two fields">
+          <div class="inline field">
+            <div class="ui checkbox">
+              <input type="checkbox" id="terms">
+              <label for="terms">I agree to the terms and conditions listed <a href="" onclick="term()">here</a>.</label>
+            </div>
+          </div>
+          <div class="field">
+            <button class="ui right floated blue button" type="submit">Sign Up<i class="caret right icon"></i></button>
+          </div>
+        </div>
+
+      </form>
+    </div>
+    <script>
+      function term() {
+        var myWindow = window.open("", "MsgWindow", "width=700,height=300");
+        myWindow.document.write("<h4>This application has been developed by students at the University of Hawaii. It is provided on a pilot basis and there are no guarantees regarding future access to this system. All users are expected to adhere to the principles specified in the University of Hawaii Systemwide Student Conduct Code. The developers reserve the right to ban access to this system by any students who violate this code of conduct or otherwise display inappropriate behavior on the site.</h4>");
+      }
+    </script>
+
+  {{/if}}
 </template>
