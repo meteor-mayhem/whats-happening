@@ -12,11 +12,6 @@ Template.Event_Modal.onCreated(function onCreated() {
 });
 
 Template.Event_Modal.helpers({
-  /** Check if we should load a modal--do not load if already there */
-  shouldLoad() {
-    return $('.event.modal').length !== 1;
-  },
-
   /** Get clicked event card */
   clickedEvent() {
     // Retrieve event from session id

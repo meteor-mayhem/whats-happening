@@ -1,101 +1,97 @@
 <template name="Event_Modal">
-  {{#if shouldLoad}}
-    <div class="ui container">
-      <div class="ui event modal">
-        {{#each clickedEvent}}
-          <div class="ui fluid card">
-            <div class="content">
-              <div class="ui grid">
-                <div class="row">
-                  <div class="column">
-                    <img class="ui large avatar image"
-                         src="{{userPicture this.organizer}}">
-                    <a class="meta user-link"
-                       href="{{pathFor 'Profile_Page' username=this.organizer}}">{{getName this.organizer}}</a>
-                  </div>
-                </div>
-                <div class="ui divider" style="margin: 0;"></div>
-                <div class="row">
-                  <div class="five wide column">
-                    <img class="ui fluid rounded image"
-                         src="{{this.picture}}">
-                  </div>
-                  <div class="eleven wide column">
-                    <div class="ui one column grid">
-                      <div class="row">
-                        <div class="column">
-                          <span class="ui huge header">{{this.name}}</span>
-                          {{#if loggedIn}}<i class="right floated big {{#if
-                              starred}}yellow{{else}}empty{{/if}} star icon"></i>{{/if}}
-                        </div>
-                      </div>
-                      {{#if this.website}}<a class="meta" href="{{this.website}}">{{this.website}}</a>{{/if}}
-                      <div class="row">
-                        <div class="column">
-                          <div class="ui small header">Categories</div>
-                          {{#each this.categories}}
-                            <div class="ui medium teal compact label">{{this}}</div>
-                          {{/each}}
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="column">
-                          <div class="ui small header">Organizations</div>
-                          {{#each this.organizations}}
-                            <div class="ui medium teal compact label">{{this}}</div>
-                          {{/each}}
-                        </div>
-                      </div>
+  <div class="ui event modal">
+    {{#each clickedEvent}}
+      <div class="ui fluid card">
+        <div class="content">
+          <div class="ui grid">
+            <div class="row">
+              <div class="column">
+                <img class="ui large avatar image"
+                     src="{{userPicture this.organizer}}">
+                <a class="meta user-link"
+                   href="{{pathFor 'Profile_Page' username=this.organizer}}">{{getName this.organizer}}</a>
+              </div>
+            </div>
+            <div class="ui divider" style="margin: 0;"></div>
+            <div class="row">
+              <div class="five wide column">
+                <img class="ui fluid rounded image"
+                     src="{{this.picture}}">
+              </div>
+              <div class="eleven wide column">
+                <div class="ui one column grid">
+                  <div class="row">
+                    <div class="column">
+                      <span class="ui huge header">{{this.name}}</span>
+                      {{#if loggedIn}}<i class="right floated big {{#if
+                          starred}}yellow{{else}}empty{{/if}} star icon"></i>{{/if}}
                     </div>
                   </div>
-                </div>
-                <div class="row">
-                  <div class="column">
-                    <div class="ui medium header">Description</div>
-                    <p>{{this.description}}</p>
+                  {{#if this.website}}<a class="meta" href="{{this.website}}">{{this.website}}</a>{{/if}}
+                  <div class="row">
+                    <div class="column">
+                      <div class="ui small header">Categories</div>
+                      {{#each this.categories}}
+                        <div class="ui medium teal compact label">{{this}}</div>
+                      {{/each}}
+                    </div>
                   </div>
-                </div>
-                <div class="two column row">
-                  <div class="column">
-                    <div class="ui small header">Time</div>
-                    <p>{{formatDate this.start}} - {{formatDate this.end}}</p>
-                  </div>
-                  <div class="column">
-                    <div class="ui small header">Location</div>
-                    <p>{{this.location}}</p>
-                  </div>
-                </div>
-                <div class="two column row">
-                  <div class="column">
-                    <div class="ui small header">Phone</div>
-                    <p>{{this.phone}}</p>
-                  </div>
-                  <div class="column">
-                    <div class="ui small header">Email</div>
-                    <p>{{this.email}}</p>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="column">
-                    {{#if loggedIn}}
-                      {{#if attending}}
-                        <button class="ui right floated large green attend active button">Attending</button>
-                      {{else}}
-                        <button class="ui right floated large blue attend button">Attend</button>
-                      {{/if}}
-                      {{#if isOwner}}
-                        <a href="{{pathFor "Edit_Event_Page" _id=this._id}}">
-                          <button class="ui right floated large red edit button">Edit</button>
-                        </a>
-                      {{/if}}
-                    {{/if}}
+                  <div class="row">
+                    <div class="column">
+                      <div class="ui small header">Organizations</div>
+                      {{#each this.organizations}}
+                        <div class="ui medium teal compact label">{{this}}</div>
+                      {{/each}}
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
+            <div class="row">
+              <div class="column">
+                <div class="ui medium header">Description</div>
+                <p>{{this.description}}</p>
+              </div>
+            </div>
+            <div class="two column row">
+              <div class="column">
+                <div class="ui small header">Time</div>
+                <p>{{formatDate this.start}} - {{formatDate this.end}}</p>
+              </div>
+              <div class="column">
+                <div class="ui small header">Location</div>
+                <p>{{this.location}}</p>
+              </div>
+            </div>
+            <div class="two column row">
+              <div class="column">
+                <div class="ui small header">Phone</div>
+                <p>{{this.phone}}</p>
+              </div>
+              <div class="column">
+                <div class="ui small header">Email</div>
+                <p>{{this.email}}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="column">
+                {{#if loggedIn}}
+                  {{#if attending}}
+                    <button class="ui right floated large green attend active button">Attending</button>
+                  {{else}}
+                    <button class="ui right floated large blue attend button">Attend</button>
+                  {{/if}}
+                  {{#if isOwner}}
+                    <a href="{{pathFor "Edit_Event_Page" _id=this._id}}">
+                      <button class="ui right floated large red edit button">Edit</button>
+                    </a>
+                  {{/if}}
+                {{/if}}
+              </div>
+            </div>
           </div>
-        {{/each}}
+        </div>
       </div>
-    </div>
-  {{/if}}
+    {{/each}}
+  </div>
 </template>
