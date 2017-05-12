@@ -40,10 +40,8 @@ Template.Edit_Profile_Page.helpers({
     return FlowRouter.getParam('username');
   },
   validate() {
-    if (Meteor.user().profile.name === FlowRouter.getParam('username')) {
-      return true;
-    }
-    return false;
+    const user = Meteor.user();
+    return user && (user.profile.name === FlowRouter.getParam('username'));
   },
   organizations() {
     const profileData = Profiles.findOne({ username: FlowRouter.getParam('username') });

@@ -79,6 +79,7 @@ Template.Event_Card.events({
     $('.ui.event.modal').modal({
       detachable: false,
       duration: 300,
+      observeChanges: true,
     }).modal('setting', 'transition', 'fade up').modal('show');
   },
 });
