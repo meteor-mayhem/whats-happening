@@ -24,6 +24,7 @@ Template.Home_Page.helpers({
   /** Returns events according to the current filters */
   listEvents() {
     const filters = Session.get('filters');
+    // console.log(filters);
     const events = Events.find().fetch();
 
     // If no filters then just return everything
@@ -142,12 +143,15 @@ Template.Home_Page.events({
     event.preventDefault();
     const name = event.target.Name.value;
     const organizer = event.target.Organizer.value;
-    const categories = _.map(_.filter(event.target.Categories.selectedOptions, (option) => option.selected), (option) => option.value);
-    const organizations = _.map(_.filter(event.target.Organizations.selectedOptions, (option) => option.selected), (option) => option.value);
+    let categories = _.map(_.filter(event.target.Categories.selectedOptions, (option) => option.selected), (option) => option.value);
+    let organizations = _.map(_.filter(event.target.Organizations.selectedOptions, (option) => option.selected), (option) => option.value);
     const type = $('.filtering.green.button').hasClass('logical-and') ? 'and' : 'or';
 
+
     // Save info into a filter if it's not empty
-    if (name.length || organizer.length || (categories.length && categories[0] !== '') || (organizations.length && organizations[0] !== '')) {
+    categories = (categories.length && categories[0].trim().length) ? categories : [];
+    organizations = (organizations.length && organizations[0].trim().length) ? organizations : [];
+    if (name.length || organizer.length || categories.length || organizations.length) {
       Session.set('filters', { name, organizer, categories, organizations, type });
     } else {
       Session.set('filters', undefined);
