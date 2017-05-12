@@ -71,7 +71,7 @@ Template.Add_Event_Page.events({
     const categories = _.map(selectedCategories, (option) => option.value);
     const location = event.target.EventMap.value;
     const website = event.target.Website.value;
-    const picture = event.target.Picture.value;
+    const picture = event.target.Picture.value.trim().length ? event.target.Picture.value : '/images/default-event.png';
     const newEventData = {
       name,
       description,

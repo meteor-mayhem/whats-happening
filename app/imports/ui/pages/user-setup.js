@@ -10,6 +10,8 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
 const displaySuccessMessage = 'displaySuccessMessage';
 const displayErrorMessages = 'displayErrorMessages';
 
+/* eslint-disable max-len */
+
 Template.User_Setup_Page.onCreated(function onCreated() {
   this.subscribe('Profiles');
   this.messageFlags = new ReactiveDict();
@@ -74,7 +76,7 @@ Template.User_Setup_Page.events({
     const selectedOrganizations = _.filter(event.target.Organizations.selectedOptions, (option) => option.selected);
     const organizations = _.map(selectedOrganizations, (option) => option.value);
     const bio = event.target.About_Me.value;
-    const picture = event.target.Profile_Picture.value;
+    const picture = event.target.Profile_Picture.value.trim().length ? event.target.Profile_Picture.value : '/images/default-user.png';
     const email = event.target.Email.value;
     const phone = event.target.Phone.value;
     const followers = [];
