@@ -1,5 +1,4 @@
 <template name="User_Setup_Page">
-
   {{#if Template.subscriptionsReady}}
     <div style="padding-top: 20px; padding-bottom: 20px" class="ui text container">
       <div class="ui attached message">
@@ -106,5 +105,7 @@
         <div class="content"><p>Forwarded you to the edit-profile page</p></div>
       </div>
     </div>
+  {{else}}
+    {{> Loading}}
   {{/if}}
 </template>
