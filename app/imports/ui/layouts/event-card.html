@@ -5,6 +5,9 @@
       {{#if loggedIn}}<i class="right floated large {{#if starred id}}yellow{{else}}empty{{/if}} star icon"></i>{{/if}}
       <div class="header">{{name}}</div>
       <div class="description">{{description}}</div>
+      {{#each categories}}
+        <label class="ui small teal label" style="margin-top: 8px;">{{this}}</label>
+      {{/each}}
     </div>
     <div class="extra content">
       <span class="right floated"><i class="calendar icon"></i>{{formatDate date}}</span>
