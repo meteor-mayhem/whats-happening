@@ -105,6 +105,14 @@
         <div class="content"><p>Forwarded you to the edit-profile page</p></div>
       </div>
     </div>
+    <script>
+      // Prevent 'enter' from submitting form
+      $('form').bind('keypress', function disableEnter(e) {
+        if (e.keyCode === 13) {
+          return false;
+        }
+      });
+    </script>
   {{else}}
     {{> Loading}}
   {{/if}}

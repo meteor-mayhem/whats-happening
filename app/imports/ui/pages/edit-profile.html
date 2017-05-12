@@ -11,14 +11,14 @@
 
         <form class="ui form attached fluid segment user-form {{ successClass }} {{ errorClass }}">
           <!--<h4 class="ui horizontal divider header">-->
-            <!--<i class="university icon"></i>-->
-            <!--Username (UH ID)-->
+          <!--<i class="university icon"></i>-->
+          <!--Username (UH ID)-->
           <!--</h4>-->
 
           <!--<div class="field">-->
-            <!--<div class="ui disabled input">-->
-              <!--<input type="text" placeholder={{user}}>-->
-            <!--</div>-->
+          <!--<div class="ui disabled input">-->
+          <!--<input type="text" placeholder={{user}}>-->
+          <!--</div>-->
           <!--</div>-->
 
           <h4 class="ui horizontal divider header">
@@ -91,6 +91,15 @@
           </div>
         </form>
       </div>
+      <script>
+        // Prevent 'enter' from submitting form
+        $('form').bind('keypress', function disableEnter(e) {
+          if (e.keyCode === 13) {
+            return false;
+          }
+          return true;
+        });
+      </script>
     {{else}}
       {{> Loading}}
     {{/if}}

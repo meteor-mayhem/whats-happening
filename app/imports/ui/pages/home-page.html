@@ -11,54 +11,65 @@
 
 
     <!-- Event Menu -->
-    <div class="ui secondary pointing search menu">
-      <a class="active home-browse item">Browse Events</a>
-      <a class="right floated home-search item"><i class="ui search icon"></i>Search Events</a>
+    <div class="ui secondary pointing home menu">
+      <a class="active item">Browse Events</a>
+      <a class="right floated item"><i class="ui search icon"></i>Search Events</a>
     </div>
-    <div class="ui padded form search segment transition hidden">
+    <form class="ui padded search form segment transition hidden">
       <div class="two fields">
         <div class="field">
           <label>By Name</label>
-          <input type="text" placeholder="Event name">
+          {{> Text_Form_Control placeholder="Event Name" label="Name"}}
         </div>
         <div class="field">
-          <label>By Owner</label>
-          <input type="text" placeholder="Owner name">
+          <label>By Organizer</label>
+          {{> Text_Form_Control placeholder="Organizer Name" label="Organizer"}}
         </div>
       </div>
       <div class="two fields">
         <div class="field">
           <label>By Categories</label>
-          <input type="text" placeholder="Categories">
+          {{> Select_Form_Control label="Categories" options=categories multiple=true}}
         </div>
         <div class="field">
           <label>By Organizations</label>
-          <input type="text" placeholder="Organizations">
+          {{> Select_Form_Control label="Organizations" options=organizations multiple=true}}
         </div>
       </div>
-      <button class="ui primary button">Search</button>
+      <div class="two fields">
+        <div class="field">
+          <div class="ui buttons">
+            <div class="ui logical-and filtering green button">AND Filtering</div>
+            <div class="or"></div>
+            <div class="ui logical-or filtering button">OR Filtering</div>
+          </div>
+        </div>
+        <div class="field">
+          <button class="ui right floated blue button">Search</button>
+        </div>
+      </div>
       <!--<div class="field">-->
-        <!--<div class="three wide field">-->
-          <!--<label>By Distance</label>-->
-          <!--<div class="ui selection dropdown">-->
-            <!--<input type="hidden" name="distance">-->
-            <!--<i class="dropdown icon"></i>-->
-            <!--<div class="default text">Within...</div>-->
-            <!--<div class="menu">-->
-              <!--<div class="item">0.1 miles</div>-->
-              <!--<div class="item">0.5 miles</div>-->
-              <!--<div class="item">1.0 miles</div>-->
-              <!--<div class="item">5.0 miles</div>-->
-              <!--<div class="item">10.0 miles</div>-->
-              <!--<div class="item">50.0 miles</div>-->
-            <!--</div>-->
-          <!--</div>-->
-        <!--</div>-->
+      <!--<div class="three wide field">-->
+      <!--<label>By Distance</label>-->
+      <!--<div class="ui selection dropdown">-->
+      <!--<input type="hidden" name="distance">-->
+      <!--<i class="dropdown icon"></i>-->
+      <!--<div class="default text">Within...</div>-->
+      <!--<div class="menu">-->
+      <!--<div class="item">0.1 miles</div>-->
+      <!--<div class="item">0.5 miles</div>-->
+      <!--<div class="item">1.0 miles</div>-->
+      <!--<div class="item">5.0 miles</div>-->
+      <!--<div class="item">10.0 miles</div>-->
+      <!--<div class="item">50.0 miles</div>-->
       <!--</div>-->
-    </div>
+      <!--</div>-->
+      <!--</div>-->
+      <!--</div>-->
+    </form>
 
     <!-- Event Cards -->
-    <div class="ui padded segment" style="min-height: 1000px;">
+    <div class="ui padded segment" style="min-height: 830px;">
       <div class="ui four cards">
         {{#each listEvents}}
           {{> Event_Card id=this._id picture=this.picture name=this.name description=this.description organizer=this.organizer date=this.start}}
@@ -69,4 +80,12 @@
     <div style="height: 30px;"></div>
 
   </div>
+  <script>
+    // Prevent 'enter' from submitting form
+    $('form').bind('keypress', function disableEnter(e) {
+      if (e.keyCode === 13) {
+        return false;
+      }
+    });
+  </script>
 </template>

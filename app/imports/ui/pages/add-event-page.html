@@ -84,10 +84,9 @@
       </form>
     </div>
     <script>
-      $("form").bind("keypress", function (e) {
+      // Prevent 'enter' from submitting form
+      $('form').bind('keypress', function disableEnter(e) {
         if (e.keyCode === 13) {
-          $("#btnSearch").attr('value');
-          //add more buttons here
           return false;
         }
       });
