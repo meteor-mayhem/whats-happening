@@ -72,11 +72,15 @@
 
     <!-- Event Cards -->
     <div class="ui padded segment" style="min-height: 800px;">
-      <div class="ui four cards">
-        {{#each listEvents}}
-          {{> Event_Card id=this._id picture=this.picture name=this.name description=this.description organizer=this.organizer date=this.start categories=this.categories}}
-        {{/each}}
-      </div>
+      {{#if Template.subscriptionsReady}}
+        <div class="ui four cards">
+          {{#each listEvents}}
+            {{> Event_Card id=this._id picture=this.picture name=this.name description=this.description organizer=this.organizer date=this.start categories=this.categories}}
+          {{/each}}
+        </div>
+      {{else}}
+        {{> Loading}}
+      {{/if}}
     </div>
 
     <div style="height: 30px;"></div>

@@ -1,7 +1,7 @@
 <template name="Event_Card">
   <div id="{{id}}" class="ui link card">
     <div class="image"><img src="{{picture}}"></div>
-    <div class="content">
+    <div class="content" style="overflow: hidden;">
       {{#if loggedIn}}<i class="right floated large {{#if starred id}}yellow{{else}}empty{{/if}} star icon"></i>{{/if}}
       <div class="header">{{name}}</div>
       <div class="description">{{description}}</div>

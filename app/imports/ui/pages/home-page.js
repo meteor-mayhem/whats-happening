@@ -1,5 +1,6 @@
 import { Template } from 'meteor/templating';
 import { Events } from '../../api/events/events.js';
+import { Profiles } from '../../api/profiles/profiles.js';
 import { _ } from 'meteor/underscore';
 import { organizationList } from './organizations.js';
 import { categoryList } from './categories.js';
@@ -38,7 +39,10 @@ Template.Home_Page.helpers({
           // console.log('and name failed');
           return false;
         }
-        if (filters.organizer.length && !event.organizer.toUpperCase().includes(filters.organizer.toUpperCase())) {
+        // Get organizer full name
+        const user = Profiles.findOne({ username: event.organizer });
+        const fullName = `${user.first} ${user.last}`;
+        if (filters.organizer.length && !fullName.toUpperCase().includes(filters.organizer.toUpperCase())) {
           // console.log('and organizer failed');
           return false;
         }
@@ -60,7 +64,9 @@ Template.Home_Page.helpers({
             // console.log('or name passed');
             return true;
           }
-          if (filters.organizer.length && event.organizer.toUpperCase().includes(filters.organizer.toUpperCase())) {
+          const user = Profiles.findOne({ username: event.organizer });
+          const fullName = `${user.first} ${user.last}`;
+          if (filters.organizer.length && fullName.toUpperCase().includes(filters.organizer.toUpperCase())) {
             // console.log('or organizer passed');
             return true;
           }
