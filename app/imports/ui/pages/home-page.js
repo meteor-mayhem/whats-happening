@@ -7,6 +7,7 @@ import { Session } from 'meteor/session';
 
 /* eslint-disable max-len */
 /* eslint-disable meteor/no-session */
+/* eslint-disable no-param-reassign */
 
 Template.Home_Page.onCreated(function onCreated() {
   this.subscribe('Profiles');
@@ -32,49 +33,56 @@ Template.Home_Page.helpers({
     // If AND filtering
     if (filters.type === 'and') {
       return _.filter(events, function checkConditions(event) {
-        console.log(`processing event: ${event.name}`);
+        // console.log(`processing event: ${event.name}`);
         if (filters.name.length && !event.name.toUpperCase().includes(filters.name.toUpperCase())) {
-          console.log('and name failed');
+          // console.log('and name failed');
           return false;
         }
         if (filters.organizer.length && !event.organizer.toUpperCase().includes(filters.organizer.toUpperCase())) {
-          console.log('and organizer failed');
+          // console.log('and organizer failed');
           return false;
         }
         if (filters.categories.length && _.difference(filters.categories, event.categories).length) {
-          console.log('and categories failed');
+          // console.log('and categories failed');
           return false;
         }
         if (filters.organizations.length && _.difference(filters.organizations, event.organizations).length) {
-          console.log('and organizations failed');
+          // console.log('and organizations failed');
           return false;
         }
         return true;
       });
-    } else if (filters.type === 'or') { // OR filtering
-      return _.filter(events, function checkConditions(event) {
-        console.log(`processing event: ${event.name}`);
-        if (filters.name.length && event.name.toUpperCase().includes(filters.name.toUpperCase())) {
-          console.log('or name passed');
-          return true;
-        }
-        if (filters.organizer.length && event.organizer.toUpperCase().includes(filters.organizer.toUpperCase())) {
-          console.log('or organizer passed');
-          return true;
-        }
-        if (filters.categories.length && _.intersection(filters.categories, event.categories).length) {
-          console.log('or categories passed');
-          return true;
-        }
-        if (filters.organizations.length && _.intersection(filters.organizations, event.organizations).length) {
-          console.log('or organizations passed');
-          return true;
-        }
-        return false;
-      });
-    } else {
-      return events;
-    }
+    } else
+      if (filters.type === 'or') { // OR filtering
+        return _.filter(events, function checkConditions(event) {
+          // console.log(`processing event: ${event.name}`);
+          if (filters.name.length && event.name.toUpperCase().includes(filters.name.toUpperCase())) {
+            // console.log('or name passed');
+            return true;
+          }
+          if (filters.organizer.length && event.organizer.toUpperCase().includes(filters.organizer.toUpperCase())) {
+            // console.log('or organizer passed');
+            return true;
+          }
+          if (filters.categories.length && _.intersection(filters.categories, event.categories).length) {
+            // console.log('or categories passed');
+            return true;
+          }
+          if (filters.organizations.length && _.intersection(filters.organizations, event.organizations).length) {
+            // console.log('or organizations passed');
+            return true;
+          }
+          return false;
+        });
+      }
+
+    return events;
+  },
+
+  /** Returns the current value of a field stored in the session*/
+  sessionValue(field) {
+    const filters = Session.get('filters');
+    return filters && filters[field];
   },
 
   /** Returns a list of the organizations */
@@ -126,7 +134,6 @@ Template.Home_Page.events({
   /** Process search query */
   'submit .search.form'(event) {
     event.preventDefault();
-    console.log('aye');
     const name = event.target.Name.value;
     const organizer = event.target.Organizer.value;
     const categories = _.map(_.filter(event.target.Categories.selectedOptions, (option) => option.selected), (option) => option.value);
@@ -134,11 +141,22 @@ Template.Home_Page.events({
     const type = $('.filtering.green.button').hasClass('logical-and') ? 'and' : 'or';
 
     // Save info into a filter if it's not empty
-    if (name.length || organizer.length || categories.length || organizations.length) {
+    if (name.length || organizer.length || (categories.length && categories[0] !== '') || (organizations.length && organizations[0] !== '')) {
       Session.set('filters', { name, organizer, categories, organizations, type });
     } else {
       Session.set('filters', undefined);
     }
+  },
+
+  /** Reset fields*/
+  'click .reset.button'() {
+    // Reset form
+    _.each($('.input.field input'), function clear(select) {
+      select.value = '';
+    });
+    $('.input.field .dropdown').dropdown('restore defaults');
+
+    Session.set('filters', undefined);
   },
 });
 

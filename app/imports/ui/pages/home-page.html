@@ -17,26 +17,26 @@
     </div>
     <form class="ui padded search form segment transition hidden">
       <div class="two fields">
-        <div class="field">
+        <div class="input field">
           <label>By Name</label>
-          {{> Text_Form_Control placeholder="Event Name" label="Name"}}
+          {{> Text_Form_Control placeholder="Event Name" label="Name" value=(sessionValue 'name')}}
         </div>
-        <div class="field">
+        <div class="input field">
           <label>By Organizer</label>
-          {{> Text_Form_Control placeholder="Organizer Name" label="Organizer"}}
+          {{> Text_Form_Control placeholder="Organizer Name" label="Organizer" value=(sessionValue 'organizer')}}
         </div>
       </div>
       <div class="two fields">
-        <div class="field">
+        <div class="input field">
           <label>By Categories</label>
-          {{> Select_Form_Control label="Categories" options=categories multiple=true}}
+          {{> Select_Form_Control label="Categories" options=categories multiple=true value=(sessionValue 'categories')}}
         </div>
-        <div class="field">
+        <div class="input field">
           <label>By Organizations</label>
-          {{> Select_Form_Control label="Organizations" options=organizations multiple=true}}
+          {{> Select_Form_Control label="Organizations" options=organizations multiple=true value=(sessionValue 'organizations')}}
         </div>
       </div>
-      <div class="two fields">
+      <div class="two fields" style="margin-bottom: 0;">
         <div class="field">
           <div class="ui buttons">
             <div class="ui logical-and filtering green button">AND Filtering</div>
@@ -46,6 +46,7 @@
         </div>
         <div class="field">
           <button class="ui right floated blue button">Search</button>
+          <div class="ui right floated red reset button">Reset</div>
         </div>
       </div>
       <!--<div class="field">-->
